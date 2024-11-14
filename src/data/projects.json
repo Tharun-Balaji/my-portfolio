@@ -1,0 +1,40 @@
+[
+  {
+    "title": "KanbanBoard",
+    "imageSrc": "/assets/projects/KanbanBoard.png",
+    "description": "A Kanban Board Build Using HTML CSS and DOM Manipulation",
+    "skills": ["HTML", "CSS", "JavaScript","DOM Manipulation"],
+    "demo": "https://tharun-balaji.github.io/kanban-board/",
+    "source": "https://github.com/Tharun-Balaji/kanban-board"
+  },
+  {
+    "title": "weather-app",
+    "imageSrc": "https://cdn-icons-png.flaticon.com/512/4519/4519124.png",
+    "description": "A Weather App Build Using HTML CSS and DOM Manipulation",
+    "skills": ["HTML", "CSS", "JavaScript", "DOM Manipulation"],
+    "demo":"https://tharun-balaji.github.io/weather-app/",
+    "source": "https://github.com/Tharun-Balaji/weather-app"
+
+  },{
+    "title": "redux-post-app",
+    "imageSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2HsKcYu84gTGp1H0aKkZJOWg81YbhzCEjXA&s",
+    "description": "A React application for creating, editing, and interacting with posts",
+    "skills": ["React", "Redux Toolkit", "RTK Query"],
+    "source": "https://github.com/Tharun-Balaji/React.js/tree/main/React-Projects/post-app",
+    "demo": "https://tharun-balaji.github.io/redux-post-app/"
+  },{
+    "title": "MERN blog",
+    "imageSrc": "https://img.freepik.com/premium-vector/writing-blog-logo-content-logo-template_658057-29.jpg",
+    "description": "This is a MERN stack blog application that allows users to create, view blogs",
+    "skills": ["MERN", "ReduxToolkit", "firebase"],
+    "source": "https://github.com/Tharun-Balaji/Full-Stack/tree/main/Full_Stack_project/mern-blog",
+    "demo": "https://mern-blog-wmdj.onrender.com/"
+  },{
+    "title": "Book My Show Clone",
+    "imageSrc": "https://w7.pngwing.com/pngs/3/952/png-transparent-logo-bookmyshow-business-brand-india-business-text-people-logo-thumbnail.png",
+    "description": "This is a MERN Stack clone of the BookMyShow website",
+    "skills": ["MERN", "Redux Toolkit", "Stripe"],
+    "source": "https://github.com/Tharun-Balaji/Full-Stack/tree/main/BMS-Project",
+    "demo": "https://bms-deploy.onrender.com/"
+  }
+]

@@ -1,0 +1,253 @@
+/*
+@import "../../vars.css";
+
+.container{
+    position: relative;
+    background-color: rgba(12,12,12,0.6);
+    border-radius: 15px;
+    padding: 73px;
+    margin-top: 129px;
+    z-index: 1;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.title{
+    color: var(--color-text);
+    font-size: 35px;
+    font-weight: 700;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+}
+
+.flx{
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.aboutImage{
+    width:35%;
+}
+
+.aboutItem{
+    color: var(--color-text);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 20px;
+    list-style: none;
+    padding: 25px 10px;
+    background: linear-gradient(
+        90deg,
+        rgba(165,215,232,0.42) 0%,
+        rgba(255,255,255,0) 100%
+    );
+    background-size: 0 100%;
+    background-repeat: no-repeat;
+    transition: 0.4s;
+
+}
+
+.aboutItem:hover{
+    background-size: 100% 100%;
+}
+
+.aboutItem p{
+    font-size: 25px;
+    padding: 1rem;
+}
+
+@media screen and (width < 830px) {
+    .container{
+        background-color:transparent;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .content{
+        flex-direction: column;
+        align-items: center;
+    }
+    .aboutImage{
+        display: none;
+    }
+    .aboutItem{
+        margin-top: 29px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+*/
+
+@import "../../vars.css";
+
+.container {
+    position: relative;
+    background-color: rgba(12, 12, 12, 0.6);
+    border-radius: 15px;
+    padding: 73px;
+    margin: 129px 10% 0;
+    z-index: 1;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.title {
+    color: var(--color-text);
+    font-size: 35px;
+    font-weight: 700;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    position: relative;
+    animation: slideInFromLeft 0.6s ease-out;
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.flx {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    animation: fadeIn 0.8s ease-out 0.2s backwards;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+}
+
+.aboutImage {
+    width: 35%;
+    transition: transform 0.4s ease;
+    animation: scaleIn 0.8s ease-out;
+}
+
+.aboutImage:hover {
+    transform: scale(1.02);
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.aboutItem {
+    color: var(--color-text);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 20px;
+    list-style: none;
+    padding: 25px 20px;
+    margin: 10px 0;
+    background: linear-gradient(90deg,
+            rgba(165, 215, 232, 0.42) 0%,
+            rgba(255, 255, 255, 0) 100%);
+    background-size: 0 100%;
+    background-repeat: no-repeat;
+    transition: all 0.4s ease;
+    animation: slideInFromRight 0.6s ease-out;
+    cursor: pointer;
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.aboutItem:hover {
+    background-size: 100% 100%;
+    transform: translateX(10px);
+    box-shadow: 0 4px 15px rgba(165, 215, 232, 0.2);
+}
+
+.aboutItem p {
+    font-size: 25px;
+    padding: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.aboutItem:hover p {
+    transform: translateX(5px);
+}
+
+@media screen and (width < 830px) {
+    .container {
+        background-color: rgba(12, 12, 12, 0.4);
+        padding: 30px 15px;
+        margin-top: 60px;
+        border-radius: 10px;
+    }
+
+    .content {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .aboutImage {
+        display: none;
+    }
+
+    .aboutItem {
+        margin-top: 15px;
+        padding: 15px 10px;
+        width: 100%;
+    }
+
+    .title {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .aboutItem p {
+        font-size: 20px;
+    }
+}
+    

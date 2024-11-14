@@ -1,0 +1,278 @@
+
+@import "../../vars.css";
+
+.container {
+  color: var(--color-text);
+  margin-top: 79px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.title {
+  color: var(--color-text);
+    font-size: 35px;
+    font-weight: 700;
+    letter-spacing: 1.75px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+      opacity: 0;
+        animation: titleSlide 0.6s ease-out 0.3s forwards;
+}
+
+@keyframes titleSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), transparent);
+  animation: lineExtend 0.6s ease-out 0.9s forwards;
+}
+
+@keyframes lineExtend {
+  to {
+    width: 100%;
+  }
+}
+
+.content {
+  display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 14px;
+    opacity: 1;
+      animation: containerFade 0.8s ease-out forwards;
+
+}
+
+@keyframes contentFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.skills {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 37px;
+  perspective: 1000px;
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 11px;
+  opacity: 0;
+  animation: skillPop 0.5s ease-out forwards;
+  transition: transform 0.3s ease;
+}
+
+.skill:hover {
+  transform: translateY(-5px);
+}
+
+.skill:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.skill:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.skill:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.skill:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+.skill:nth-child(n+6) {
+  animation-delay: 1s;
+}
+
+@keyframes skillPop {
+  from {
+    opacity: 0;
+    transform: scale(0.8) rotateX(20deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) rotateX(0);
+  }
+}
+
+.skillImageContainer {
+  background-color: var(--color-secondary);
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.skillImageContainer::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.skillImageContainer:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 5px 15px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(var(--color-primary-rgb), 0.4);
+}
+
+.skillImageContainer:hover::before {
+  opacity: 1;
+  animation: rotateBg 2s linear infinite;
+}
+
+@keyframes rotateBg {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.skillImageContainer img {
+  width: 75px;
+  transition: transform 0.3s ease;
+}
+
+.skillImageContainer:hover img {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.skill p {
+  font-size: 25px;
+  font-family: var(--font-roboto);
+  font-weight: 500;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill:hover p {
+  transform: scale(1.05);
+  color: var(--color-primary);
+}
+
+.skill p::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.skill:hover p::after {
+  width: 100%;
+}
+
+ /* Floating animation for random skills  */
+/* .skill:nth-child(odd) {
+  animation: float 3s ease-in-out infinite;
+}
+
+.skill:nth-child(even) {
+  animation: float 3s ease-in-out infinite reverse;
+} */
+
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@media screen and (max-width: 830px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+    gap: 34px;
+  }
+
+  .skills {
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .skillImageContainer {
+    width: 100px;
+    height: 100px;
+  }
+
+  .skillImageContainer img {
+    width: 60px;
+  }
+
+  .skill p {
+    font-size: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .container,
+  .title,
+  .content,
+  .skill,
+  .skillImageContainer,
+  .skill p {
+    animation: none;
+    transition: none;
+  }
+
+  .skillImageContainer:hover,
+  .skill:hover,
+  .skill:hover p {
+    transform: none;
+  }
+}
+

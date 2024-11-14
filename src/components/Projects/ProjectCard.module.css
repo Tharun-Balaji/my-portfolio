@@ -1,0 +1,313 @@
+/*
+@import "../../vars.css";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #576cbc 0%, #132a53 100%);
+  box-shadow: 0 16px 14px 0 #04152d;
+  padding: 18px 24px;
+  max-width: 345px;
+}
+
+.image {
+  margin-bottom: 26px;
+}
+
+.title {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.description {
+  margin-top: 6px;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.skills {
+  width: 100%;
+  margin-top: 14px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+}
+
+.skill {
+  font-size: 25px;
+  font-weight: 400;
+  border-radius: 100px;
+  background: var(--color-dark);
+  padding: 2px 22px;
+}
+
+.links {
+  width: 100%;
+  margin-top: 26px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--color-text);
+  font-size: 30px;
+  font-weight: 600;
+  border-radius: 100px;
+  background: var(--color-primary);
+  padding: 1px 22px;
+}
+  */
+
+    @import "../../vars.css";
+  
+    .container {
+      display: flex;
+      flex-direction: column;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #576cbc 0%, #132a53 100%);
+      box-shadow: 0 16px 14px 0 #04152d;
+      padding: 18px 24px;
+      max-width: 345px;
+      transition: all 0.3s ease-in-out;
+      opacity: 0;
+      animation: cardEntrance 0.8s ease-out forwards;
+      position: relative;
+      overflow: hidden; 
+    }
+  
+    @keyframes cardEntrance {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+  
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+    .container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 20px 0 rgba(4, 21, 45, 0.5);
+    }
+  
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg,
+          transparent,
+          rgba(255, 255, 255, 0.05),
+          transparent);
+      transition: 0.5s;
+    }
+  
+    .container:hover::before {
+      left: 100%;
+    }
+  
+    .image {
+      margin-bottom: 26px;
+      height:190px;
+      transform: scale(1);
+      transition: transform 0.3s ease-in-out;
+      opacity: 0;
+      animation: imageReveal 0.8s ease-out 0.2s forwards;
+    }
+  
+    @keyframes imageReveal {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+  
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  
+    .container:hover .image {
+      transform: scale(1.02);
+    }
+  
+    .title {
+      font-size: 25px;
+      font-weight: 700;
+      opacity: 0;
+      animation: fadeInUp 0.5s ease-out 0.4s forwards;
+      position: relative;
+      display: inline-block;
+    }
+  
+    .title::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--color-primary);
+      transition: width 0.3s ease-in-out;
+    }
+  
+    .container:hover .title::after {
+      width: 100%;
+    }
+  
+    .description {
+      margin-top: 6px;
+      font-size: 25px;
+      font-weight: 400;
+      opacity: 0;
+      animation: fadeInUp 0.5s ease-out 0.6s forwards;
+    }
+  
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+  
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+    .skills {
+      width: 100%;
+      margin-top: 14px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 6px;
+      list-style: none;
+    }
+  
+    .skill {
+      font-size: 25px;
+      font-weight: 400;
+      border-radius: 100px;
+      background: var(--color-dark);
+      padding: 2px 22px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: skillFadeIn 0.5s ease-out forwards;
+      transition: all 0.3s ease;
+    }
+  
+    .skill:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+  
+    .skill:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+  
+    .skill:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+  
+    .skill:nth-child(n+5) {
+      animation-delay: 0.5s;
+    }
+  
+    @keyframes skillFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+  
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+    .skill:hover {
+      transform: translateY(-2px);
+      background: var(--color-primary);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  
+    .links {
+      width: 100%;
+      margin-top: 26px;
+      display: flex;
+      justify-content: space-around;
+      opacity: 0;
+      animation: fadeIn 0.5s ease-out 0.8s forwards;
+    }
+  
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+  
+      to {
+        opacity: 1;
+      }
+    }
+  
+    .link {
+      text-decoration: none;
+      color: var(--color-text);
+      font-size: 30px;
+      font-weight: 600;
+      border-radius: 100px;
+      background: var(--color-primary);
+      padding: 1px 22px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+  
+    .link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+  
+    .link::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+      transform: scale(0);
+      transition: transform 0.6s ease-out;
+    }
+  
+    .link:hover::before {
+      transform: scale(1);
+    }
+  
+    @media (prefers-reduced-motion: reduce) {
+  
+      .container,
+      .image,
+      .title,
+      .description,
+      .skill,
+      .links,
+      .link {
+        animation: none;
+        transition: none;
+      }
+  
+      .container:hover,
+      .link:hover,
+      .skill:hover {
+        transform: none;
+      }
+    }

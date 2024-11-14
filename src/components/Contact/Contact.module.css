@@ -1,0 +1,281 @@
+/*
+@import "../../vars.css";
+
+.container{
+    color: var(--color-text);
+    margin-top: 120px;
+    background-color: var(--color-secondary);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100vw;
+    padding: 58px 10%;
+    gap: 10px;
+}
+
+.text h2{
+    font-size: 80px;
+    font-weight: 700;
+    letter-spacing: 4px;
+}
+
+.text p{
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.links{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    list-style: none;
+    gap: 26px;
+}
+
+.link{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.link a{
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+}
+
+@media screen and (width <= 830px) {
+    .container{
+        display: flex;
+        flex-direction: column;
+        gap: 23px;
+    }
+
+    .text{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .links{
+        align-items: center;
+    }
+}
+*/
+
+@import "../../vars.css";
+
+.container {
+    color: var(--color-text);
+    margin-top: 120px;
+    background-color: var(--color-secondary);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100vw;
+    padding: 58px 10%;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.8s ease-out;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.text {
+    animation: slideInLeft 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.text h2 {
+    font-size: 80px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    background: linear-gradient(120deg, var(--color-text), rgba(255, 255, 255, 0.8));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.text h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--color-text);
+    animation: lineGrow 0.6s ease-out 0.8s forwards;
+}
+
+@keyframes lineGrow {
+    to {
+        width: 100px;
+    }
+}
+
+.text p {
+    font-size: 40px;
+    font-weight: 400;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out 0.4s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    list-style: none;
+    gap: 26px;
+    overflow: break-word;
+    animation: slideInRight 0.8s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    transition: transform 0.3s ease;
+    position: relative;
+    padding: 10px 0;
+}
+
+.link:hover {
+    transform: translateX(10px);
+}
+
+.link::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--color-text);
+    transition: width 0.3s ease;
+    transform: translateY(-50%);
+}
+
+.link:hover::before {
+    width: 15px;
+}
+
+.link a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.link a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--color-text);
+    transition: width 0.3s ease;
+}
+
+.link:hover a::after {
+    width: 100%;
+}
+
+@media screen and (width <=830px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 23px;
+        padding: 40px 20px;
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    .text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .text h2 {
+        font-size: 48px;
+        letter-spacing: 2px;
+    }
+
+    .text p {
+        font-size: 24px;
+    }
+
+    .links {
+        align-items: center;
+    }
+
+    .link {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .link a {
+        font-size: 24px;
+    }
+
+    .link::before {
+        left: 0;
+        top: auto;
+        bottom: 0;
+        width: 0;
+        transition: width 0.3s ease;
+    }
+
+    .link:hover::before {
+        width: 100%;
+    }
+}

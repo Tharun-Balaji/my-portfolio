@@ -1,0 +1,38 @@
+[
+  {
+    "title": "HTML",
+    "imageSrc": "/assets/skills/html.png"
+  },
+  {
+    "title": "CSS",
+    "imageSrc": "/assets/skills/css.png"
+  },
+  {
+    "title": "React",
+    "imageSrc": "/assets/skills/react.png"
+  },
+  {
+    "title": "Node",
+    "imageSrc": "/assets/skills/node.png"
+  },
+  {
+    "title": "Java",
+    "imageSrc": "/assets/skills/java.png"
+  },
+  {
+    "title": "MongoDB",
+    "imageSrc": "/assets/skills/mongodb.png"
+  },
+  {
+    "title": "Redux",
+    "imageSrc": "/assets/skills/redux.png"
+  },
+  {
+    "title": "Express",
+    "imageSrc": "/assets/skills/express.png"
+  },
+  {
+    "title": "JavaScript",
+    "imageSrc": "/assets/skills/js.png"
+  }
+]
