@@ -1,4 +1,5 @@
 
+import { getImageUrl } from "../../utils";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
@@ -28,7 +29,7 @@ export default function Hero() {
 				</div>
 			</div>
 			<img
-				src="/assets/hero/MyPhoto.png"
+				src={getImageUrl("hero/MyPhoto.png")}
 				alt="HeroImage of me"
 				className={styles.heroImg}
 			/>
