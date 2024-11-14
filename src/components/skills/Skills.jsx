@@ -1,4 +1,5 @@
 import skills from "../../data/skills.json";
+import { getImageUrl } from "../../utils";
 import styles from "./Skills.module.css";
 
 export default function Skills() {
@@ -12,7 +13,7 @@ export default function Skills() {
 							<div key={id} className={styles.skill}>
 								<div className={styles.skillImageContainer}>
 									<img
-										src={skill.imageSrc}
+										src={getImageUrl(skill.imageSrc)}
 										alt={skill.title}
 									/>
 								</div>

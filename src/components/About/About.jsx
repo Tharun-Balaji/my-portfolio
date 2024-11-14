@@ -1,4 +1,5 @@
 
+import { getImageUrl } from "../../utils";
 import styles from "./About.module.css";
 
 export default function About() {
@@ -7,7 +8,7 @@ export default function About() {
       <h2 className={styles.title}>About</h2>
       <div className= {styles.flx} >
         <img
-          src="/assets/about/MyPhoto.png"
+          src={getImageUrl("about/MyPhoto.png")} 
           alt="myImage"
           className={styles.aboutImage}
         />

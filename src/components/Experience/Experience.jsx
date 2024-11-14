@@ -1,5 +1,6 @@
 // import skills from "../../data/skills.json";
 import history from "../../data/history.json";
+import { getImageUrl } from "../../utils";
 import styles from "./Experience.module.css";
 
 export default function Experience() {
@@ -12,7 +13,7 @@ export default function Experience() {
             return (
               <li key={id} className={styles.historyItem}>
                 <img
-                  src={historyItem.imageSrc}
+                  src={getImageUrl(historyItem.imageSrc)}
                   alt={`${historyItem.organization} Logo`}
                 />
                 <div className={styles.historyItemDetails}>
