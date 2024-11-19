@@ -30,6 +30,17 @@
     }
 }
 
+.flexContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
 .title {
     font-size: 72px;
     font-weight: 900;

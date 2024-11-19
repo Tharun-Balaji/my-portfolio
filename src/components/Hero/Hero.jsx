@@ -13,7 +13,7 @@ export default function Hero() {
 					learning to innovate in the ever-evolving world of
 					technology.
 				</p>
-				<div style={{ display: "flex", flexDirection: "row", gap: "10px" }} >
+				<div className={styles.flexContainer}>
 					<a
 						href="mailto:tharunbalaji110@gmail.com"
 						className={styles.contactBtn}
