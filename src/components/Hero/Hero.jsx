@@ -22,6 +22,8 @@ export default function Hero() {
 					</a>
 					<a
 						href="https://mern-blog-wmdj.onrender.com/"
+						target="_blank"
+						rel="noopener noreferrer"
 						className={styles.contactBtn}
 					>
 						My Blog
