@@ -17,7 +17,7 @@ export default function About() {
             <p>
               Hi, I'm Tharun from Coimbatore. I graduated with a B.Sc. in
               Mathematics in 2022 and have been immersed in asset management at
-              Cognizant Technical Solutions for the past 12 months.I am on a
+              Cognizant Technical Solutions for the past 17 months.I am on a
               transformative journey to become a Full Stack Software Developer.
               I'm actively engaged in upskilling through Scaler, honing my
               abilities to craft innovative and robust solutions. Explore my
