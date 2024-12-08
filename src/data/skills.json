@@ -34,5 +34,14 @@
   {
     "title": "JavaScript",
     "imageSrc": "skills/js.png"
+  },{
+    "title": "SQL",
+    "imageSrc": "skills/sql.webp"
+  },{
+    "title": "React-form-hook",
+    "imageSrc": "skills/form.png"
+  },{
+    "title": "Typescript",
+    "imageSrc": "skills/Ts.png"
   }
 ]

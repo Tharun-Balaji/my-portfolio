@@ -57,5 +57,48 @@
     "skills": ["React", "Next.js", "Server-Side Rendering"],
     "demo": "https://car-showcase-app-r5d1.vercel.app/",
     "source":"https://github.com/Tharun-Balaji/car-showcase-app"
+  },{
+    "title": "Mern-chat-app",
+    "imageSrc": "projects/chat.png",
+    "description": "This is a Real time MERN Stack chat app with Socket.io",
+    "skills": ["React", "Node.js", "Socket.io"],
+    "demo": "https://chat-app-xflo.onrender.com/",
+    "source": "https://github.com/Tharun-Balaji/Full-Stack/tree/main/Full_Stack_project/chat-app"
+  },{
+    "title": "File Organizer",
+    "imageSrc": "projects/file.jpg",
+    "description": "This is a CLI File Organizer App that helps you to organize your files",
+    "skills": ["JavaScript", "Node.js"],
+    "demo": "https://github.com/Tharun-Balaji/file-organizer",
+    "source": "https://github.com/Tharun-Balaji/file-organizer"
+  },{
+    "title": "IMDB Clone",
+    "imageSrc": "projects/imdb.png",
+    "description": "This is a React movie app that allows users to browse latest movies",
+    "skills": ["React", "React-Router-Dom"],
+    "demo": "https://genuine-narwhal-e87055.netlify.app/",
+    "source": "https://github.com/Tharun-Balaji/React.js/tree/main/React-Basics/movies-app"
+
+  },{
+    "title": "Multiplayer Tic Tac Toe",
+    "imageSrc": "projects/tictactoe.png",
+    "description": "This is a Real Time Multiplayer Tic Tac Toe game built using Socket.io",
+    "skills": ["React", "Socket.io", "DOM Manipulation"],
+    "demo": "https://real-time-tic-tac-toe-5qzt.onrender.com/",
+    "source": "https://github.com/Tharun-Balaji/Full-Stack/tree/main/Full_Stack_project/TIC-TAC-TOE"
+  },{
+    "title": "Crypto Screener App",
+    "imageSrc": "projects/crypto.png",
+    "description": "This is a Crypto App that allows users to browse latest crypto currencies",
+    "skills": ["React", "Chart.js", "Context API"],
+    "demo": "https://ephemeral-clafoutis-a06fc8.netlify.app/",
+    "source": "https://github.com/Tharun-Balaji/React.js/tree/main/React-Projects/crypto-app"
+  },{
+    "title": "React Form App",
+    "imageSrc": "projects/form.jpg",
+    "description": "This is a React Form App that allows users to enter their details",
+    "skills": [ "TypeScript", "Zod", "react-form-hook"],
+    "demo":"https://reat-hook-form.netlify.app/",
+    "source": "https://github.com/Tharun-Balaji/react-hook-form"
   }
 ]
