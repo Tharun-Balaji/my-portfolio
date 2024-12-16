@@ -21,12 +21,12 @@ export default function Hero() {
 						Contact Me
 					</a>
 					<a
-						href="https://mern-blog-wmdj.onrender.com/"
+						href="https://medium.com/@tharunbalaji110"
 						target="_blank"
 						rel="noopener noreferrer"
 						className={styles.contactBtn}
 					>
-						My Blog
+						My Articles
 					</a>
 				</div>
 			</div>
