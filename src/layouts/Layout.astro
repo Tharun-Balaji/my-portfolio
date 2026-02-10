@@ -1,0 +1,21 @@
+---
+import "../index.css";
+import "../vars.css";
+import "@fontsource/outfit";
+import "@fontsource/roboto";
+import styles from "../App.module.css";
+
+const { title = "Portfolio" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+  </head>
+  <body class={styles.App}>
+    <slot />
+  </body>
+</html>

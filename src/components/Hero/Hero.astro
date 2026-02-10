@@ -1,0 +1,35 @@
+---
+import styles from "./Hero.module.css";
+import { assetPath } from "../../utils/assets";
+---
+
+<section class={styles.container}>
+  <div class={styles.content}>
+    <h1 class={styles.title}>Hi I'm Tharun</h1>
+    <p class={styles.description}>
+      I'm a Aspiring software developer passionate about crafting elegant code,
+      solving complex problems, and continuously learning to innovate in the
+      ever-evolving world of technology.
+    </p>
+    <div class={styles.flexContainer}>
+      <a href="mailto:tharunbalaji110@gmail.com" class={styles.contactBtn}>
+        Contact Me
+      </a>
+      <a
+        href="https://medium.com/@tharunbalaji110"
+        target="_blank"
+        rel="noopener noreferrer"
+        class={styles.contactBtn}
+      >
+        My Articles
+      </a>
+    </div>
+  </div>
+  <img
+    src={assetPath("hero/MyPhoto.png")}
+    alt="HeroImage of me"
+    class={styles.heroImg}
+  />
+  <div class={styles.topBlur}></div>
+  <div class={styles.bottomBlur}></div>
+</section>

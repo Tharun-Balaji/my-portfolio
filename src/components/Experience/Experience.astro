@@ -1,0 +1,30 @@
+---
+import history from "../../data/history.json";
+import styles from "./Experience.module.css";
+import { assetPath } from "../../utils/assets";
+---
+
+<section class={styles.container} id="experience">
+  <h2 class={styles.title}>Experience</h2>
+  <div class={styles.content}>
+    <ul class={styles.history}>
+      {history.map((historyItem) => (
+        <li class={styles.historyItem}>
+          <img
+            src={assetPath(historyItem.imageSrc)}
+            alt={`${historyItem.organization} Logo`}
+          />
+          <div class={styles.historyItemDetails}>
+            <h3>{`${historyItem.role}, ${historyItem.organization}`}</h3>
+            <p>{`${historyItem.startDate} - ${historyItem.endDate}`}</p>
+            <ul>
+              {historyItem.experiences.map((experience) => (
+                <li>{experience}</li>
+              ))}
+            </ul>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

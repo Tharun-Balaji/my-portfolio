@@ -1,12 +1,9 @@
-
-
-import {useState} from 'react'
-import styles from  "./Navbar.module.css"
+import { useState } from "react";
+import styles from "./Navbar.module.css";
 
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
 
-    const [menuOpen, setMenuOpen] = useState(false);
-    // window.open("C:\\Users\\Tharunbalaji\\Scaler Class and Notes\\ReactJS\\React-Projects\\portfolio-app\\assets\\nav\\menuIcon.png")
   return (
     <nav className={styles.navbar}>
       <a className={styles.title} href="/">
@@ -16,9 +13,7 @@ export default function Navbar() {
         <img
           className={styles.menuBtn}
           src={
-            menuOpen
-              ? "assets\\nav\\closeIcon.png"
-              : "assets\\nav\\menuIcon.png"
+            menuOpen ? "/assets/nav/closeIcon.png" : "/assets/nav/menuIcon.png"
           }
           alt="menu-button"
           onClick={() => setMenuOpen(!menuOpen)}
