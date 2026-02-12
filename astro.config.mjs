@@ -2,11 +2,17 @@ import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import AstroPWA from "@vite-pwa/astro";
 
-const appBase = "/my-portfolio";
-const appScope = `${appBase}/`;
+const isGitHubActions = process.env.GITHUB_ACTIONS === "true";
+const isNetlify = process.env.NETLIFY === "true";
+const appBase = process.env.PUBLIC_BASE_PATH || (isGitHubActions ? "/my-portfolio" : "/");
+const appScope = appBase === "/" ? "/" : `${appBase}/`;
+const siteUrl = isNetlify
+  ? process.env.URL || process.env.DEPLOY_PRIME_URL || process.env.DEPLOY_URL
+  : "https://tharun-balaji.github.io";
+const navigateFallbackAllowlist = appBase === "/" ? [/^\/$/] : [/^\/my-portfolio\/?$/];
 
 export default defineConfig({
-  site: "https://tharun-balaji.github.io",
+  site: siteUrl || "https://tharun-balaji.github.io",
   base: appBase,
   output: "static",
   integrations: [
@@ -46,7 +52,7 @@ export default defineConfig({
         ],
       },
       workbox: {
-        navigateFallbackAllowlist: [/^\/my-portfolio\/?$/],
+        navigateFallbackAllowlist,
       },
     }),
   ],

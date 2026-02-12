@@ -3,11 +3,9 @@ export const assetPath = (path) => {
     return "";
   }
 
-  const appBase = "/my-portfolio/";
-  const normalizedBase = appBase.endsWith("/") ? appBase : `${appBase}/`;
+  const baseUrl = import.meta.env.BASE_URL || "/";
+  const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
   const normalizedPath = path.startsWith("/") ? path.slice(1) : path;
 
   return `${normalizedBase}assets/${normalizedPath}`;
 };
-
-export const homePath = "/my-portfolio/";

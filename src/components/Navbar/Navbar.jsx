@@ -1,9 +1,10 @@
 import { useState } from "react";
 import styles from "./Navbar.module.css";
-import { assetPath, homePath } from "../../utils/assets";
+import { assetPath } from "../../utils/assets";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const homePath = import.meta.env.BASE_URL || "/";
 
   return (
     <nav className={styles.navbar}>
