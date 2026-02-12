@@ -3,9 +3,11 @@ export const assetPath = (path) => {
     return "";
   }
 
-  if (path.startsWith("/")) {
-    return `/assets${path}`;
-  }
+  const appBase = "/my-portfolio/";
+  const normalizedBase = appBase.endsWith("/") ? appBase : `${appBase}/`;
+  const normalizedPath = path.startsWith("/") ? path.slice(1) : path;
 
-  return `/assets/${path}`;
+  return `${normalizedBase}assets/${normalizedPath}`;
 };
+
+export const homePath = "/my-portfolio/";

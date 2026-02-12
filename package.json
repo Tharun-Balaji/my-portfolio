@@ -20,5 +20,8 @@
     "astro": "astro",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
+  },
+  "devDependencies": {
+    "@vite-pwa/astro": "^1.2.0"
   }
 }

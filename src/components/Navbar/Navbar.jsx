@@ -1,20 +1,19 @@
 import { useState } from "react";
 import styles from "./Navbar.module.css";
+import { assetPath, homePath } from "../../utils/assets";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <nav className={styles.navbar}>
-      <a className={styles.title} href="/">
+      <a className={styles.title} href={homePath}>
         Portfolio
       </a>
       <div className={styles.menu}>
         <img
           className={styles.menuBtn}
-          src={
-            menuOpen ? "/assets/nav/closeIcon.png" : "/assets/nav/menuIcon.png"
-          }
+          src={assetPath(menuOpen ? "nav/closeIcon.png" : "nav/menuIcon.png")}
           alt="menu-button"
           onClick={() => setMenuOpen(!menuOpen)}
         />

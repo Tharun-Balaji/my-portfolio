@@ -6,6 +6,8 @@ import "@fontsource/roboto";
 import styles from "../App.module.css";
 
 const { title = "Portfolio" } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+const assetBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
 ---
 
 <!doctype html>
@@ -13,9 +15,17 @@ const { title = "Portfolio" } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="manifest" href={`${assetBase}manifest.webmanifest`} />
+    <link rel="apple-touch-icon" href={`${assetBase}logo192.png`} />
     <title>{title}</title>
   </head>
   <body class={styles.App}>
     <slot />
+    <script>
+      import { registerSW } from "virtual:pwa-register";
+
+      registerSW({ immediate: true });
+    </script>
   </body>
 </html>
