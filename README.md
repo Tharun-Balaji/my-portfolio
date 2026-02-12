@@ -1,7 +1,10 @@
-
 # My Portfolio
 
-This is my personal portfolio website built with ReactJS and CSS Modules. The portfolio is fully responsive and optimized for various devices. It includes sections like Home (Hero), About, Skills, Experience, and Contact, allowing visitors to learn more about me and my work.
+This is my personal portfolio website built with **Astro + React islands + CSS Modules**.
+
+- Static sections are rendered with Astro for fast page loads.
+- Interactive behavior (mobile nav menu) is kept in React.
+- The site is responsive across desktop, tablet, and mobile screens.
 
 ## 📸 Preview
 
@@ -13,76 +16,82 @@ This is my personal portfolio website built with ReactJS and CSS Modules. The po
 
 ## 🌟 Features
 
-- **Responsive Design**: Works seamlessly on desktops, tablets, and mobile devices.
-- **Navigation Bar**: Smooth navigation across sections.
-- **Hero Section**: Eye-catching introduction with a brief intro.
-- **About Section**: A short bio with personal details.
-- **Skills Section**: Highlights key technical skills.
-- **Experience Section**: Overview of work and projects.
-- **Contact Section**: Form to get in touch via email.
+- **Responsive Design** across devices.
+- **React Navbar Island** for menu toggle interaction.
+- **Astro-rendered static sections** for Hero, About, Skills, Experience, Projects, and Contact.
+- **CSS Modules** for scoped component styles.
 
 ## 🛠️ Technologies Used
 
-- **ReactJS**: For building the interactive UI.
-- **CSS Modules**: Scoped styling for each component.
-- **JavaScript (ES6+)**: Core language for logic and interactivity.
+- **Astro**
+- **React** (only for reactive parts)
+- **CSS Modules**
+- **JavaScript (ES6+)**
 
 ## 📂 Project Structure
 
 ```plaintext
 project-root/
 ├── public/
-│   ├── index.html
+│   └── assets/
 ├── src/
 │   ├── components/
-│   │   ├── Navbar/
-│   │   ├── Hero/
-│   │   ├── About/
-│   │   ├── Skills/
-│   │   ├── Experience/
-│   │   ├── Contact/
-│   ├── App.js
-│   ├── index.js
-│   ├── styles/
-│       ├── variables.module.css
-│       ├── global.module.css
-│   └── assets/ (for images, icons, etc.)
-├── .gitignore
+│   │   ├── Navbar/             # React interactive island
+│   │   ├── Hero/               # Astro
+│   │   ├── About/              # Astro
+│   │   ├── skills/             # Astro
+│   │   ├── Experience/         # Astro
+│   │   ├── Projects/           # Astro
+│   │   └── Contact/            # Astro
+│   ├── layouts/
+│   ├── pages/
+│   └── data/
+├── astro.config.mjs
 ├── package.json
 └── README.md
 ```
 
 ## 🚀 Getting Started
 
-To run this project locally, follow these steps:
-
 ### Prerequisites
 
-Ensure you have [Node.js](https://nodejs.org/) installed.
+- Node.js 18+
 
 ### Installation
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/Tharun-Balaji/my-portfolio.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd portfolio
-   ```
-3. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-### Running the Project
-
 ```bash
-npm start
+npm install
 ```
 
-The app should now be running on [http://localhost:3000](http://localhost:3000).
+### Run locally
+
+```bash
+npm run dev
+```
+
+The app runs by default at [http://localhost:4321](http://localhost:4321).
+
+## ☁️ Deploy on Cloudflare Pages (Free)
+
+Yes, you can deploy this portfolio for free using Cloudflare Pages.
+
+### Cloudflare Pages build settings
+
+- **Framework preset:** Astro (or None)
+- **Build command:** `npm run build`
+- **Build output directory:** `dist`
+
+### Steps
+
+1. Push your code to GitHub.
+2. In Cloudflare dashboard, go to **Pages** → **Create project**.
+3. Connect your GitHub repository.
+4. Set the build settings above.
+5. Deploy.
+
+Cloudflare Pages free tier is enough for a personal portfolio (global CDN, SSL, custom domain).
 
 ## 📬 Contact
 
-Feel free to reach out through the Contact section on the website or via email at [tharunbalaji110@gmail.com](mailto:[tharunbalaji110@gmail.com).
+- Email: [tharunbalaji110@gmail.com](mailto:tharunbalaji110@gmail.com)
+- LinkedIn: [linkedin.com/tharun-balaji](https://www.linkedin.com/in/tharun-balaji-j-a65402260/)

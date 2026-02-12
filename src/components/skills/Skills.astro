@@ -1,0 +1,21 @@
+---
+import skills from "../../data/skills.json";
+import styles from "./Skills.module.css";
+import { assetPath } from "../../utils/assets";
+---
+
+<section class={styles.container} id="experience">
+  <h2 class={styles.title}>Skills</h2>
+  <div class={styles.content}>
+    <div class={styles.skills}>
+      {skills.map((skill) => (
+        <div class={styles.skill}>
+          <div class={styles.skillImageContainer}>
+            <img src={assetPath(skill.imageSrc)} alt={skill.title} />
+          </div>
+          <p>{skill.title}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
