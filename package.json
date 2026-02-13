@@ -16,6 +16,7 @@
     "start": "astro dev",
     "dev": "astro dev",
     "build": "astro build",
+    "type-check": "astro check",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",
@@ -26,7 +27,10 @@
     "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.6",
     "@eslint/js": "^9.39.2",
+    "@types/react": "^18.3.28",
+    "@types/react-dom": "^18.3.7",
     "@vite-pwa/astro": "^1.2.0",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
@@ -37,6 +41,7 @@
     "globals": "^17.3.0",
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.9.3",
     "typescript-eslint": "^8.55.0"
   }
 }
