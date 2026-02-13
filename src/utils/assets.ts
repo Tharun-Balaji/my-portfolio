@@ -1,4 +1,4 @@
-export const assetPath = (path) => {
+export const assetPath = (path: string): string => {
   if (!path) {
     return "";
   }
