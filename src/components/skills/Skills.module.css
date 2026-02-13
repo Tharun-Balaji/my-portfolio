@@ -1,4 +1,3 @@
-
 @import "../../vars.css";
 
 .container {
@@ -10,14 +9,14 @@
 
 .title {
   color: var(--color-text);
-    font-size: 35px;
-    font-weight: 700;
-    letter-spacing: 1.75px;
-    text-transform: uppercase;
-    position: relative;
-    display: inline-block;
-      opacity: 0;
-        animation: titleSlide 0.6s ease-out 0.3s forwards;
+  font-size: 35px;
+  font-weight: 700;
+  letter-spacing: 1.75px;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+  opacity: 0;
+  animation: titleSlide 0.6s ease-out 0.3s forwards;
 }
 
 @keyframes titleSlide {
@@ -33,7 +32,7 @@
 }
 
 .title::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -8px;
   left: 0;
@@ -51,12 +50,11 @@
 
 .content {
   display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin-top: 14px;
-    opacity: 1;
-      animation: containerFade 0.8s ease-out forwards;
-
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 14px;
+  opacity: 1;
+  animation: containerFade 0.8s ease-out forwards;
 }
 
 @keyframes contentFade {
@@ -107,7 +105,7 @@
   animation-delay: 0.8s;
 }
 
-.skill:nth-child(n+6) {
+.skill:nth-child(n + 6) {
   animation-delay: 1s;
 }
 
@@ -137,7 +135,7 @@
 }
 
 .skillImageContainer::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   left: -50%;
@@ -193,7 +191,7 @@
 }
 
 .skill p::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -4px;
   left: 50%;
@@ -208,7 +206,7 @@
   width: 100%;
 }
 
- /* Floating animation for random skills  */
+/* Floating animation for random skills  */
 /* .skill:nth-child(odd) {
   animation: float 3s ease-in-out infinite;
 }
@@ -217,9 +215,7 @@
   animation: float 3s ease-in-out infinite reverse;
 } */
 
-
 @keyframes float {
-
   0%,
   100% {
     transform: translateY(0);
@@ -258,7 +254,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-
   .container,
   .title,
   .content,
@@ -275,4 +270,3 @@
     transform: none;
   }
 }
-

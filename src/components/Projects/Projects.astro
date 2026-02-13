@@ -7,8 +7,6 @@ import styles from "./Projects.module.css";
 <section class={styles.container} id="projects">
   <h2 class={styles.title}>Projects</h2>
   <div class={styles.projects}>
-    {projects.map((project) => (
-      <ProjectCard project={project} />
-    ))}
+    {projects.map((project) => <ProjectCard project={project} />)}
   </div>
 </section>
