@@ -5,7 +5,11 @@ import "@fontsource/outfit";
 import "@fontsource/roboto";
 import styles from "../App.module.css";
 
-const { title = "Portfolio" } = Astro.props;
+interface Props {
+  title?: string;
+}
+
+const { title = "Portfolio" } = Astro.props as Props;
 const baseUrl = import.meta.env.BASE_URL;
 const assetBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
 ---
