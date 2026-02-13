@@ -1,7 +1,10 @@
 ---
-import history from "../../data/history.json";
+import historyData from "../../data/history.json";
+import type { HistoryItem } from "../../types/content";
 import styles from "./Experience.module.css";
 import { assetPath } from "../../utils/assets";
+
+const history: HistoryItem[] = historyData;
 ---
 
 <section class={styles.container} id="experience">
@@ -9,14 +12,14 @@ import { assetPath } from "../../utils/assets";
   <div class={styles.content}>
     <ul class={styles.history}>
       {
-        history.map((historyItem) => (
+        history.map((historyItem: HistoryItem) => (
           <li class={styles.historyItem}>
             <img src={assetPath(historyItem.imageSrc)} alt={`${historyItem.organization} Logo`} />
             <div class={styles.historyItemDetails}>
               <h3>{`${historyItem.role}, ${historyItem.organization}`}</h3>
               <p>{`${historyItem.startDate} - ${historyItem.endDate}`}</p>
               <ul>
-                {historyItem.experiences.map((experience) => (
+                {historyItem.experiences.map((experience: string) => (
                   <li>{experience}</li>
                 ))}
               </ul>
