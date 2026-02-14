@@ -1,7 +1,10 @@
 ---
-import skills from "../../data/skills.json";
+import skillsData from "../../data/skills.json";
+import type { Skill } from "../../types/content";
 import styles from "./Skills.module.css";
 import { assetPath } from "../../utils/assets";
+
+const skills: Skill[] = skillsData;
 ---
 
 <section class={styles.container} id="experience">
@@ -9,7 +12,7 @@ import { assetPath } from "../../utils/assets";
   <div class={styles.content}>
     <div class={styles.skills}>
       {
-        skills.map((skill) => (
+        skills.map((skill: Skill) => (
           <div class={styles.skill}>
             <div class={styles.skillImageContainer}>
               <img src={assetPath(skill.imageSrc)} alt={skill.title} />

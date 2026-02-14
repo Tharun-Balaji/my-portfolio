@@ -3,7 +3,7 @@ import styles from "./Navbar.module.css";
 import { assetPath } from "../../utils/assets";
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const homePath = import.meta.env.BASE_URL || "/";
 
   return (
