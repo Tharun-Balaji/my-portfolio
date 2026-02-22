@@ -130,3 +130,35 @@ input,
 textarea {
   cursor: text;
 }
+
+.retro-image {
+  position: relative;
+  border-color: #fff275 !important;
+  filter: saturate(1.18) contrast(1.08) hue-rotate(-8deg);
+  box-shadow:
+    0 0 0 2px rgba(255, 242, 117, 0.45),
+    10px 10px 0 rgba(57, 216, 255, 0.32),
+    -6px -6px 0 rgba(255, 77, 157, 0.2);
+  mix-blend-mode: screen;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.retro-image:hover {
+  transform: translateY(-2px);
+  filter: saturate(1.22) contrast(1.1) hue-rotate(-5deg);
+  box-shadow:
+    0 0 0 2px rgba(255, 242, 117, 0.55),
+    12px 12px 0 rgba(57, 216, 255, 0.36),
+    -8px -8px 0 rgba(255, 77, 157, 0.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .retro-image,
+  .retro-image:hover {
+    transform: none;
+    transition: none;
+  }
+}
