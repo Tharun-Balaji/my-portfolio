@@ -4,9 +4,15 @@ export default function ChatbotTeaser() {
   return (
     <section className="px-4 py-10 sm:px-6 lg:px-10" id="chatbot">
       <div className="mx-auto w-full max-w-6xl rounded-2xl border-2 border-neon-pink bg-neon-ink/90 p-6 shadow-card lg:p-10">
-        <h2 className="font-display text-2xl uppercase text-neon-pink sm:text-3xl">
+        <motion.h2
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.65 }}
+          transition={{ duration: 0.35 }}
+          className="font-display text-2xl uppercase text-neon-pink sm:text-3xl"
+        >
           Portfolio Chatbot
-        </h2>
+        </motion.h2>
         <p className="mt-2 max-w-3xl text-sm text-neon-cream/90 sm:text-base">
           I&apos;m building a portfolio assistant that answers questions about my projects, skills,
           and experience.

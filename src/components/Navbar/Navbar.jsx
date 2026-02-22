@@ -15,10 +15,15 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-40 px-4 pt-4 sm:px-6 lg:px-10">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between rounded-xl border-2 border-neon-yellow bg-neon-ink/95 p-3 shadow-retro backdrop-blur">
+    <motion.nav
+      initial={{ y: -14, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.25 }}
+      className="sticky top-0 z-40 px-4 pt-4 sm:px-6 lg:px-10"
+    >
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between rounded-xl border-2 border-neon-orange bg-neon-ink/95 p-3 shadow-retro backdrop-blur">
         <a
-          className="font-display text-sm uppercase tracking-wider text-neon-yellow sm:text-base"
+          className="font-display text-sm uppercase tracking-wider text-neon-orange sm:text-base"
           href={homePath}
         >
           Tharun.dev
@@ -72,6 +77,6 @@ export default function Navbar() {
           </motion.ul>
         ) : null}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 }

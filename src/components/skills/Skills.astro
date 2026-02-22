@@ -1,13 +1,18 @@
 ---
 import skills from "../../data/skills.json";
 import { assetPath } from "../../utils/assets";
+import MotionH2 from "../Motion/MotionH2.jsx";
 ---
 
 <section class="px-4 py-10 sm:px-6 lg:px-10" id="skills">
   <div
     class="mx-auto w-full max-w-6xl rounded-2xl border-2 border-neon-pink bg-neon-ink/90 p-6 shadow-card lg:p-10"
   >
-    <h2 class="font-display text-2xl uppercase text-neon-pink sm:text-3xl">Skills</h2>
+    <MotionH2
+      text="Skills"
+      className="font-display text-2xl uppercase text-neon-pink sm:text-3xl"
+      client:visible
+    />
     <div class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
       {
         skills.map((skill) => (
