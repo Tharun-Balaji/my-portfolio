@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
+import tailwind from "@astrojs/tailwind";
 import AstroPWA from "@vite-pwa/astro";
 
 const isNetlify = process.env.NETLIFY === "true";
@@ -16,6 +17,7 @@ export default defineConfig({
   output: "static",
   integrations: [
     react(),
+    tailwind(),
     AstroPWA({
       registerType: "autoUpdate",
       injectRegister: null,

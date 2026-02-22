@@ -1,10 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "Outfit", Arial, Helvetica, sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #070f2f;
+  color: #fff8cf;
+  font-family: "Chakra Petch", sans-serif;
+  background-image:
+    radial-gradient(circle at 10% 15%, rgba(255, 95, 159, 0.16), transparent 35%),
+    radial-gradient(circle at 90% 20%, rgba(118, 245, 222, 0.16), transparent 35%),
+    linear-gradient(180deg, #0d1740 0%, #070f2f 100%);
+}
+
+::selection {
+  background-color: #ff5f9f;
+  color: #070f2f;
 }
