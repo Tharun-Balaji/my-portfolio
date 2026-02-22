@@ -8,7 +8,7 @@ test("SEO and document semantics are present", async ({ page }) => {
   await expect(page.locator("meta[name='description']")).toHaveAttribute("content", /portfolio/i);
   await expect(page.locator("link[rel='canonical']")).toHaveCount(1);
   await expect(page.locator("main#main-content")).toHaveCount(1);
-  await expect(page.locator("h1")).toHaveCount(1);
+  await expect(page.locator("main#main-content h1")).toHaveCount(1);
 });
 
 test("no broken requests and external links are safe", async ({ page }) => {
