@@ -15,6 +15,9 @@
     "start": "astro dev",
     "dev": "astro dev",
     "build": "astro build",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
+    "type-check": "astro check",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",
@@ -26,6 +29,7 @@
     "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.6",
     "@eslint/js": "^9.39.2",
     "@playwright/test": "^1.58.2",
     "@tailwindcss/vite": "^4.2.0",
