@@ -1,0 +1,63 @@
+---
+const links = [
+  { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Chatbot", href: "#chatbot" },
+  { label: "Contact", href: "#contact" },
+];
+const homePath = import.meta.env.BASE_URL || "/";
+---
+
+<nav class="sticky top-0 z-40 px-4 pt-4 sm:px-6 lg:px-10" aria-label="Main navigation" data-reveal>
+  <div
+    class="mx-auto flex w-full max-w-6xl items-center justify-between rounded-xl border-2 border-neon-orange bg-neon-ink/95 p-3 shadow-retro backdrop-blur"
+  >
+    <a
+      class="font-display text-sm uppercase tracking-wider text-neon-orange sm:text-base"
+      href={homePath}
+    >
+      Tharun.dev
+    </a>
+
+    <ul class="hidden items-center gap-2 md:flex">
+      {
+        links.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="rounded-lg border border-neon-cyan/70 px-3 py-2 text-sm font-semibold text-neon-cream transition hover:-translate-y-0.5 hover:bg-neon-cyan hover:text-neon-ink"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <details class="relative md:hidden">
+      <summary
+        class="list-none rounded-lg border border-neon-pink bg-neon-pink/20 px-3 py-2 text-xs font-semibold uppercase tracking-widest text-neon-cream"
+      >
+        Menu
+      </summary>
+      <ul
+        class="absolute right-0 mt-3 flex w-48 flex-col gap-2 rounded-xl border-2 border-neon-lime bg-neon-ink p-3 shadow-retro"
+      >
+        {
+          links.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="block rounded-lg border border-neon-cyan/60 px-3 py-2 text-sm font-semibold text-neon-cream"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </details>
+  </div>
+</nav>

@@ -6,6 +6,9 @@ import "@fontsource/chakra-petch";
 const { title = "Portfolio" } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 const assetBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+const description =
+  "Tharun Balaji portfolio: frontend-focused projects, full-stack builds, skills, experience, and contact details.";
 ---
 
 <!doctype html>
@@ -14,11 +17,28 @@ const assetBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#ff9f45" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl.href} />
+    <meta property="og:image" content={`${assetBase}logo512.png`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="canonical" href={canonicalUrl.href} />
     <link rel="manifest" href={`${assetBase}manifest.webmanifest`} />
     <link rel="apple-touch-icon" href={`${assetBase}logo192.png`} />
     <title>{title}</title>
   </head>
   <body>
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-neon-yellow focus:px-3 focus:py-2 focus:font-semibold focus:text-neon-ink"
+    >
+      Skip to content
+    </a>
     <slot />
     <script>
       import { registerSW } from "virtual:pwa-register";

@@ -1,18 +1,13 @@
 ---
 import history from "../../data/history.json";
 import { assetPath } from "../../utils/assets";
-import MotionH2 from "../Motion/MotionH2.jsx";
 ---
 
-<section class="px-4 py-10 sm:px-6 lg:px-10" id="experience">
+<section class="px-4 py-10 sm:px-6 lg:px-10" id="experience" data-reveal>
   <div
     class="mx-auto w-full max-w-6xl rounded-2xl border-2 border-neon-lime bg-neon-ink/90 p-6 shadow-card lg:p-10"
   >
-    <MotionH2
-      text="Experience"
-      className="font-display text-2xl uppercase text-neon-lime sm:text-3xl"
-      client:visible
-    />
+    <h2 class="font-display text-2xl uppercase text-neon-lime sm:text-3xl">Experience</h2>
     <ul class="mt-6 grid gap-5">
       {
         history.map((historyItem) => (

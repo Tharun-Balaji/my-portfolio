@@ -1,18 +1,13 @@
 ---
 import projects from "../../data/projects.json";
 import ProjectCard from "./ProjectCard.astro";
-import MotionH2 from "../Motion/MotionH2.jsx";
 ---
 
-<section class="px-4 py-10 sm:px-6 lg:px-10" id="projects">
+<section class="px-4 py-10 sm:px-6 lg:px-10" id="projects" data-reveal>
   <div
     class="mx-auto w-full max-w-6xl rounded-2xl border-2 border-neon-yellow bg-neon-ink/90 p-6 shadow-card lg:p-10"
   >
-    <MotionH2
-      text="Projects"
-      className="font-display text-2xl uppercase text-neon-yellow sm:text-3xl"
-      client:visible
-    />
+    <h2 class="font-display text-2xl uppercase text-neon-yellow sm:text-3xl">Projects</h2>
     <p class="mt-2 max-w-3xl text-sm text-neon-cream/90 sm:text-base">
       Selected work across frontend apps, full-stack products, and experiments in interaction-heavy
       experiences.
