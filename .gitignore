@@ -8,6 +8,8 @@ dev-dist/
 
 # testing / reports
 coverage/
+test-results/
+playwright-report/
 
 # environment files
 .env

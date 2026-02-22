@@ -1,7 +1,12 @@
 ---
 import { assetPath } from "../../utils/assets";
+import type { Project } from "../../types/content";
 
-const { project } = Astro.props;
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props as Props;
 ---
 
 <article class="flex h-full flex-col rounded-xl border-2 border-neon-cyan/70 bg-neon-ink p-4">
