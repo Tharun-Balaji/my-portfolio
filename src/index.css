@@ -25,6 +25,10 @@ body {
     radial-gradient(circle at 86% 16%, rgba(57, 216, 255, 0.24), transparent 30%),
     radial-gradient(circle at 62% 92%, rgba(180, 255, 94, 0.2), transparent 35%),
     linear-gradient(180deg, #233084 0%, #0a1033 100%);
+  cursor:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Crect x='3' y='3' width='10' height='10' fill='%23fff275' stroke='%230a1033' stroke-width='2'/%3E%3Crect x='12' y='12' width='10' height='10' fill='%2339d8ff' stroke='%230a1033' stroke-width='2'/%3E%3C/svg%3E")
+      3 3,
+    auto;
 }
 
 ::selection {
@@ -109,4 +113,20 @@ body {
 
 *::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #ff9f45 0%, #ff4d9d 100%);
+}
+
+a,
+button,
+summary,
+.retro-btn,
+[role="button"] {
+  cursor:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpolygon points='3,3 3,24 9,18 14,26 19,23 14,15 22,15' fill='%23ff4d9d' stroke='%230a1033' stroke-width='2'/%3E%3C/svg%3E")
+      3 3,
+    pointer;
+}
+
+input,
+textarea {
+  cursor: text;
 }
