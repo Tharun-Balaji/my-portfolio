@@ -38,15 +38,33 @@ body {
 
 [data-reveal] {
   opacity: 0;
-  transform: translateY(22px);
+  transform: translate3d(var(--reveal-x, 0), var(--reveal-y, 22px), 0) scale(0.98);
   transition:
-    opacity 0.45s ease,
-    transform 0.45s ease;
+    opacity 0.5s ease,
+    transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+[data-reveal="up"] {
+  --reveal-y: 24px;
+}
+
+[data-reveal="down"] {
+  --reveal-y: -24px;
+}
+
+[data-reveal="left"] {
+  --reveal-x: -36px;
+  --reveal-y: 0;
+}
+
+[data-reveal="right"] {
+  --reveal-x: 36px;
+  --reveal-y: 0;
 }
 
 [data-reveal].is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0) scale(1);
 }
 
 @media (prefers-reduced-motion: reduce) {
