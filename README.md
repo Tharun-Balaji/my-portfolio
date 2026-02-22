@@ -96,7 +96,6 @@ Cloudflare Pages free tier is enough for a personal portfolio (global CDN, SSL, 
 - Email: [tharunbalaji110@gmail.com](mailto:tharunbalaji110@gmail.com)
 - LinkedIn: [linkedin.com/tharun-balaji](https://www.linkedin.com/in/tharun-balaji-j-a65402260/)
 
-## Workflow Note
+## Workflow
 
-- Commit in small, focused chunks instead of one large commit.
-- Use clear, helpful commit messages that describe what changed and why.
+Workflow rules are documented in `AGENTS.md`.
