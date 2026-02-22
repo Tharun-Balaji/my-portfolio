@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../tailwind.config.mjs";
 
 :root {
   color-scheme: light;
@@ -106,6 +105,10 @@ body {
 
 .retro-btn-alt {
   background: linear-gradient(135deg, #39d8ff 0%, #62ffd1 100%);
+}
+
+.retro-btn.hidden {
+  display: none;
 }
 
 * {
