@@ -1,26 +1,36 @@
 ---
 import history from "../../data/history.json";
-import styles from "./Experience.module.css";
 import { assetPath } from "../../utils/assets";
 ---
 
-<section class={styles.container} id="experience">
-  <h2 class={styles.title}>Experience</h2>
-  <div class={styles.content}>
-    <ul class={styles.history}>
+<section class="px-4 py-10 sm:px-6 lg:px-10" id="experience">
+  <div
+    class="mx-auto w-full max-w-6xl rounded-2xl border-2 border-neon-lime bg-neon-ink/90 p-6 shadow-card lg:p-10"
+  >
+    <h2 class="font-display text-2xl uppercase text-neon-lime sm:text-3xl">Experience</h2>
+    <ul class="mt-6 grid gap-5">
       {
         history.map((historyItem) => (
-          <li class={styles.historyItem}>
-            <img src={assetPath(historyItem.imageSrc)} alt={`${historyItem.organization} Logo`} />
-            <div class={styles.historyItemDetails}>
-              <h3>{`${historyItem.role}, ${historyItem.organization}`}</h3>
-              <p>{`${historyItem.startDate} - ${historyItem.endDate}`}</p>
-              <ul>
-                {historyItem.experiences.map((experience) => (
-                  <li>{experience}</li>
-                ))}
-              </ul>
+          <li class="rounded-xl border-2 border-neon-cyan/70 bg-neon-ink p-4">
+            <div class="flex flex-wrap items-center gap-4">
+              <img
+                src={assetPath(historyItem.imageSrc)}
+                alt={`${historyItem.organization} logo`}
+                class="h-12 w-12 rounded-full border border-neon-yellow bg-neon-cream p-1"
+                loading="lazy"
+                decoding="async"
+              />
+              <div>
+                <h3 class="text-xl font-semibold text-neon-yellow">{historyItem.role}</h3>
+                <p class="text-sm text-neon-cream/90">{historyItem.organization}</p>
+                <p class="text-sm text-neon-cyan">{`${historyItem.startDate} - ${historyItem.endDate}`}</p>
+              </div>
             </div>
+            <ul class="mt-4 space-y-2 text-sm leading-relaxed text-neon-cream/95 sm:text-base">
+              {historyItem.experiences.map((experience) => (
+                <li>- {experience}</li>
+              ))}
+            </ul>
           </li>
         ))
       }

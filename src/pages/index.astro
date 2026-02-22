@@ -6,6 +6,7 @@ import About from "../components/About/About.astro";
 import Experience from "../components/Experience/Experience.astro";
 import Skills from "../components/skills/Skills.astro";
 import Projects from "../components/Projects/Projects.astro";
+import ChatbotTeaser from "../components/Chatbot/ChatbotTeaser.jsx";
 import Contact from "../components/Contact/Contact.astro";
 ---
 
@@ -16,5 +17,6 @@ import Contact from "../components/Contact/Contact.astro";
   <Experience />
   <Skills />
   <Projects />
+  <ChatbotTeaser client:visible />
   <Contact />
 </Layout>

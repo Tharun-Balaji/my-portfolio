@@ -1,31 +1,60 @@
 ---
-import styles from "./Contact.module.css";
 import { assetPath } from "../../utils/assets";
 ---
 
-<footer id="contact" class={styles.container}>
-  <div class={styles.text}>
-    <h2>Contact</h2>
-    <p>Feel free to reach out!</p>
-  </div>
-  <ul class={styles.links}>
-    <li class={styles.link}>
-      <img src={assetPath("contact/emailIcon.png")} alt="Email Icon" />
-      <a href="mailto:tharunbalaji110@gmail.com">tharunbalaji110@gmail.com</a>
-    </li>
-    <li class={styles.link}>
-      <img src={assetPath("contact/linkedinIcon.png")} alt="LinkedIn Icon" />
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.linkedin.com/in/tharun-balaji-j-a65402260/"
+<footer class="px-4 pb-10 pt-10 sm:px-6 lg:px-10" id="contact">
+  <div
+    class="mx-auto grid w-full max-w-6xl gap-6 rounded-2xl border-2 border-neon-cyan bg-neon-ink/90 p-6 shadow-card lg:grid-cols-[1fr_1.6fr] lg:p-10"
+  >
+    <div>
+      <h2 class="font-display text-2xl uppercase text-neon-cyan sm:text-3xl">Contact</h2>
+      <p class="mt-2 text-neon-cream/90">Let&apos;s build something sharp and useful.</p>
+    </div>
+    <ul class="grid gap-3">
+      <li
+        class="flex flex-wrap items-center gap-3 rounded-lg border border-neon-yellow/70 px-3 py-3"
       >
-        linkedin.com/tharun-balaji
-      </a>
-    </li>
-    <li class={styles.link}>
-      <img src={assetPath("contact/githubIcon.png")} alt="GitHub Icon" />
-      <a href="https://github.com/Tharun-Balaji">github.com/Tharun-Balaji</a>
-    </li>
-  </ul>
+        <img
+          src={assetPath("contact/emailIcon.png")}
+          alt="Email icon"
+          class="h-6 w-6"
+          loading="lazy"
+        />
+        <a href="mailto:tharunbalaji110@gmail.com" class="text-sm text-neon-cream sm:text-base">
+          tharunbalaji110@gmail.com
+        </a>
+      </li>
+      <li
+        class="flex flex-wrap items-center gap-3 rounded-lg border border-neon-yellow/70 px-3 py-3"
+      >
+        <img
+          src={assetPath("contact/linkedinIcon.png")}
+          alt="LinkedIn icon"
+          class="h-6 w-6"
+          loading="lazy"
+        />
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.linkedin.com/in/tharun-balaji-j-a65402260/"
+          class="text-sm text-neon-cream sm:text-base"
+        >
+          linkedin.com/in/tharun-balaji-j-a65402260
+        </a>
+      </li>
+      <li
+        class="flex flex-wrap items-center gap-3 rounded-lg border border-neon-yellow/70 px-3 py-3"
+      >
+        <img
+          src={assetPath("contact/githubIcon.png")}
+          alt="GitHub icon"
+          class="h-6 w-6"
+          loading="lazy"
+        />
+        <a href="https://github.com/Tharun-Balaji" class="text-sm text-neon-cream sm:text-base">
+          github.com/Tharun-Balaji
+        </a>
+      </li>
+    </ul>
+  </div>
 </footer>
