@@ -52,3 +52,36 @@ body {
     transition: none;
   }
 }
+
+.retro-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #0a1033;
+  border-radius: 0.65rem;
+  background: linear-gradient(135deg, #fff275 0%, #ff9f45 100%);
+  color: #0a1033;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 5px 5px 0 #39d8ff;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease;
+}
+
+.retro-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 7px 7px 0 #ff4d9d;
+  filter: saturate(1.08);
+}
+
+.retro-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 3px 3px 0 #ff4d9d;
+}
+
+.retro-btn-alt {
+  background: linear-gradient(135deg, #39d8ff 0%, #62ffd1 100%);
+}
