@@ -1,10 +1,185 @@
+@import "tailwindcss";
+@config "../tailwind.config.mjs";
+
+:root {
+  color-scheme: light;
+}
+
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "Outfit", Arial, Helvetica, sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #0a1033;
+  color: #fffde4;
+  font-family: "Chakra Petch", sans-serif;
+  background-image:
+    radial-gradient(circle at 9% 14%, rgba(255, 77, 157, 0.24), transparent 34%),
+    radial-gradient(circle at 86% 16%, rgba(57, 216, 255, 0.24), transparent 30%),
+    radial-gradient(circle at 62% 92%, rgba(180, 255, 94, 0.2), transparent 35%),
+    linear-gradient(180deg, #233084 0%, #0a1033 100%);
+  cursor:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Crect x='3' y='3' width='10' height='10' fill='%23fff275' stroke='%230a1033' stroke-width='2'/%3E%3Crect x='12' y='12' width='10' height='10' fill='%2339d8ff' stroke='%230a1033' stroke-width='2'/%3E%3C/svg%3E")
+      3 3,
+    auto;
+}
+
+::selection {
+  background-color: #ff9f45;
+  color: #0a1033;
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(var(--reveal-x, 0), var(--reveal-y, 22px), 0) scale(0.98);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+[data-reveal="up"] {
+  --reveal-y: 24px;
+}
+
+[data-reveal="down"] {
+  --reveal-y: -24px;
+}
+
+[data-reveal="left"] {
+  --reveal-x: -36px;
+  --reveal-y: 0;
+}
+
+[data-reveal="right"] {
+  --reveal-x: 36px;
+  --reveal-y: 0;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.retro-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #0a1033;
+  border-radius: 0.65rem;
+  background: linear-gradient(135deg, #fff275 0%, #ff9f45 100%);
+  color: #0a1033;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 5px 5px 0 #39d8ff;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease;
+}
+
+.retro-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 7px 7px 0 #ff4d9d;
+  filter: saturate(1.08);
+}
+
+.retro-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 3px 3px 0 #ff4d9d;
+}
+
+.retro-btn-alt {
+  background: linear-gradient(135deg, #39d8ff 0%, #62ffd1 100%);
+}
+
+.retro-btn.hidden {
+  display: none;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ff9f45 #1f2d77;
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #233084, #1f2d77);
+  border-left: 1px solid rgba(255, 242, 117, 0.5);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #fff275 0%, #ff9f45 100%);
+  border: 2px solid #0a1033;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px rgba(57, 216, 255, 0.6);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff9f45 0%, #ff4d9d 100%);
+}
+
+a,
+button,
+summary,
+.retro-btn,
+[role="button"] {
+  cursor:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpolygon points='3,3 3,24 9,18 14,26 19,23 14,15 22,15' fill='%23ff4d9d' stroke='%230a1033' stroke-width='2'/%3E%3C/svg%3E")
+      3 3,
+    pointer;
+}
+
+input,
+textarea {
+  cursor: text;
+}
+
+.retro-image {
+  position: relative;
+  border-color: #fff275 !important;
+  filter: saturate(1.18) contrast(1.08) hue-rotate(-8deg);
+  box-shadow:
+    0 0 0 2px rgba(255, 242, 117, 0.45),
+    10px 10px 0 rgba(57, 216, 255, 0.32),
+    -6px -6px 0 rgba(255, 77, 157, 0.2);
+  mix-blend-mode: screen;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.retro-image:hover {
+  transform: translateY(-2px);
+  filter: saturate(1.22) contrast(1.1) hue-rotate(-5deg);
+  box-shadow:
+    0 0 0 2px rgba(255, 242, 117, 0.55),
+    12px 12px 0 rgba(57, 216, 255, 0.36),
+    -8px -8px 0 rgba(255, 77, 157, 0.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .retro-image,
+  .retro-image:hover {
+    transform: none;
+    transition: none;
+  }
 }

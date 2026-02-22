@@ -1,20 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Navbar from "../components/Navbar/Navbar";
+import Navbar from "../components/Navbar/Navbar.astro";
 import Hero from "../components/Hero/Hero.astro";
 import About from "../components/About/About.astro";
 import Experience from "../components/Experience/Experience.astro";
 import Skills from "../components/skills/Skills.astro";
 import Projects from "../components/Projects/Projects.astro";
+import ChatbotTeaser from "../components/Chatbot/ChatbotTeaser.astro";
+import ScrollEffects from "../components/Motion/ScrollEffects.astro";
 import Contact from "../components/Contact/Contact.astro";
 ---
 
 <Layout>
-  <Navbar client:load />
-  <Hero />
-  <About />
-  <Experience />
-  <Skills />
-  <Projects />
-  <Contact />
+  <ScrollEffects />
+  <Navbar />
+  <main id="main-content">
+    <Hero />
+    <About />
+    <Experience />
+    <Skills />
+    <Projects />
+    <ChatbotTeaser />
+    <Contact />
+  </main>
 </Layout>

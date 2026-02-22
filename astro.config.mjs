@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import react from "@astrojs/react";
+import tailwindcss from "@tailwindcss/vite";
 import AstroPWA from "@vite-pwa/astro";
 
 const isNetlify = process.env.NETLIFY === "true";
@@ -14,8 +14,10 @@ export default defineConfig({
   site: siteUrl || "https://tharun-balaji.github.io",
   base: appBase,
   output: "static",
+  vite: {
+    plugins: [tailwindcss()],
+  },
   integrations: [
-    react(),
     AstroPWA({
       registerType: "autoUpdate",
       injectRegister: null,

@@ -1,28 +1,65 @@
 ---
-import styles from "./Hero.module.css";
 import { assetPath } from "../../utils/assets";
 ---
 
-<section class={styles.container}>
-  <div class={styles.content}>
-    <h1 class={styles.title}>Hi I'm Tharun</h1>
-    <p class={styles.description}>
-      I'm a Aspiring software developer passionate about crafting elegant code, solving complex
-      problems, and continuously learning to innovate in the ever-evolving world of technology.
-    </p>
-    <div class={styles.flexContainer}>
-      <a href="mailto:tharunbalaji110@gmail.com" class={styles.contactBtn}> Contact Me </a>
-      <a
-        href="https://medium.com/@tharunbalaji110"
-        target="_blank"
-        rel="noopener noreferrer"
-        class={styles.contactBtn}
+<section class="px-4 pb-14 pt-10 sm:px-6 lg:px-10 lg:pt-14" id="home" data-reveal="up">
+  <div
+    class="mx-auto grid w-full max-w-6xl gap-8 rounded-2xl border-2 border-neon-yellow bg-neon-ink/90 p-6 shadow-card backdrop-blur lg:grid-cols-[1.3fr_1fr] lg:items-center lg:p-10"
+  >
+    <div class="space-y-6">
+      <p
+        class="inline-flex rounded-full border-2 border-neon-orange bg-neon-orange/20 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-neon-cream"
       >
-        My Articles
-      </a>
+        Frontend Engineer Mode
+      </p>
+      <h1
+        class="font-display text-3xl uppercase leading-tight text-neon-yellow sm:text-4xl lg:text-5xl"
+      >
+        Hi, I&apos;m Tharun. I Build Loud, Fast Web Experiences.
+      </h1>
+      <p class="max-w-2xl text-base text-neon-cream/95 sm:text-lg">
+        Aspiring software developer focused on clean architecture, expressive interfaces, and
+        practical product thinking. I like turning complex ideas into UI that feels alive without
+        becoming noisy.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a
+          href="mailto:tharunbalaji110@gmail.com"
+          class="retro-btn px-5 py-3 text-sm"
+        >
+          Contact Me
+        </a>
+        <a
+          href="https://medium.com/@tharunbalaji110"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="retro-btn retro-btn-alt px-5 py-3 text-sm"
+        >
+          Read Articles
+        </a>
+      </div>
+      <ul class="grid gap-2 text-sm text-neon-cream/90 sm:grid-cols-3">
+        <li class="rounded-lg border border-neon-cyan/50 bg-neon-ink/80 px-3 py-2">
+          React + Astro
+        </li>
+        <li class="rounded-lg border border-neon-cyan/50 bg-neon-ink/80 px-3 py-2">
+          Performance Focused
+        </li>
+        <li class="rounded-lg border border-neon-cyan/50 bg-neon-ink/80 px-3 py-2">
+          Design + Engineering
+        </li>
+      </ul>
+    </div>
+    <div class="relative">
+      <div class="absolute -left-3 -top-3 h-full w-full rounded-2xl border-2 border-neon-cyan">
+      </div>
+      <img
+        src={assetPath("hero/MyPhoto.png")}
+        alt="Portrait of Tharun"
+        class="retro-image relative z-10 aspect-square w-full rounded-2xl border-2 border-neon-yellow object-cover"
+        loading="eager"
+        decoding="async"
+      />
     </div>
   </div>
-  <img src={assetPath("hero/MyPhoto.png")} alt="HeroImage of me" class={styles.heroImg} />
-  <div class={styles.topBlur}></div>
-  <div class={styles.bottomBlur}></div>
 </section>

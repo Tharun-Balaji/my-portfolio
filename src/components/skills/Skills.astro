@@ -1,24 +1,28 @@
 ---
-import skillsData from "../../data/skills.json";
-import type { Skill } from "../../types/content";
-import styles from "./Skills.module.css";
+import skills from "../../data/skills.json";
 import { assetPath } from "../../utils/assets";
-
-const skills: Skill[] = skillsData;
 ---
 
-<section class={styles.container} id="experience">
-  <h2 class={styles.title}>Skills</h2>
-  <div class={styles.content}>
-    <div class={styles.skills}>
+<section class="px-4 py-10 sm:px-6 lg:px-10" id="skills" data-reveal="up">
+  <div
+    class="mx-auto w-full max-w-6xl rounded-2xl border-2 border-neon-pink bg-neon-ink/90 p-6 shadow-card lg:p-10"
+  >
+    <h2 class="font-display text-2xl uppercase text-neon-pink sm:text-3xl">Skills</h2>
+    <div class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
       {
-        skills.map((skill: Skill) => (
-          <div class={styles.skill}>
-            <div class={styles.skillImageContainer}>
-              <img src={assetPath(skill.imageSrc)} alt={skill.title} />
+        skills.map((skill) => (
+          <article class="rounded-xl border-2 border-neon-yellow/60 bg-neon-ink px-3 py-4 text-center transition hover:-translate-y-1">
+            <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-neon-cyan bg-neon-cream/90 p-3">
+              <img
+                src={assetPath(skill.imageSrc)}
+                alt={skill.title}
+                class="h-full w-full object-contain"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
-            <p>{skill.title}</p>
-          </div>
+            <p class="mt-3 text-sm font-semibold text-neon-cream sm:text-base">{skill.title}</p>
+          </article>
         ))
       }
     </div>

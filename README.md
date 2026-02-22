@@ -95,3 +95,7 @@ Cloudflare Pages free tier is enough for a personal portfolio (global CDN, SSL, 
 
 - Email: [tharunbalaji110@gmail.com](mailto:tharunbalaji110@gmail.com)
 - LinkedIn: [linkedin.com/tharun-balaji](https://www.linkedin.com/in/tharun-balaji-j-a65402260/)
+
+## Workflow
+
+Workflow rules are documented in `AGENTS.md`.

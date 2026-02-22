@@ -4,13 +4,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@astrojs/react": "^3.6.0",
+    "@fontsource/chakra-petch": "^5.2.7",
     "@fontsource/outfit": "^5.0.12",
     "@fontsource/roboto": "^5.0.12",
+    "@fontsource/rubik-mono-one": "^5.2.8",
     "astro": "^4.16.0",
-    "gh-pages": "^6.2.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "gh-pages": "^6.2.0"
   },
   "scripts": {
     "start": "astro dev",
@@ -23,6 +22,7 @@
     "astro": "astro",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "test:e2e": "playwright test",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "predeploy": "npm run build",
@@ -32,19 +32,16 @@
     "@astrojs/check": "^0.9.6",
     "@eslint/js": "^9.39.2",
     "@playwright/test": "^1.58.2",
-    "@types/react": "^18.3.28",
-    "@types/react-dom": "^18.3.7",
+    "@tailwindcss/vite": "^4.2.0",
     "@vite-pwa/astro": "^1.2.0",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-astro": "^1.5.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^7.0.1",
     "globals": "^17.3.0",
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1",
-    "typescript": "^5.9.3",
+    "tailwindcss": "^4.2.0",
     "typescript-eslint": "^8.55.0"
   }
 }
