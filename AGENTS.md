@@ -2,6 +2,10 @@
 
 ## Workflow Rules
 
+- Keep commits small and focused. Do not bundle unrelated changes in one commit.
+- Write clear commit messages that explain what changed and why.
+- Commit incrementally as work progresses so the history documents the process.
+- Prefer one logical change per commit (for example: styling, animation, config, docs).
 - `main` is the stable branch.
 - `dev` is the shared integration branch for active development.
 - Start new work from `dev` by default.
