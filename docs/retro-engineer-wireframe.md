@@ -1,242 +1,281 @@
-# Retro Engineer Homepage Wireframe
+# Engineered Dark Homepage Wireframe
 
 ## Purpose
 
-This document defines the homepage wireframe for the next portfolio redesign pass.
+This document defines the next homepage wireframe direction for the portfolio redesign.
 
 It is intentionally focused on:
 
 - section hierarchy
-- content roles
-- interaction priorities
-- the retro engineer visual voice
-- what must stay grounded in hiring clarity
+- content priorities
+- visual tone
+- interaction rules
+- performance guardrails
 
-This wireframe should guide design decisions before we resume implementation.
+This is the reference we should finalize before resuming implementation.
 
-## Design Intent
+## Direction Summary
 
-The homepage should feel like:
+The site should move toward a darker, sharper, more cinematic version of the portfolio.
 
-- an engineer's personal operating system
-- a portfolio with conviction
-- a retro-tech interface with modern product thinking
-- expressive, but still recruiter-readable
+It should feel like:
 
-The homepage should not feel like:
+- a high-end engineer portfolio with product taste
+- polished and opinionated
+- dark, technical, and bright in the accents
+- animated with restraint
+- premium on desktop and clear on mobile
 
-- a generic SaaS landing page
-- a nostalgia demo with résumé text pasted into it
-- a heavy 3D experiment
-- a visual joke that makes the work harder to scan
+It should not feel like:
 
-## Existing Sections To Keep
+- a nostalgic pixel-art demo
+- a safe SaaS template
+- a motion-heavy experiment that weakens the content
+- a design exercise that hides proof
 
-The current app structure on this branch includes:
+## Core Story
+
+The homepage should sell one idea clearly:
+
+`I am an engineer who can shape both the system and the product experience.`
+
+Every section should reinforce that claim from a different angle:
+
+1. Hero: identity and taste
+2. Projects: proof
+3. About: point of view
+4. Experience: outcomes over time
+5. Skills: production confidence plus curiosity
+6. Writing: technical thinking
+7. Contact: availability and responsiveness
+8. AI assistant: fast hiring context on demand
+
+## Existing Sections To Preserve
+
+The redesign still needs to accommodate these site areas:
 
 1. Hero
 2. About
 3. Experience
 4. Skills
 5. Projects
-6. Chatbot
+6. Chatbot / AI assistant
 7. Contact
 
-The new wireframe should keep all of these, but it should also add:
+It should also include:
 
 8. Medium RSS / Writing
 
 ## Recommended New Order
 
-To improve proof and flow, the homepage should be reordered as:
+The homepage should be structured as:
 
 1. Navigation
 2. Hero
-3. Marquee / stack strip
-4. Projects
-5. About
-6. Experience
-7. Skills + Tools Lab split
-8. Writing from Medium
-9. Contact
-10. Floating AI assistant available globally
+3. Projects
+4. About
+5. Experience
+6. Skills + Tools Lab
+7. Writing from Medium
+8. Contact
+9. Floating AI assistant
 
-## Core Experience Rules
+## Visual Language
 
-- Project proof should appear before biography.
-- The page should feel scannable in under 20 seconds.
-- Only one portrait should be used.
-- The hero should own the emotional tone.
-- Retro styling should support the story, not overpower it.
-- Every section should answer a hiring question.
+### Typography
+
+- Display: `Syne`
+- Body: `IBM Plex Sans`
+- Mono / labels / metadata: `JetBrains Mono`
+
+### Color Direction
+
+- Base background: near-black with blue undertone
+- Surfaces: layered charcoal panels
+- Primary accent: cyan
+- Secondary accent: lime
+- Support accent: orange used sparingly
+
+### Shape Language
+
+- rounded but crisp cards
+- soft glass only where it helps layering
+- no pixel borders
+- no arcade UI chrome
+- no global scanlines
+
+### Motion Tone
+
+- buttery, not frantic
+- reveals should feel intentional and paced
+- one strong hero enhancement is enough
+- hover states should communicate precision, not playfulness
+
+## Performance Rules
+
+Performance is part of the design story.
+
+- Important content must render without WebGL.
+- Heavy animation must be gated behind capability checks.
+- Respect `prefers-reduced-motion`.
+- Tier the hero experience as:
+  1. static poster and text
+  2. text reveals and subtle glow motion
+  3. enhanced 3D scene for capable devices
+- Load 3D only when it will not become the bottleneck.
+- Mobile should default to the lighter motion tier unless testing proves otherwise.
 
 ## Navigation
 
 ### Purpose
 
-Create fast orientation and a strong contact path.
+Orient quickly and keep contact accessible.
 
 ### Labels
 
-- `WORK`
-- `ABOUT`
-- `EXP`
-- `SKILLS`
-- `BLOG`
-- CTA: `HIRE.ME`
+- `Work`
+- `About`
+- `Experience`
+- `Skills`
+- `Writing`
+- CTA: `Let's Talk ->`
 
 ### Desktop Wireframe
 
 ```text
-+--------------------------------------------------------------------------------+
-| THARUN.EXE                           WORK ABOUT EXP SKILLS BLOG    [ HIRE.ME ] |
-+--------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------+
+| Tharun Balaji.         Work  About  Experience  Skills  Writing      [ Let's Talk ] |
++--------------------------------------------------------------------------------------+
 ```
 
-### Behavior
+### Rules
 
-- fixed to top
-- dark translucent shell
-- sharp neon border and glow
-- no more than 5 text links plus one CTA
+- fixed pill-style container
+- centered within page width
+- translucent dark shell
+- subtle blur
+- recruiter-readable labels
 
 ## Hero
 
 ### Purpose
 
-State identity, capability, and style immediately.
+Create the strongest emotional and strategic first impression on the page.
 
 ### Content Requirements
 
-- one eyebrow line
+- one status / availability line
 - one dominant headline
-- one supporting paragraph
-- 2 primary actions
-- 3 proof metrics max
+- one support paragraph
+- two clear actions
+- three proof stats max
 - one portrait
-- optional 3D scene only for capable devices
+- optional floating proof cards
+- optional 3D enhancement behind or around the portrait
 
 ### Hero Copy Direction
 
-Eyebrow:
+Status:
 
-`FRONTEND ENGINEER - CHENNAI, IN`
+`Open to select opportunities - Chennai, IN`
 
 Headline:
 
-`ENGINEER THE INTERFACE. SHAPE THE PRODUCT.`
+`Engineer the interface. Shape the product.`
 
 Support copy:
 
-`Frontend systems built fast by design - product-aware, performance-conscious, and polished enough to survive real use.`
+`I build frontend systems that are fast by design, product-aware, and polished enough to survive real use.`
 
 ### Desktop Wireframe
 
 ```text
 +--------------------------------------------------------------------------------------------------+
-| EYEBROW: FRONTEND ENGINEER - CHENNAI, IN                                                         |
+| status line                                                                                      |
 |                                                                                                  |
-| ENGINEER                                                                                         |
-| THE INTERFACE.                                                                                   |
-| SHAPE THE                                                                                        |
-| PRODUCT.                                                                                         |
+| Engineer the                                                                                     |
+| interface.                                                                                       |
+| Shape the product.                                                                               |
 |                                                                                                  |
-| Supporting paragraph                                                                             |
+| support paragraph                                                                                |
 |                                                                                                  |
-| [ VIEW_WORK.EXE ]   [ READ_WRITING ]                                                             |
+| [ View Work ] [ Read Writing ]                                                                   |
 |                                                                                                  |
-| [ 30% manual effort cut ] [ $25K saved ] [ 100 lighthouse target ]                              |
+| [ 12+ systems shipped ] [ 40% avg render gain ] [ 100 lighthouse ]                              |
 |                                                                                                  |
-|                                                          portrait frame + optional 3D field      |
+|                                                floating proof cards around portrait              |
+|                                                portrait anchored to the right                    |
+|                                                optional 3D motion layer                          |
 +--------------------------------------------------------------------------------------------------+
 ```
 
 ### Mobile Wireframe
 
 ```text
-+----------------------------------------------+
-| EYEBROW                                      |
-| ENGINEER THE INTERFACE.                      |
-| SHAPE THE PRODUCT.                           |
-|                                              |
-| short supporting paragraph                   |
-|                                              |
-| portrait                                     |
-|                                              |
-| [ VIEW_WORK.EXE ]                            |
-| [ READ_WRITING ]                             |
-|                                              |
-| metric chips                                 |
-+----------------------------------------------+
++--------------------------------------------------+
+| status line                                      |
+| Engineer the interface.                          |
+| Shape the product.                               |
+|                                                  |
+| support paragraph                                |
+|                                                  |
+| [ View Work ]                                    |
+| [ Read Writing ]                                 |
+|                                                  |
+| portrait                                         |
+|                                                  |
+| stat row / stacked stat chips                    |
++--------------------------------------------------+
 ```
 
-### Motion Rules
+### Hero Rules
 
-- grid motion and 3D are enhancement layers
-- core text must be readable without motion
-- 3D must be disabled on low-power or reduced-motion devices
-- the portrait must remain the visual anchor even if 3D is off
-
-## Marquee / Stack Strip
-
-### Purpose
-
-Bridge hero energy into proof with a fast scan of technical range.
-
-### Wireframe
-
-```text
-+--------------------------------------------------------------------------------+
-| REACT ★ TYPESCRIPT ★ NEXT.JS ★ ASTRO ★ GSAP ★ THREE.JS ★ NODE.JS ★ STORYBOOK |
-+--------------------------------------------------------------------------------+
-```
-
-### Rule
-
-- purely supportive
-- short enough to not feel like filler
-- should not replace real skills content lower on the page
+- Portrait is the human anchor.
+- 3D supports the atmosphere but never dominates the hierarchy.
+- Floating cards must sit in negative space, not on top of key facial detail.
+- Use real metrics only.
+- Avoid gimmicky labels like `.EXE` in the main hero actions.
 
 ## Projects
 
 ### Purpose
 
-Projects are the first proof-heavy section and should feel ranked, not equal.
+Show ranked proof immediately after the hero.
 
 ### Layout Direction
 
-Use a bento grid:
+Use a bento composition:
 
-- one flagship card
-- one tall supporting card
+- one flagship project
+- one tall supporting project
 - two smaller supporting cards
 
 ### Card Content Order
 
 1. preview image
-2. visible metric
+2. visible outcome metric
 3. problem statement
 4. project title
-5. short outcome description
+5. short explanation of what changed
 6. tech tags
-7. links
+7. link
 
 ### Desktop Wireframe
 
 ```text
 +--------------------------------------------------------------------------------------------------+
-| 001 - SELECTED WORK                                                                              |
-| WHAT_I'VE_SHIPPED.LOG                                                                            |
-| > proof over claims. problem first, outcome visible.                                             |
+| Selected Work                                                                                    |
+| What I've shipped.                                                                               |
+| Proof over claims.                                                                               |
 |                                                                                                  |
 | +---------------------------------------------+ +------------------------------+                 |
 | | flagship card                               | | tall supporting card         |                 |
-| | preview + metric                            | | preview + metric             |                 |
+| | image + metric                              | | image + metric               |                 |
 | | problem                                     | | problem                      |                 |
 | | title                                       | | title                        |                 |
 | | desc                                        | | desc                         |                 |
 | | tags                                        | | tags                         |                 |
-| | links                                       | | links                        |                 |
+| | link                                        | | link                         |                 |
 | +---------------------------------------------+ +------------------------------+                 |
 | +------------------------------+ +------------------------------+                                 |
 | | supporting card              | | supporting card              |                                 |
@@ -244,265 +283,254 @@ Use a bento grid:
 +--------------------------------------------------------------------------------------------------+
 ```
 
-### Wireframe Rule
+### Rules
 
-- the flagship project must be visually dominant
-- all cards should show proof, not just titles
-- hover may intensify border/glow, but must not hide the important content
+- One project must clearly read as the flagship.
+- Every project needs one visible outcome number.
+- Problem statement should be more memorable than the project title.
+- Cards can glow or lift slightly, but all key content stays visible without hover.
 
 ## About
 
 ### Purpose
 
-Humanize the engineer while reinforcing technical judgment.
-
-### Layout Direction
-
-Two-column split:
-
-- left: terminal-style intro plus strong takes
-- right: current obsessions, site proof, stack note
-
-### Desktop Wireframe
-
-```text
-+--------------------------------------------------------------------------------------------------+
-| 002 - ABOUT.TXT                                                                                  |
-| THE_ENGINEER_BEHIND_THE_CODE                                                                     |
-|                                                                                                  |
-| +--------------------------------------------+ +-----------------------------------------------+ |
-| | terminal frame                             | | CURRENTLY_OBSESSING_OVER.LOG                  | |
-| | TB:~$ cat about.md                         | | item                                          | |
-| | comments                                   | | item                                          | |
-| |                                            | | item                                          | |
-| | TAKE_01                                    | +-----------------------------------------------+ |
-| | TAKE_02                                    | | LIGHTHOUSE SCORE CARD                         | |
-| | TAKE_03                                    | +-----------------------------------------------+ |
-| | TAKE_04                                    | | STACK_THIS_SITE_RUNS_ON                       | |
-| +--------------------------------------------+ +-----------------------------------------------+ |
-+--------------------------------------------------------------------------------------------------+
-```
-
-### Content Rules
-
-- takes should sound authored, not performative
-- 3 to 4 takes max
-- "currently obsessing over" should be current and believable
-- stack card should explain why the site is built this way
-
-## Experience
-
-### Purpose
-
-Show progression and outcomes, not duties.
-
-### Layout Direction
-
-Vertical timeline:
-
-- year
-- central line
-- role block
-
-### Wireframe
-
-```text
-+--------------------------------------------------------------------------------------------------+
-| 003 - EXPERIENCE.JSON                                                                            |
-| WHERE_I'VE_WORKED.LOG                                                                            |
-| > outcome-first. measured by what changed, not by task lists.                                    |
-|                                                                                                  |
-| 2024   |  SENIOR FRONTEND ENGINEER                                                               |
-|        |  // COMPANY                                                                             |
-|        |  short description                                                                      |
-|        |  [ outcome chip ]                                                                       |
-|                                                                                                  |
-| 2022   |  FRONTEND ENGINEER                                                                      |
-|        |  // COMPANY                                                                             |
-|        |  short description                                                                      |
-|        |  [ outcome chip ]                                                                       |
-+--------------------------------------------------------------------------------------------------+
-```
-
-### Rules
-
-- lead with impact
-- keep the line simple and readable
-- 2 to 4 timeline entries is enough on homepage
-
-## Skills + Tools Lab
-
-### Purpose
-
-Separate production confidence from exploratory energy.
+Show the thinking behind the work without turning into autobiography.
 
 ### Layout Direction
 
 Two columns:
 
-- left: work skills
-- right: tools lab / side stack
+- left: narrative and engineering takes
+- right: supporting cards
 
 ### Desktop Wireframe
 
 ```text
 +--------------------------------------------------------------------------------------------------+
-| 004 - SKILLS & LAB                                                                               |
-| WHAT_I_REACH_FOR.INI                                                                             |
-| > left: daily production. right: building for myself.                                            |
+| About                                                                                            |
 |                                                                                                  |
 | +--------------------------------------------+ +-----------------------------------------------+ |
-| | WORK_SKILLS                                | | TOOLS_LAB                                     | |
+| | short narrative paragraph                  | | Currently obsessing over                      | |
+| |                                            | | item                                          | |
+| | take                                       | | item                                          | |
+| | take                                       | | item                                          | |
+| | take                                       | | item                                          | |
+| | take                                       | +-----------------------------------------------+ |
+| +--------------------------------------------+ | Lighthouse score card                         | |
+|                                                +-----------------------------------------------+ |
+|                                                | Built with / stack rationale                  | |
+|                                                +-----------------------------------------------+ |
++--------------------------------------------------------------------------------------------------+
+```
+
+### Rules
+
+- First-person takes should be direct and defensible.
+- Cap at 4 takes.
+- This section should feel editorial, not theatrical.
+- Supporting cards should reinforce credibility rather than repeat the copy.
+
+## Experience
+
+### Purpose
+
+Show progression through outcomes, not task lists.
+
+### Layout Direction
+
+Minimal timeline:
+
+- year
+- central line
+- role, company, impact
+
+### Wireframe
+
+```text
++--------------------------------------------------------------------------------------------------+
+| Experience                                                                                       |
+| Where I've worked.                                                                               |
+| Outcome-first over role-description first.                                                       |
+|                                                                                                  |
+| 2024   | Senior Frontend Engineer                                                                |
+|        | Company                                                                                 |
+|        | short outcome-led summary                                                               |
+|        | [ impact chip ]                                                                         |
+|                                                                                                  |
+| 2022   | Frontend Engineer                                                                       |
+|        | Company                                                                                 |
+|        | short outcome-led summary                                                               |
+|        | [ impact chip ]                                                                         |
++--------------------------------------------------------------------------------------------------+
+```
+
+### Rules
+
+- Each role starts with what changed.
+- Keep company metadata lightweight.
+- No long paragraphs.
+- Two to four entries are enough on the homepage.
+
+## Skills + Tools Lab
+
+### Purpose
+
+Show both production trust and exploratory range.
+
+### Layout Direction
+
+Two panels:
+
+- left: work skills
+- right: tools lab
+
+### Wireframe
+
+```text
++--------------------------------------------------------------------------------------------------+
+| Skills & Lab                                                                                     |
+| What I reach for.                                                                                |
+|                                                                                                  |
+| +--------------------------------------------+ +-----------------------------------------------+ |
+| | Work Skills                                | | Tools Lab                                     | |
 | | skill row + badge                          | | chip grid                                     | |
 | | skill row + badge                          | | chip grid                                     | |
 | | skill row + badge                          | | chip grid                                     | |
-| | skill row + badge                          | | LAST_SHIPPED_WITH card                        | |
+| | skill row + badge                          | | last shipped with card                        | |
 | +--------------------------------------------+ +-----------------------------------------------+ |
 +--------------------------------------------------------------------------------------------------+
 ```
 
 ### Rules
 
-- work side must feel more disciplined
-- lab side can be looser and more playful
-- do not use fake progress bars
-- "careful" or "exploring" labels are acceptable when honest
+- No fake progress bars.
+- Badges should be honest: `Expert`, `Proficient`, `Use carefully`, `Exploring`.
+- Work panel should feel disciplined.
+- Lab panel can feel a bit more playful.
 
 ## Writing from Medium
 
 ### Purpose
 
-Show reflective thinking and technical communication.
+Demonstrate technical judgment in writing, not just in shipped code.
 
 ### Layout Direction
 
-- one large hero article
-- two supporting articles
+- one hero article
+- two supporting article cards
 
 ### Wireframe
 
 ```text
 +--------------------------------------------------------------------------------------------------+
-| 005 - WRITING.RSS                                                                                |
-| WHAT_I_THINK_ABOUT.MD                                                                            |
-| > published on medium - honest, technical, and readable.                                         |
+| Writing                                                                                          |
+| What I think about.                                                                              |
 |                                                                                                  |
 | +----------------------------------------------------------------------------------------------+ |
-| | hero article cover + metadata + title + tldr + link                                         | |
+| | hero article cover + metadata + title + short TLDR + CTA                                    | |
 | +---------------------------------------------+ +----------------------------------------------+ |
-| | article card                                | | article card                                 | |
+| | supporting article                          | | supporting article                           | |
 | +---------------------------------------------+ +----------------------------------------------+ |
-+--------------------------------------------------------------------------------------------------+
-```
-
-### Fallback Rule
-
-If the RSS feed fails:
-
-- show one large Medium profile card
-- do not show broken placeholders
-
-## Contact
-
-### Purpose
-
-End with clarity and confidence.
-
-### Wireframe
-
-```text
-+--------------------------------------------------------------------------------------------------+
-| CONTACT background text                                                                          |
-|                                                                                                  |
-| OPEN TO FULL-TIME ROLES - 2026                                                                   |
-| LET'S BUILD SOMETHING                                                                            |
-| WORTH_BUILDING.EXE                                                                               |
-|                                                                                                  |
-| support copy                                                                                     |
-|                                                                                                  |
-| [ EMAIL ADDRESS / COPY ]                                                                         |
-| // COPIED_TO_CLIPBOARD.SUCCESS                                                                   |
-|                                                                                                  |
-| [ LINKEDIN ] [ GITHUB ] [ MEDIUM ] [ EMAIL ]                                                     |
 +--------------------------------------------------------------------------------------------------+
 ```
 
 ### Rules
 
-- email is the hero action
-- social links are secondary
-- copy should sound direct, not corporate
+- Pull live content from Medium RSS when available.
+- If RSS fails, show a clean fallback card to the Medium profile.
+- Metadata should use mono styling.
+- Summaries must stay short and skimmable.
+
+## Contact
+
+### Purpose
+
+Close the page with availability, clarity, and confidence.
+
+### Wireframe
+
+```text
++--------------------------------------------------------------------------------------------------+
+| availability line                                                                                |
+|                                                                                                  |
+| Let's build something                                                                            |
+| worth building.                                                                                  |
+|                                                                                                  |
+| short direct support copy                                                                        |
+|                                                                                                  |
+| [ large email button ]                                                                           |
+| copied-to-clipboard confirmation                                                                 |
+|                                                                                                  |
+| [ LinkedIn ] [ GitHub ] [ Resume PDF ] [ Medium ]                                                |
++--------------------------------------------------------------------------------------------------+
+```
+
+### Rules
+
+- Email is the primary action.
+- Copy should be clear and confident.
+- Contact section should feel like a destination, not an afterthought.
 
 ## Floating AI Assistant
 
 ### Purpose
 
-Make the AI guide ambient instead of making it a full page section.
+Provide ambient hiring context from anywhere on the page.
 
 ### Placement
 
 - fixed bottom-right
-- collapsed as a compact button
-- expands to panel with:
-  - intro message
-  - 4 prompt chips
-  - input
+- compact floating button
+- expands into a panel
+
+### Panel Contents
+
+- short intro
+- 4 prompt chips
+- input field
 
 ### Prompt Set
 
 - `What makes Tharun stand out?`
 - `Most complex technical challenge?`
 - `Is he available right now?`
-- `Best frontend projects to see?`
+- `Best projects to look at?`
 
 ### Rules
 
-- useful, not gimmicky
-- should speak in first person
-- should never block contact paths
+- response voice should be first person
+- useful for recruiters, not gimmicky
+- must never block the contact path
 
-## Visual System Notes
+## Section Tone Distribution
 
-### Keep
+Not every section should be equally loud.
 
-- dark base
-- magenta / cyan / yellow retro accents
-- sharp pixel display type for labels and key moments
-- mono / terminal voice for support language
-- one portrait as anchor
+- Hero: highest emotional intensity
+- Projects: crisp and proof-heavy
+- About: thoughtful and authored
+- Experience: quiet and structured
+- Skills: systematic
+- Writing: editorial
+- Contact: bright and decisive
 
-### Use Carefully
+## Mobile Rules
 
-- scanlines
-- glitch effects
-- neon glow
-- wireframe 3D
-
-### Avoid
-
-- making every section equally loud
-- long unreadable all-caps paragraphs
-- heavy motion on mobile
-- 3D that runs on every device by default
+- stack sections cleanly with no horizontal overflow
+- simplify floating card density in the hero
+- reduce or disable 3D by default on smaller devices
+- preserve clear spacing rhythm
+- keep tap targets generous in nav, chat, and contact
 
 ## Implementation Guardrails
 
-- mobile-first behavior must remain solid
-- no horizontal overflow from hero, marquee, or floating assistant
-- all important content must work without WebGL
-- retro language should still be understandable by recruiters
-- the page should feel like a product portfolio, not only a visual theme
+- mobile-first behavior must stay solid
+- important content must render before enhancements
+- no critical dependency on heavy animation
+- all text must stay recruiter-readable
+- visual polish should make the proof stronger, not noisier
 
-## Recommended Next Artifact
+## Supporting Artifact
 
-After this wireframe is approved, create:
-
-- a visual reference board in HTML or Figma style
-
-That board should define:
-
-- spacing rhythm
-- exact card proportions
-- hero composition
-- desktop/mobile states
-- color distribution per section
+- Design doc: [docs/engineered-dark-design-doc.md](./engineered-dark-design-doc.md)
+- Visual reference board: [docs/retro-engineer-reference-board.html](./retro-engineer-reference-board.html)
