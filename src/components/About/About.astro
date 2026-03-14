@@ -1,30 +1,61 @@
 ---
-import { assetPath } from "../../utils/assets";
+const takes = [
+  "Premature abstraction is the real enemy, not code duplication.",
+  "Performance is UX, even when the gain is subtle.",
+  "Pragmatism beats purity when the product is on the line.",
+  "Type systems are documentation that compiles.",
+];
+
+const obsessions = [
+  "React architecture and where state actually belongs",
+  "Tauri apps that feel native across operating systems",
+  "Motion that earns its frame budget",
+  "Writing that is honest instead of impressive",
+];
 ---
 
-<section class="px-4 py-10 sm:px-6 lg:px-10" id="about" data-reveal="left">
-  <div
-    class="mx-auto grid w-full max-w-6xl gap-8 rounded-2xl border-2 border-neon-cyan bg-neon-ink/90 p-6 shadow-card lg:grid-cols-[1fr_1.5fr] lg:items-center lg:p-10"
-  >
-    <img
-      src={assetPath("about/MyPhoto.png")}
-      alt="Tharun profile"
-      class="retro-image w-full rounded-xl border-2 border-neon-pink object-cover"
-      loading="lazy"
-      decoding="async"
-    />
-    <div class="space-y-4">
-      <h2 class="font-display text-2xl uppercase text-neon-cyan sm:text-3xl">About Me</h2>
-      <p class="text-base leading-relaxed text-neon-cream sm:text-lg">
-        I&apos;m Tharun from Coimbatore. I graduated with a B.Sc. in Mathematics in 2022 and worked
-        in asset management at Cognizant Technical Solutions for 17 months. My current direction is
-        full stack development, where I combine structured problem-solving with modern web product
-        execution.
+<section class="section" id="about">
+  <div class="section__inner about-grid">
+    <div data-reveal="left">
+      <p class="section-head__kicker">About</p>
+      <h2 class="about__title">
+        I think in <span>systems</span>, sweat the final 10%, and treat every interaction like a
+        contract.
+      </h2>
+      <p class="about__copy">
+        I graduated in Mathematics, spent 17 months in asset management at Cognizant, and moved
+        deeper into software through deliberate project work and focused upskilling. What pulls me
+        in now is the seam between product thinking and implementation: the interface details,
+        performance decisions, and structural choices that make something feel complete.
       </p>
-      <p class="text-base leading-relaxed text-neon-cream sm:text-lg">
-        I&apos;m actively upskilling through Scaler and building projects that stretch both backend
-        logic and frontend craft. This portfolio highlights that shift.
-      </p>
+      <div class="take-list">
+        {takes.map((take) => <article class="take-card"><p>{take}</p></article>)}
+      </div>
+    </div>
+
+    <div class="about-side" data-reveal="right">
+      <article class="info-card">
+        <p class="info-card__kicker">Currently obsessing over</p>
+        <div class="info-stack">
+          {obsessions.map((item) => <p class="info-card__item">{item}</p>)}
+        </div>
+      </article>
+
+      <article class="info-card">
+        <p class="info-card__kicker">How I work</p>
+        <p class="info-card__body">
+          I like interfaces that feel considered, systems that scale without drama, and code that
+          stays readable after the excitement of shipping is gone.
+        </p>
+      </article>
+
+      <article class="info-card info-card--soft">
+        <p class="info-card__kicker">Built with intention</p>
+        <p class="info-card__body">
+          Astro for delivery, a dark editorial layout for clarity, and motion used carefully so the
+          experience still holds up when the effects are gone.
+        </p>
+      </article>
     </div>
   </div>
 </section>

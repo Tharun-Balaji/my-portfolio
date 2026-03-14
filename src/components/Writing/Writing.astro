@@ -1,0 +1,115 @@
+---
+const mediumUsername = "tharunbalaji110";
+const fallbackPosts = [
+  {
+    title: "Why I stopped using useEffect for everything",
+    date: "Medium",
+    readTime: "Engineering notes",
+    summary:
+      "A writing slot for frontend architecture, state decisions, and the product tradeoffs that show up after the first clean implementation.",
+    link: `https://medium.com/@${mediumUsername}`,
+  },
+  {
+    title: "The abstraction that ages well",
+    date: "Process",
+    readTime: "Engineering opinion",
+    summary: "A place for honest writing about what scales, what drifts, and what I would change in hindsight.",
+    link: `https://medium.com/@${mediumUsername}`,
+  },
+  {
+    title: "Measuring what actually matters",
+    date: "Performance",
+    readTime: "Frontend systems",
+    summary: "Writing that focuses on user-visible outcomes instead of vanity metrics.",
+    link: `https://medium.com/@${mediumUsername}`,
+  },
+];
+---
+
+<section class="section section--surface" id="writing">
+  <div class="section__inner">
+    <div class="section-head" data-reveal="up">
+      <p class="section-head__kicker">Writing</p>
+      <h2 class="section-head__title">Technical writing with a point of view.</h2>
+      <p class="section-head__copy">
+        Published on Medium. Engineering notes that try to be useful, specific, and honest.
+      </p>
+    </div>
+
+    <div class="writing-grid" id="writing-feed" data-medium={mediumUsername} data-reveal="up">
+      <article class="writing-card writing-card--feature">
+        <div class="writing-card__cover">Medium RSS hero</div>
+        <div>
+          <p class="writing-card__meta">{fallbackPosts[0].date} · {fallbackPosts[0].readTime}</p>
+          <h3>{fallbackPosts[0].title}</h3>
+          <p>{fallbackPosts[0].summary}</p>
+          <a href={fallbackPosts[0].link} target="_blank" rel="noopener noreferrer">Read on Medium -&gt;</a>
+        </div>
+      </article>
+
+      {
+        fallbackPosts.slice(1).map((post) => (
+          <article class="writing-card">
+            <p class="writing-card__meta">{post.date} · {post.readTime}</p>
+            <h3>{post.title}</h3>
+            <p>{post.summary}</p>
+            <a href={post.link} target="_blank" rel="noopener noreferrer">Read -&gt;</a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  const feed = document.getElementById("writing-feed");
+  const medium = feed?.getAttribute("data-medium");
+
+  const strip = (value: string) => value.replace(/<[^>]*>/g, "").trim();
+  const readTime = (value: string) => `${Math.max(1, Math.ceil(strip(value).split(/\s+/).length / 200))} min read`;
+  const formatDate = (value: string) =>
+    new Date(value).toLocaleDateString("en-US", {
+      month: "short",
+      year: "numeric",
+    });
+
+  if (feed && medium) {
+    fetch(`https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${medium}&count=3`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status !== "ok" || !Array.isArray(data.items) || data.items.length === 0) {
+          return;
+        }
+
+        const [hero, ...rest] = data.items.slice(0, 3);
+
+        const heroHtml = `
+          <article class="writing-card writing-card--feature">
+            <div class="writing-card__cover"${hero.thumbnail ? ` style="background-image:url('${hero.thumbnail}');"` : ""}>Medium RSS hero</div>
+            <div>
+              <p class="writing-card__meta">${formatDate(hero.pubDate)} · ${readTime(hero.content)}</p>
+              <h3>${hero.title}</h3>
+              <p>${strip(hero.description).slice(0, 180)}...</p>
+              <a href="${hero.link}" target="_blank" rel="noopener noreferrer">Read on Medium -&gt;</a>
+            </div>
+          </article>
+        `;
+
+        const restHtml = rest
+          .map(
+            (post: { pubDate: string; content: string; title: string; description: string; link: string }) => `
+              <article class="writing-card">
+                <p class="writing-card__meta">${formatDate(post.pubDate)} · ${readTime(post.content)}</p>
+                <h3>${post.title}</h3>
+                <p>${strip(post.description).slice(0, 140)}...</p>
+                <a href="${post.link}" target="_blank" rel="noopener noreferrer">Read -&gt;</a>
+              </article>
+            `
+          )
+          .join("");
+
+        feed.innerHTML = heroHtml + restHtml;
+      })
+      .catch(() => {});
+  }
+</script>

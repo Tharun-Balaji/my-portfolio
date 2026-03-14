@@ -1,42 +1,8 @@
-<section aria-hidden="true" class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-  <div
-    id="scroll-progress"
-    class="fixed left-0 top-0 z-50 h-1 w-0 bg-neon-orange transition-[width] duration-100"
-  >
-  </div>
-  <div
-    id="scroll-halo"
-    class="absolute left-1/2 top-1/2 h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-neon-violet/20 blur-3xl"
-  >
-  </div>
-  <div
-    id="orb-one"
-    class="absolute left-[-68px] top-[20%] h-40 w-40 rounded-3xl border-2 border-neon-cyan/70 bg-neon-cyan/20 shadow-card"
-  >
-  </div>
-  <div
-    id="orb-two"
-    class="absolute right-[-52px] top-[56%] h-32 w-32 rounded-full border-2 border-neon-pink/70 bg-neon-pink/20 shadow-card"
-  >
-  </div>
-</section>
-
-<button
-  id="scroll-top"
-  type="button"
-  class="retro-btn fixed bottom-5 right-5 z-40 hidden rounded-full px-3 py-2 text-xs"
-  aria-label="Scroll to top"
->
-  Top
-</button>
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
 <script>
+  const progress = document.getElementById("scroll-progress");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const progressBar = document.getElementById("scroll-progress");
-  const halo = document.getElementById("scroll-halo");
-  const orbOne = document.getElementById("orb-one");
-  const orbTwo = document.getElementById("orb-two");
-  const topButton = document.getElementById("scroll-top");
   const reveals = document.querySelectorAll("[data-reveal]");
 
   if (reveals.length > 0) {
@@ -49,7 +15,7 @@
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.14, rootMargin: "0px 0px -40px 0px" }
     );
 
     reveals.forEach((element) => observer.observe(element));
@@ -60,32 +26,16 @@
     const maxScroll = Math.max(document.body.scrollHeight - window.innerHeight, 1);
     const ratio = Math.min(scrollTop / maxScroll, 1);
 
-    if (progressBar) {
-      progressBar.style.width = `${ratio * 100}%`;
-    }
-
-    if (!reduceMotion && orbOne) {
-      orbOne.style.transform = `translateY(${ratio * 180}px) rotate(${ratio * 18}deg)`;
-    }
-
-    if (!reduceMotion && orbTwo) {
-      orbTwo.style.transform = `translateY(${-ratio * 140}px) rotate(${-ratio * 22}deg)`;
-    }
-
-    if (!reduceMotion && halo) {
-      halo.style.opacity = `${0.12 + ratio * 0.22}`;
-      halo.style.transform = `translate(-50%, -50%) scale(${1 + ratio * 0.35})`;
-    }
-
-    if (topButton) {
-      topButton.classList.toggle("hidden", ratio <= 0.12);
+    if (progress) {
+      progress.style.width = `${ratio * 100}%`;
     }
   };
 
   window.addEventListener("scroll", onScroll, { passive: true });
-  topButton?.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+
+  if (reduceMotion) {
+    reveals.forEach((element) => element.classList.add("is-visible"));
+  }
 
   onScroll();
 </script>

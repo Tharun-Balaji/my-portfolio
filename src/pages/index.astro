@@ -2,25 +2,27 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar/Navbar.astro";
 import Hero from "../components/Hero/Hero.astro";
+import Projects from "../components/Projects/Projects.astro";
 import About from "../components/About/About.astro";
 import Experience from "../components/Experience/Experience.astro";
 import Skills from "../components/skills/Skills.astro";
-import Projects from "../components/Projects/Projects.astro";
+import Writing from "../components/Writing/Writing.astro";
+import Contact from "../components/Contact/Contact.astro";
 import ChatbotTeaser from "../components/Chatbot/ChatbotTeaser.astro";
 import ScrollEffects from "../components/Motion/ScrollEffects.astro";
-import Contact from "../components/Contact/Contact.astro";
 ---
 
-<Layout>
+<Layout title="Tharun Balaji — Frontend Engineer">
   <ScrollEffects />
   <Navbar />
   <main id="main-content">
     <Hero />
+    <Projects />
     <About />
     <Experience />
     <Skills />
-    <Projects />
-    <ChatbotTeaser />
+    <Writing />
     <Contact />
   </main>
+  <ChatbotTeaser />
 </Layout>

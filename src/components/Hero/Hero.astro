@@ -1,65 +1,72 @@
 ---
 import { assetPath } from "../../utils/assets";
+
+const stats = [
+  { value: "17 months", label: "professional experience" },
+  { value: "30%", label: "manual effort reduced" },
+  { value: "$25K", label: "saved in license renewal" },
+];
+
+const cards = [
+  { label: "Current stack", value: "React", detail: "TypeScript · Astro · Next.js" },
+  { label: "Focus", value: "UI systems", detail: "performance · interaction · polish" },
+  { label: "Availability", value: "Open", detail: "full-time frontend roles" },
+  { label: "Writes on", value: "Medium", detail: "engineering and product craft" },
+  { label: "Location", value: "Chennai", detail: "India" },
+];
 ---
 
-<section class="px-4 pb-14 pt-10 sm:px-6 lg:px-10 lg:pt-14" id="home" data-reveal="up">
-  <div
-    class="mx-auto grid w-full max-w-6xl gap-8 rounded-2xl border-2 border-neon-yellow bg-neon-ink/90 p-6 shadow-card backdrop-blur lg:grid-cols-[1.3fr_1fr] lg:items-center lg:p-10"
-  >
-    <div class="space-y-6">
-      <p
-        class="inline-flex rounded-full border-2 border-neon-orange bg-neon-orange/20 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-neon-cream"
-      >
-        Frontend Engineer Mode
-      </p>
-      <h1
-        class="font-display text-3xl uppercase leading-tight text-neon-yellow sm:text-4xl lg:text-5xl"
-      >
-        Hi, I&apos;m Tharun. I Build Loud, Fast Web Experiences.
+<section class="hero section section--hero" id="home">
+  <div class="hero__glow hero__glow--a"></div>
+  <div class="hero__glow hero__glow--b"></div>
+  <div class="section__inner hero__inner">
+    <div class="hero__copy" data-reveal="up">
+      <p class="eyebrow eyebrow--status">Open to full-time frontend roles · Chennai, IN</p>
+      <h1 class="hero__title">
+        Engineer the <span>interface.</span>
+        <br />
+        Shape the product.
       </h1>
-      <p class="max-w-2xl text-base text-neon-cream/95 sm:text-lg">
-        Aspiring software developer focused on clean architecture, expressive interfaces, and
-        practical product thinking. I like turning complex ideas into UI that feels alive without
-        becoming noisy.
+      <p class="hero__lede">
+        I build frontend systems that are fast by design, product-aware, and polished enough to
+        survive real use.
       </p>
-      <div class="flex flex-wrap gap-3">
-        <a
-          href="mailto:tharunbalaji110@gmail.com"
-          class="retro-btn px-5 py-3 text-sm"
-        >
-          Contact Me
-        </a>
-        <a
-          href="https://medium.com/@tharunbalaji110"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="retro-btn retro-btn-alt px-5 py-3 text-sm"
-        >
-          Read Articles
-        </a>
+      <div class="hero__actions">
+        <a class="button button--primary" href="#projects">View Work -&gt;</a>
+        <a class="button button--ghost" href="#writing">Read Writing</a>
       </div>
-      <ul class="grid gap-2 text-sm text-neon-cream/90 sm:grid-cols-3">
-        <li class="rounded-lg border border-neon-cyan/50 bg-neon-ink/80 px-3 py-2">
-          React + Astro
-        </li>
-        <li class="rounded-lg border border-neon-cyan/50 bg-neon-ink/80 px-3 py-2">
-          Performance Focused
-        </li>
-        <li class="rounded-lg border border-neon-cyan/50 bg-neon-ink/80 px-3 py-2">
-          Design + Engineering
-        </li>
-      </ul>
+      <div class="hero__stats">
+        {
+          stats.map((stat) => (
+            <div class="hero__stat">
+              <div class="hero__stat-value">{stat.value}</div>
+              <div class="hero__stat-label">{stat.label}</div>
+            </div>
+          ))
+        }
+      </div>
     </div>
-    <div class="relative">
-      <div class="absolute -left-3 -top-3 h-full w-full rounded-2xl border-2 border-neon-cyan">
+
+    <div class="hero__visual" data-reveal="left">
+      <div class="hero__mesh"></div>
+      <div class="hero__portrait">
+        <img
+          src={assetPath("hero/MyPhoto.png")}
+          alt="Portrait of Tharun Balaji"
+          loading="eager"
+          decoding="async"
+        />
       </div>
-      <img
-        src={assetPath("hero/MyPhoto.png")}
-        alt="Portrait of Tharun"
-        class="retro-image relative z-10 aspect-square w-full rounded-2xl border-2 border-neon-yellow object-cover"
-        loading="eager"
-        decoding="async"
-      />
+
+      {
+        cards.map((card, index) => (
+          <article class={`hero__card hero__card--${index + 1}`}>
+            <p class="hero__card-label">{card.label}</p>
+            <p class="hero__card-value">{card.value}</p>
+            <p class="hero__card-detail">{card.detail}</p>
+          </article>
+        ))
+      }
     </div>
   </div>
 </section>
