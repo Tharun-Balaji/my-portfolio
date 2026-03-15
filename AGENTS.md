@@ -1,33 +1,30 @@
-# AGENTS.md
+# Layer 1: The Map (Global Identity & Navigation)
+This is the root-level instruction manual for all AI agents.
 
-## Workflow Rules
+## Project Identity
+**Project:** My Portfolio
+**Purpose:** A high-performance, developer-focused portfolio site.
+**Stack:** Astro, React, Tailwind CSS, TypeScript.
 
-- Keep commits small and focused. Do not bundle unrelated changes in one commit.
-- Write clear commit messages that explain what changed and why.
-- Commit incrementally as work progresses so the history documents the process.
-- Prefer one logical change per commit (for example: styling, animation, config, docs).
-- `main` is the stable branch.
-- `dev` is the shared integration branch for active development.
-- Start new work from `dev` by default.
-- If a task depends on another in-progress branch, create the child branch from that parent branch instead of branching directly from `dev`.
-- Use branch names:
-  - `feature/<short-description>` for features
-  - `fix/<short-description>` for bug fixes
-- Merge every branch back into its parent branch first.
-- Use GitHub CLI (`gh`) to open pull requests for merges whenever possible.
-- Typical merge flow:
-  1. `main` -> `dev`
-  2. `dev` -> `feature/...` or `fix/...`
-  3. child branch -> parent branch by PR
-  4. `dev` -> `main` by PR when ready
-- Keep commits small and focused. Do not bundle unrelated changes in one commit.
-- Write clear commit messages that explain what changed and why.
-- Commit incrementally as work progresses so the history documents the process.
-- Prefer one logical change per commit, for example: styling, animation, config, docs.
-- Before each commit or PR, run the relevant checks for the scope of change.
-- Confirm no unrelated files are staged before committing or opening a PR.
+## The Floor Plan (Workspace Routing)
+All work MUST follow the 3-layer routing through these specific "Rooms":
 
-## Notes
+### 1. Ideation (The Product Management Room)
+- **ideation/01_brainstorm/**: Ideate new features, strategy, and user experience.
 
-- Keep this file up to date when workflow preferences change.
-- Unless explicitly requested otherwise, agents should read and follow this file on every prompt for this repository.
+### 2. Production (The Developer Factory)
+1.  **production/01_brief/**: Define feature requirements.
+2.  **production/02_spec/**: Technical plans and architecture.
+3.  **production/03_build/**: Active coding and implementation.
+4.  **production/04_output/**: Final verification and documentation.
+
+## Functional Layer (Skills & Reference)
+- **shared/**: Contains stable rules (Style Guides, Domain Knowledge).
+- **[room]/output/**: Contains transient artifacts (The "Product").
+
+---
+
+## Workflow Rules (Layer 3: Functional)
+- Keep commits small and focused. One logical change per commit.
+- Document ideation ideas via Git commits for traceability.
+- Refer to `TASK.md` for current routing instructions.
