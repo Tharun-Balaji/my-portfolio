@@ -1,32 +1,34 @@
-# Layer 4: Technical Specification - Phase 1: Content Restructuring
+# Layer 4: Technical Specification - Phase 1: Content Restructuring (Updated)
 
-## Feature: "Impact-First" Hero and Projects
+## Feature: "Impact-First" Hero and Projects (with 3D & GSAP)
 
 ### 1. Technical Architecture
-- **Framework:** Astro (Static) for content-heavy sections, React (Hydrated) for interactive cards.
-- **Styling:** Tailwind CSS with a primary color palette of #08090E (Base) and #0E1118 (Surface).
-- **Typography:** 
-    - Display: Syne
-    - Body: IBM Plex Sans
-    - UI Elements: JetBrains Mono
+- **Framework:** Astro (Static) for content, React (Hydrated) for interactive cards.
+- **3D Engine:** **Three.js** for the "Hero Enhancement" (Motion Tier 3).
+- **Animation:** **GSAP** for high-precision text reveals and smooth layout transitions (Motion Tier 2).
+- **Styling:** Tailwind CSS with #08090E (Base) and #0E1118 (Surface).
 
-### 2. Hero Component Structure
-- **Hero.astro:** Primary shell.
-- **StatusLine.tsx:** React component with a dynamic "Availability" status.
-- **ProofStats.astro:** Simple grid-based component for "Impact" metrics.
-- **ActionButtons.astro:** High-contrast buttons with custom hover states (Cyan/Lime accents).
+### 2. Motion Strategy (Tiered)
+- **Tier 1 (Base):** Standard CSS transitions. Zero dependencies.
+- **Tier 2 (GSAP):**
+    - gsap.from() for headline reveals.
+    - ScrollTrigger for bento card entrance animations.
+    - Glow drift and hover effects.
+- **Tier 3 (Three.js):**
+    - ThreeScene.tsx: A lightweight, interactive 3D background or "Proof Card" enhancement.
+    - Gated by device capability check to ensure performance.
 
-### 3. Project Bento Grid
-- **Projects.astro:** Container using CSS Grid for the bento layout.
-- **ProjectCard.tsx:** Reusable React component for interactive project details.
-- **Bento Logic:** One "Flagship" project with a col-span-2 on larger screens.
-- **Narrative Data:** Move project content into a structured data format (JSON/Markdown) to follow the "Problem -> Change -> Result" pattern.
+### 3. Component Updates
+- **Hero/Scene3D.tsx:** A React-based Three.js scene wrapper.
+- **Animation/Entrance.tsx:** A GSAP-powered utility for standard reveals.
+- **Performance:** Use IntersectionObserver to pause Three.js rendering when not in view.
 
 ### 4. Implementation Steps
-1. Create src/components/Hero/NewHero.astro and its supporting sub-components.
-2. Develop src/components/Projects/BentoGrid.astro and ProjectCard.tsx.
-3. Migrate project data to a new structured format in src/data/projects.json.
-4. Test responsive layout behaviors (Grid collapse on mobile).
+1. **Install dependencies: 
+pm install three gsap @types/three.**
+2. Setup src/components/Motion/gsap-config.ts for unified animation defaults.
+3. Create src/components/Hero/HeroScene.tsx (Three.js).
+4. Integrate GSAP reveals into NewHero.astro and BentoGrid.astro.
 
 ---
-**Status:** Phase 1 Specification complete. Proceed to Build Room.
+**Status:** Phase 1 Specification updated with 3D/GSAP. Proceed to Build Room.
