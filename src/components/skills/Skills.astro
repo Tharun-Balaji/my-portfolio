@@ -1,30 +1,70 @@
 ---
-import skills from "../../data/skills.json";
-import { assetPath } from "../../utils/assets";
+const workSkills = [
+  {
+    title: "React + TypeScript",
+    note: "Daily driver for component systems, state, and interface polish.",
+    level: "Expert",
+  },
+  {
+    title: "React Native",
+    note: "Cross-platform product work with a frontend-first mindset.",
+    level: "Expert",
+  },
+  {
+    title: "Next.js / Astro",
+    note: "Rendering tradeoffs, content delivery, and app structure.",
+    level: "Expert",
+  },
+  {
+    title: "Node.js + APIs",
+    note: "Enough backend fluency to ship product work end to end.",
+    level: "Proficient",
+  },
+  {
+    title: "WebGL / Three.js",
+    note: "Used carefully and only when the experience earns the cost.",
+    level: "Careful",
+  },
+];
+
+const labTools = ["Bun", "Rust", "Tauri", "Expo", "Drizzle", "SQLite", "Supabase", "tRPC", "Zod"];
 ---
 
-<section class="px-4 py-10 sm:px-6 lg:px-10" id="skills" data-reveal="up">
-  <div
-    class="mx-auto w-full max-w-6xl rounded-2xl border-2 border-neon-pink bg-neon-ink/90 p-6 shadow-card lg:p-10"
-  >
-    <h2 class="font-display text-2xl uppercase text-neon-pink sm:text-3xl">Skills</h2>
-    <div class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-      {
-        skills.map((skill) => (
-          <article class="rounded-xl border-2 border-neon-yellow/60 bg-neon-ink px-3 py-4 text-center transition hover:-translate-y-1">
-            <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-neon-cyan bg-neon-cream/90 p-3">
-              <img
-                src={assetPath(skill.imageSrc)}
-                alt={skill.title}
-                class="h-full w-full object-contain"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <p class="mt-3 text-sm font-semibold text-neon-cream sm:text-base">{skill.title}</p>
-          </article>
-        ))
-      }
+<section class="section" id="skills">
+  <div class="section__inner">
+    <div class="section-head" data-reveal="up">
+      <p class="section-head__kicker">Skills & Lab</p>
+      <h2 class="section-head__title">Production confidence with room for curiosity.</h2>
+      <p class="section-head__copy">
+        Left is what I trust in production. Right is what I reach for when I'm building for myself.
+      </p>
+    </div>
+
+    <div class="skill-layout" data-reveal="up">
+      <article class="skill-panel">
+        <p class="skill-panel__kicker">Work Skills</p>
+        <div class="skill-list">
+          {
+            workSkills.map((skill) => (
+              <div class="skill-list__item">
+                <div>
+                  <h3>{skill.title}</h3>
+                  <p>{skill.note}</p>
+                </div>
+                <span class={`skill-badge skill-badge--${skill.level.toLowerCase()}`}>{skill.level}</span>
+              </div>
+            ))
+          }
+        </div>
+      </article>
+
+      <article class="skill-panel">
+        <p class="skill-panel__kicker">Tools Lab</p>
+        <div class="tool-grid">
+          {labTools.map((tool) => <div class="tool-chip">{tool}</div>)}
+        </div>
+        <div class="tool-note">Last shipped with Tauri + Rust + React while building desktop experiments and utility apps.</div>
+      </article>
     </div>
   </div>
 </section>

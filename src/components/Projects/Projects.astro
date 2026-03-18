@@ -1,19 +1,73 @@
 ---
 import projects from "../../data/projects.json";
-import ProjectCard from "./ProjectCard.astro";
+import { assetPath } from "../../utils/assets";
+
+const featuredProjects = [
+  {
+    ...projects.find((project) => project.title === "Book My Show Clone"),
+    badge: "Full stack",
+    problem: "A booking product only works if discovery, selection, and checkout feel connected.",
+    summary:
+      "MERN build with auth, movie discovery, bookings, and Stripe payments stitched into one clear product flow.",
+  },
+  {
+    ...projects.find((project) => project.title === "Mern-chat-app"),
+    badge: "Realtime",
+    problem: "Messaging products fall apart when state, sockets, and interface feedback drift out of sync.",
+    summary:
+      "Real-time MERN chat app powered by Socket.io, focused on fast feedback loops and clear conversation UI.",
+  },
+  {
+    ...projects.find((project) => project.title === "Car Showcase App"),
+    badge: "SSR",
+    problem: "Content-heavy product pages need search visibility and performance without sacrificing polish.",
+    summary:
+      "Next.js showcase app that leans on server rendering for speed, discoverability, and a cleaner browsing experience.",
+  },
+  {
+    ...projects.find((project) => project.title === "React Form App"),
+    badge: "Type-safe",
+    problem: "Forms fail when validation, interaction, and developer experience all feel bolted on.",
+    summary:
+      "Typed form experience built with TypeScript, Zod, and React Hook Form to keep the interface and validation model aligned.",
+  },
+].filter(Boolean);
 ---
 
-<section class="px-4 py-10 sm:px-6 lg:px-10" id="projects" data-reveal="right">
-  <div
-    class="mx-auto w-full max-w-6xl rounded-2xl border-2 border-neon-yellow bg-neon-ink/90 p-6 shadow-card lg:p-10"
-  >
-    <h2 class="font-display text-2xl uppercase text-neon-yellow sm:text-3xl">Projects</h2>
-    <p class="mt-2 max-w-3xl text-sm text-neon-cream/90 sm:text-base">
-      Selected work across frontend apps, full-stack products, and experiments in interaction-heavy
-      experiences.
-    </p>
-    <div class="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-      {projects.map((project) => <ProjectCard project={project} />)}
+<section class="section section--surface" id="projects">
+  <div class="section__inner">
+    <div class="section-head" data-reveal="up">
+      <p class="section-head__kicker">Selected Work</p>
+      <h2 class="section-head__title">Ranked proof, not equal cards.</h2>
+      <p class="section-head__copy">
+        The page leads with shipped work first. Each project starts with the product problem and
+        makes the build choice legible.
+      </p>
+    </div>
+
+    <div class="project-grid" data-reveal="up">
+      {
+        featuredProjects.map((project, index) => (
+          <article class={`project-card ${index === 0 ? "project-card--feature" : ""} ${index === 1 ? "project-card--tall" : ""}`}>
+            <div class="project-card__media">
+              {project.imageSrc ? (
+                <img src={assetPath(project.imageSrc)} alt={project.title} loading="lazy" decoding="async" />
+              ) : null}
+            </div>
+            <p class="project-card__badge">{project.badge}</p>
+            <p class="project-card__problem">Problem -&gt; {project.problem}</p>
+            <h3 class="project-card__title">{project.title}</h3>
+            <p class="project-card__copy">{project.summary}</p>
+            <div class="tag-list">
+              {project.skills?.map((skill: string) => <span class="tag">{skill}</span>)}
+            </div>
+            <div class="project-card__links">
+              <a href={project.demo} target="_blank" rel="noopener noreferrer">Live Demo -&gt;</a>
+              <a href={project.source} target="_blank" rel="noopener noreferrer">Source</a>
+            </div>
+          </article>
+        ))
+      }
     </div>
   </div>
 </section>

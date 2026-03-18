@@ -1,60 +1,46 @@
----
-import { assetPath } from "../../utils/assets";
----
-
-<footer class="px-4 pb-10 pt-10 sm:px-6 lg:px-10" id="contact" data-reveal="up">
-  <div
-    class="mx-auto grid w-full max-w-6xl gap-6 rounded-2xl border-2 border-neon-cyan bg-neon-ink/90 p-6 shadow-card lg:grid-cols-[1fr_1.6fr] lg:p-10"
-  >
-    <div>
-      <h2 class="font-display text-2xl uppercase text-neon-cyan sm:text-3xl">Contact</h2>
-      <p class="mt-2 text-neon-cream/90">Let&apos;s build something sharp and useful.</p>
+<footer class="section section--contact" id="contact">
+  <div class="section__inner">
+    <div class="contact-shell" data-reveal="up">
+      <p class="eyebrow eyebrow--status">Open to full-time frontend roles</p>
+      <h2 class="contact-shell__title">
+        Let's build something <span>worth building.</span>
+      </h2>
+      <p class="contact-shell__copy">
+        I respond within 24 hours. No intro calls for intro calls. Come with a real problem, a real
+        role, or a product that needs a sharper interface.
+      </p>
+      <button class="contact-shell__email" id="email-copy" type="button" data-email="tharunbalaji110@gmail.com">
+        tharunbalaji110@gmail.com
+      </button>
+      <p class="contact-shell__toast" id="email-toast">Copied to clipboard</p>
+      <div class="contact-shell__links">
+        <a href="https://www.linkedin.com/in/tharun-balaji-j-a65402260/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/Tharun-Balaji" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://medium.com/@tharunbalaji110" target="_blank" rel="noopener noreferrer">Medium</a>
+        <a href="mailto:tharunbalaji110@gmail.com">Email</a>
+      </div>
     </div>
-    <ul class="grid gap-3">
-      <li
-        class="flex flex-wrap items-center gap-3 rounded-lg border border-neon-yellow/70 px-3 py-3"
-      >
-        <img
-          src={assetPath("contact/emailIcon.png")}
-          alt="Email icon"
-          class="h-6 w-6"
-          loading="lazy"
-        />
-        <a href="mailto:tharunbalaji110@gmail.com" class="text-sm text-neon-cream sm:text-base">
-          tharunbalaji110@gmail.com
-        </a>
-      </li>
-      <li
-        class="flex flex-wrap items-center gap-3 rounded-lg border border-neon-yellow/70 px-3 py-3"
-      >
-        <img
-          src={assetPath("contact/linkedinIcon.png")}
-          alt="LinkedIn icon"
-          class="h-6 w-6"
-          loading="lazy"
-        />
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.linkedin.com/in/tharun-balaji-j-a65402260/"
-          class="text-sm text-neon-cream sm:text-base"
-        >
-          linkedin.com/in/tharun-balaji-j-a65402260
-        </a>
-      </li>
-      <li
-        class="flex flex-wrap items-center gap-3 rounded-lg border border-neon-yellow/70 px-3 py-3"
-      >
-        <img
-          src={assetPath("contact/githubIcon.png")}
-          alt="GitHub icon"
-          class="h-6 w-6"
-          loading="lazy"
-        />
-        <a href="https://github.com/Tharun-Balaji" class="text-sm text-neon-cream sm:text-base">
-          github.com/Tharun-Balaji
-        </a>
-      </li>
-    </ul>
   </div>
 </footer>
+
+<script>
+  const emailButton = document.getElementById("email-copy");
+  const emailToast = document.getElementById("email-toast");
+
+  emailButton?.addEventListener("click", async () => {
+    const email = emailButton.getAttribute("data-email");
+
+    if (!email) return;
+
+    try {
+      await navigator.clipboard.writeText(email);
+
+      if (emailToast) {
+        emailToast.classList.add("is-visible");
+        window.setTimeout(() => emailToast.classList.remove("is-visible"), 2200);
+      }
+    } catch {
+      window.location.href = `mailto:${email}`;
+    }
+  });
+</script>

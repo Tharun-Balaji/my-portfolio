@@ -1,48 +1,37 @@
 ---
 import history from "../../data/history.json";
-import { assetPath } from "../../utils/assets";
+
+const highlights: Record<string, string> = {
+  "HAM SME": "30% reduction in manual effort through automation support",
+  Trainee: "Completed training with a 4/5 performance rating",
+};
 ---
 
-<section class="px-4 py-10 sm:px-6 lg:px-10" id="experience" data-reveal="right">
-  <div class="mx-auto w-full max-w-6xl rounded-2xl border-2 border-neon-lime bg-neon-ink/90 p-6 shadow-card lg:p-10">
-    <h2 class="font-display text-2xl uppercase text-neon-lime sm:text-3xl">Experience Flow</h2>
+<section class="section section--surface" id="experience">
+  <div class="section__inner">
+    <div class="section-head" data-reveal="up">
+      <p class="section-head__kicker">Experience</p>
+      <h2 class="section-head__title">Outcome-first career story.</h2>
+      <p class="section-head__copy">
+        The experience section stays concise and anchored in what changed, not just what the role
+        description said.
+      </p>
+    </div>
 
-    <div class="relative mt-8">
-      <div class="absolute bottom-2 left-5 top-2 w-1 rounded-full bg-gradient-to-b from-neon-yellow via-neon-cyan to-neon-pink lg:left-1/2 lg:-translate-x-1/2"></div>
-
-      <ul class="space-y-8">
-        {
-          history.map((historyItem, index) => (
-            <li class="relative" data-reveal={index % 2 === 0 ? "left" : "right"}>
-              <span class="absolute left-4 top-8 z-10 h-4 w-4 rounded-full border-2 border-neon-yellow bg-neon-orange shadow-retro lg:left-1/2 lg:-translate-x-1/2"></span>
-
-              <article
-                class={`ml-14 rounded-xl border-2 border-neon-cyan/70 bg-neon-ink p-4 lg:ml-0 lg:w-[calc(50%-2rem)] ${index % 2 === 0 ? "lg:mr-auto" : "lg:ml-auto"}`}
-              >
-                <div class="flex flex-wrap items-center gap-4">
-                  <img
-                    src={assetPath(historyItem.imageSrc)}
-                    alt={`${historyItem.organization} logo`}
-                    class="h-12 w-12 rounded-full border border-neon-yellow bg-neon-cream p-1"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div>
-                    <h3 class="text-xl font-semibold text-neon-yellow">{historyItem.role}</h3>
-                    <p class="text-sm text-neon-cream/90">{historyItem.organization}</p>
-                    <p class="text-sm text-neon-cyan">{`${historyItem.startDate} - ${historyItem.endDate}`}</p>
-                  </div>
-                </div>
-                <ul class="mt-4 space-y-2 text-sm leading-relaxed text-neon-cream/95 sm:text-base">
-                  {historyItem.experiences.map((experience) => (
-                    <li>- {experience}</li>
-                  ))}
-                </ul>
-              </article>
-            </li>
-          ))
-        }
-      </ul>
+    <div class="timeline" data-reveal="up">
+      {
+        history.map((item) => (
+          <article class="timeline__item">
+            <div class="timeline__year">{item.startDate.split(",")[1]?.trim() ?? item.startDate}</div>
+            <div class="timeline__body">
+              <h3>{item.role}</h3>
+              <p class="timeline__meta">{item.organization} · {item.startDate} - {item.endDate}</p>
+              <p class="timeline__copy">{item.experiences[0]}</p>
+              <span class="timeline__highlight">{highlights[item.role] ?? item.experiences[item.experiences.length - 1]}</span>
+            </div>
+          </article>
+        ))
+      }
     </div>
   </div>
 </section>
