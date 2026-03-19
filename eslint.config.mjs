@@ -42,5 +42,11 @@ export default tseslint.config(
       "@typescript-eslint/triple-slash-reference": "off",
     },
   },
+  {
+    files: ["**/*.cjs"],
+    rules: {
+      "@typescript-eslint/no-require-imports": "off",
+    },
+  },
   eslintConfigPrettier
 );
