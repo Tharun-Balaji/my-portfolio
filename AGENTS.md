@@ -26,6 +26,7 @@
 - Prefer one logical change per commit, for example: styling, animation, config, docs.
 - Before each commit or PR, run the relevant checks for the scope of change.
 - Confirm no unrelated files are staged before committing or opening a PR.
+- For staged feature work, use the agent-agnostic workflow in `feature-workflow/WORKFLOW.md`. This file still remains the source of truth for repo-level git and review rules.
 
 ## Notes
 
