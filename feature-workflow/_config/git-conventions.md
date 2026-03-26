@@ -12,6 +12,7 @@
 
 - Keep each commit to one logical change.
 - Write a clear subject and a body that explains what changed, decisions made, and what comes next.
+- Unless the user explicitly asks not to, agents should commit completed logical work before handing off.
 - Confirm no unrelated files are staged before committing.
 - Run the relevant checks for the scope of change before each commit.
 

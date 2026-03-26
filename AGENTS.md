@@ -5,6 +5,8 @@
 - Keep commits small and focused. Do not bundle unrelated changes in one commit.
 - Write clear commit messages that explain what changed and why.
 - Commit incrementally as work progresses so the history documents the process.
+- Unless the user explicitly asks not to, agents should commit completed logical work before handing off.
+- Agents should not leave finished implementation only in the working tree. If work is intentionally left uncommitted, the reason must be explicit in the handoff.
 - Prefer one logical change per commit (for example: styling, animation, config, docs).
 - `main` is the stable branch.
 - `dev` is the shared integration branch for active development.
@@ -26,6 +28,7 @@
 - Prefer one logical change per commit, for example: styling, animation, config, docs.
 - Before each commit or PR, run the relevant checks for the scope of change.
 - Confirm no unrelated files are staged before committing or opening a PR.
+- Before ending a coding task, agents should verify whether there are completed staged or unstaged changes and either commit them or clearly explain why not.
 - For staged feature work, use the agent-agnostic workflow in `feature-workflow/WORKFLOW.md`. This file still remains the source of truth for repo-level git and review rules.
 
 ## Notes
