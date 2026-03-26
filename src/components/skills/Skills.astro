@@ -3,28 +3,77 @@ import skills from "../../data/skills.json";
 import { assetPath } from "../../utils/assets";
 ---
 
-<section class="px-4 py-10 sm:px-6 lg:px-10" id="skills" data-reveal="up">
-  <div
-    class="mx-auto w-full max-w-6xl rounded-2xl border-2 border-neon-pink bg-neon-ink/90 p-6 shadow-card lg:p-10"
-  >
-    <h2 class="font-display text-2xl uppercase text-neon-pink sm:text-3xl">Skills</h2>
-    <div class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-      {
-        skills.map((skill) => (
-          <article class="rounded-xl border-2 border-neon-yellow/60 bg-neon-ink px-3 py-4 text-center transition hover:-translate-y-1">
-            <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-neon-cyan bg-neon-cream/90 p-3">
-              <img
-                src={assetPath(skill.imageSrc)}
-                alt={skill.title}
-                class="h-full w-full object-contain"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <p class="mt-3 text-sm font-semibold text-neon-cream sm:text-base">{skill.title}</p>
-          </article>
-        ))
-      }
+<section class="section-shell" id="stack">
+  <div class="section-header" data-reveal="up">
+    <div>
+      <span class="eyebrow">CORE_STACK // DNA_SEQ</span>
+      <h2 class="section-heading">Capabilities grouped by how I actually build.</h2>
+      <p class="section-copy">
+        Instead of listing tools in a wall of icons, this section maps the stack into the working
+        modes that show up repeatedly across my portfolio projects.
+      </p>
     </div>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="skill-stack">
+    {
+      skills.map((skill, index) => (
+        <details
+          class="skill-accordion"
+          data-reveal="up"
+          data-skill-accordion
+          open={index === 0}
+        >
+          <summary class="skill-accordion__summary">
+            <div class="skill-accordion__meta">
+              <div class="skill-accordion__icon">
+                <img
+                  src={assetPath(skill.imageSrc)}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+
+              <div>
+                <span class="skill-accordion__serial">TAG_{String(index + 1).padStart(2, "0")}</span>
+                <h3>{skill.title}</h3>
+              </div>
+            </div>
+
+            <span class="skill-accordion__chevron">+</span>
+          </summary>
+
+          <div class="skill-accordion__content">
+            <p>{skill.summary}</p>
+            <div class="chip-row">
+              {skill.tags.map((tag) => <span class="chip">{tag}</span>)}
+            </div>
+          </div>
+        </details>
+      ))
+    }
   </div>
 </section>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const accordions = Array.from(
+      document.querySelectorAll<HTMLDetailsElement>("[data-skill-accordion]"),
+    );
+    accordions.forEach((accordion) => {
+      accordion.addEventListener("toggle", () => {
+        if (!accordion.open) {
+          return;
+        }
+
+        accordions.forEach((otherAccordion) => {
+          if (otherAccordion !== accordion) {
+            otherAccordion.open = false;
+          }
+        });
+      });
+    });
+  });
+</script>

@@ -1,21 +1,152 @@
-<section class="px-4 py-10 sm:px-6 lg:px-10" id="chatbot" data-reveal="left">
-  <div
-    class="mx-auto w-full max-w-6xl rounded-2xl border-2 border-neon-pink bg-neon-ink/90 p-6 shadow-card lg:p-10"
+<div class="console-dock">
+  <button
+    class="console-toggle"
+    id="console-toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls="console-panel"
+    aria-label="Open portfolio console"
   >
-    <h2 class="font-display text-2xl uppercase text-neon-pink sm:text-3xl">Portfolio Chatbot</h2>
-    <p class="mt-2 max-w-3xl text-sm text-neon-cream/90 sm:text-base">
-      I&apos;m building a portfolio assistant that answers questions about my projects, skills, and
-      experience.
-    </p>
-    <div class="mt-6 rounded-xl border-2 border-neon-lime bg-neon-ink p-5">
-      <div class="flex flex-wrap items-center gap-3">
-        <span class="inline-flex h-3 w-3 animate-pulse rounded-full bg-neon-lime"></span>
-        <p class="text-sm font-bold uppercase tracking-wider text-neon-lime">Coming Soon</p>
-      </div>
-      <p class="mt-3 text-sm text-neon-cream/95 sm:text-base">
-        Planned features: smart Q&A about my profile, project recommendations, and quick navigation
-        prompts.
-      </p>
+    AI
+  </button>
+</div>
+
+<aside class="console-panel terminal-panel terminal-panel--strong" id="console-panel" aria-hidden="true">
+  <div class="panel-header">
+    <span>NEURAL_AGENT // LOCAL</span>
+    <button class="console-close" id="console-close" type="button" aria-label="Close portfolio console">
+      CLOSE
+    </button>
+  </div>
+
+  <div class="console-messages" id="console-messages">
+    <div class="console-message console-message--system">[SYSTEM] Portfolio console online.</div>
+    <div class="console-message console-message--agent">
+      Ask about projects, stack, experience, or how to get in touch.
     </div>
   </div>
-</section>
+
+  <div class="console-suggestions">
+    <button class="console-chip" data-console-prompt="projects" type="button">projects</button>
+    <button class="console-chip" data-console-prompt="stack" type="button">stack</button>
+    <button class="console-chip" data-console-prompt="experience" type="button">experience</button>
+    <button class="console-chip" data-console-prompt="contact" type="button">contact</button>
+  </div>
+
+  <form class="console-form" id="console-form">
+    <label class="sr-only" for="console-input">Ask the portfolio console</label>
+    <input
+      class="console-input"
+      id="console-input"
+      name="console-input"
+      placeholder="TYPE A COMMAND..."
+      type="text"
+    />
+  </form>
+</aside>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("console-toggle");
+    const panel = document.getElementById("console-panel");
+    const close = document.getElementById("console-close");
+    const form = document.getElementById("console-form");
+    const input = document.getElementById("console-input");
+    const messages = document.getElementById("console-messages");
+    const promptButtons = Array.from(document.querySelectorAll("[data-console-prompt]"));
+
+    const responses = [
+      {
+        keywords: ["project", "projects", "work", "build"],
+        reply:
+          "Start in PROJECT_LOGS. The strongest signals are the MERN builds, realtime apps, and UI-focused React work.",
+      },
+      {
+        keywords: ["stack", "skill", "skills", "tech"],
+        reply:
+          "Core tools: React, Astro, Node.js, MongoDB, TypeScript, Redux Toolkit, Tailwind CSS, and realtime patterns with Socket.io.",
+      },
+      {
+        keywords: ["experience", "background", "history"],
+        reply:
+          "The background starts in Cognizant operations work, then shifts into project-heavy full-stack development with a systems mindset.",
+      },
+      {
+        keywords: ["contact", "hire", "email", "reach"],
+        reply:
+          "Use CONTACT_PROTOCOL or email tharunbalaji110@gmail.com for the fastest response.",
+      },
+    ];
+
+    const setPanelState = (isOpen: boolean) => {
+      toggle?.setAttribute("aria-expanded", String(isOpen));
+      panel?.classList.toggle("is-open", isOpen);
+      panel?.setAttribute("aria-hidden", String(!isOpen));
+    };
+
+    const addMessage = (text: string, kind: "system" | "agent" | "user") => {
+      if (!messages) {
+        return;
+      }
+
+      const node = document.createElement("div");
+      node.className = `console-message console-message--${kind}`;
+      node.textContent = text;
+      messages.appendChild(node);
+      messages.scrollTop = messages.scrollHeight;
+    };
+
+    const answerPrompt = (rawPrompt: string) => {
+      const prompt = rawPrompt.trim();
+      if (!prompt) {
+        return;
+      }
+
+      addMessage(prompt, "user");
+
+      const lowered = prompt.toLowerCase();
+      const match = responses.find((entry) =>
+        entry.keywords.some((keyword) => lowered.includes(keyword)),
+      );
+
+      const reply =
+        match?.reply ||
+        "I can help with projects, stack, experience, or contact. Try one of those to get a quick signal.";
+
+      window.setTimeout(() => addMessage(reply, "agent"), 180);
+    };
+
+    toggle?.addEventListener("click", () => {
+      const isOpen = toggle.getAttribute("aria-expanded") === "true";
+      setPanelState(!isOpen);
+      if (!isOpen) {
+        input?.focus();
+      }
+    });
+
+    close?.addEventListener("click", () => setPanelState(false));
+
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!(input instanceof HTMLInputElement)) {
+        return;
+      }
+
+      answerPrompt(input.value);
+      input.value = "";
+    });
+
+    promptButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const prompt = button.getAttribute("data-console-prompt") || "";
+        answerPrompt(prompt);
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        setPanelState(false);
+      }
+    });
+  });
+</script>

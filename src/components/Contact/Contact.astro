@@ -1,60 +1,86 @@
 ---
-import { assetPath } from "../../utils/assets";
+const currentYear = new Date().getFullYear();
 ---
 
-<footer class="px-4 pb-10 pt-10 sm:px-6 lg:px-10" id="contact" data-reveal="up">
-  <div
-    class="mx-auto grid w-full max-w-6xl gap-6 rounded-2xl border-2 border-neon-cyan bg-neon-ink/90 p-6 shadow-card lg:grid-cols-[1fr_1.6fr] lg:p-10"
-  >
+<section class="section-shell contact-section" id="contact">
+  <div class="section-header" data-reveal="up">
     <div>
-      <h2 class="font-display text-2xl uppercase text-neon-cyan sm:text-3xl">Contact</h2>
-      <p class="mt-2 text-neon-cream/90">Let&apos;s build something sharp and useful.</p>
+      <span class="eyebrow">CONTACT_PROTOCOL</span>
+      <h2 class="section-heading">Reach out if the role needs product sense and build range.</h2>
+      <p class="section-copy">
+        I am open to frontend or full-stack roles, collaborative builds, and conversations where
+        engineering taste matters as much as the checklist.
+      </p>
     </div>
-    <ul class="grid gap-3">
-      <li
-        class="flex flex-wrap items-center gap-3 rounded-lg border border-neon-yellow/70 px-3 py-3"
-      >
-        <img
-          src={assetPath("contact/emailIcon.png")}
-          alt="Email icon"
-          class="h-6 w-6"
-          loading="lazy"
-        />
-        <a href="mailto:tharunbalaji110@gmail.com" class="text-sm text-neon-cream sm:text-base">
-          tharunbalaji110@gmail.com
-        </a>
-      </li>
-      <li
-        class="flex flex-wrap items-center gap-3 rounded-lg border border-neon-yellow/70 px-3 py-3"
-      >
-        <img
-          src={assetPath("contact/linkedinIcon.png")}
-          alt="LinkedIn icon"
-          class="h-6 w-6"
-          loading="lazy"
-        />
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.linkedin.com/in/tharun-balaji-j-a65402260/"
-          class="text-sm text-neon-cream sm:text-base"
-        >
-          linkedin.com/in/tharun-balaji-j-a65402260
-        </a>
-      </li>
-      <li
-        class="flex flex-wrap items-center gap-3 rounded-lg border border-neon-yellow/70 px-3 py-3"
-      >
-        <img
-          src={assetPath("contact/githubIcon.png")}
-          alt="GitHub icon"
-          class="h-6 w-6"
-          loading="lazy"
-        />
-        <a href="https://github.com/Tharun-Balaji" class="text-sm text-neon-cream sm:text-base">
-          github.com/Tharun-Balaji
-        </a>
-      </li>
-    </ul>
+    <div class="section-rule"></div>
   </div>
-</footer>
+
+  <div class="contact-grid">
+    <article class="terminal-panel contact-card" data-reveal="left">
+      <div class="panel-header">
+        <span>OUTBOUND // READY</span>
+        <span>24H WINDOW</span>
+      </div>
+      <div class="contact-card__body">
+        <p>
+          The fastest route is email. If you want a quick overview first, LinkedIn and GitHub cover
+          the current build history and background.
+        </p>
+
+        <div class="button-row">
+          <a class="cta-primary" href="mailto:tharunbalaji110@gmail.com">SEND_MAIL</a>
+          <a
+            class="cta-secondary"
+            href="https://github.com/Tharun-Balaji"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            GITHUB_LOGS
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <article class="terminal-panel contact-card" data-reveal="right">
+      <div class="panel-header">
+        <span>CHANNELS // 003</span>
+        <span>VERIFIED</span>
+      </div>
+
+      <ul class="contact-links">
+        <li>
+          <a class="contact-link" href="mailto:tharunbalaji110@gmail.com">
+            <span>EMAIL</span>
+            <strong>tharunbalaji110@gmail.com</strong>
+          </a>
+        </li>
+        <li>
+          <a
+            class="contact-link"
+            href="https://www.linkedin.com/in/tharun-balaji-j-a65402260/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <span>LINKEDIN</span>
+            <strong>tharun-balaji-j-a65402260</strong>
+          </a>
+        </li>
+        <li>
+          <a
+            class="contact-link"
+            href="https://github.com/Tharun-Balaji"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <span>GITHUB</span>
+            <strong>github.com/Tharun-Balaji</strong>
+          </a>
+        </li>
+      </ul>
+    </article>
+  </div>
+
+  <p class="contact-footnote" data-reveal="up">
+    © {currentYear} Tharun Balaji // built with Astro and a systems-first portfolio direction
+  </p>
+</section>

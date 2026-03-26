@@ -1,65 +1,89 @@
 ---
+import history from "../../data/history.json";
+import projects from "../../data/projects.json";
 import { assetPath } from "../../utils/assets";
+
+const telemetry = [
+  { value: `${projects.length}+`, label: "Project logs" },
+  { value: `${history.length}`, label: "Career chapters" },
+  { value: "React / Node", label: "Primary stack" },
+];
 ---
 
-<section class="px-4 pb-14 pt-10 sm:px-6 lg:px-10 lg:pt-14" id="home" data-reveal="up">
-  <div
-    class="mx-auto grid w-full max-w-6xl gap-8 rounded-2xl border-2 border-neon-yellow bg-neon-ink/90 p-6 shadow-card backdrop-blur lg:grid-cols-[1.3fr_1fr] lg:items-center lg:p-10"
-  >
-    <div class="space-y-6">
-      <p
-        class="inline-flex rounded-full border-2 border-neon-orange bg-neon-orange/20 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-neon-cream"
-      >
-        Frontend Engineer Mode
-      </p>
-      <h1
-        class="font-display text-3xl uppercase leading-tight text-neon-yellow sm:text-4xl lg:text-5xl"
-      >
-        Hi, I&apos;m Tharun. I Build Loud, Fast Web Experiences.
+<section class="section-shell hero-section" id="hero" data-reveal="up">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">
+        <span class="eyebrow__dot"></span>
+        SYSTEM STATUS // OPEN TO BUILD
+      </span>
+      <h1 class="hero-title">
+        THARUN
+        <br />
+        <span>BALAJI</span>
       </h1>
-      <p class="max-w-2xl text-base text-neon-cream/95 sm:text-lg">
-        Aspiring software developer focused on clean architecture, expressive interfaces, and
-        practical product thinking. I like turning complex ideas into UI that feels alive without
-        becoming noisy.
+      <p class="hero-copy__lede">
+        Full-stack developer shaping interfaces, app logic, and portfolio experiences that feel
+        engineered instead of templated.
       </p>
-      <div class="flex flex-wrap gap-3">
-        <a
-          href="mailto:tharunbalaji110@gmail.com"
-          class="retro-btn px-5 py-3 text-sm"
-        >
-          Contact Me
-        </a>
-        <a
-          href="https://medium.com/@tharunbalaji110"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="retro-btn retro-btn-alt px-5 py-3 text-sm"
-        >
-          Read Articles
-        </a>
+      <p class="hero-copy__support">
+        With a mathematics background, Cognizant operations experience, and a growing build log
+        across React, Astro, Node.js, and MERN applications, I like turning structured thinking
+        into product surfaces that stay clear under real use.
+      </p>
+
+      <div class="button-row">
+        <a class="cta-primary" href="#projects">OPEN_PROJECT_LOGS</a>
+        <a class="cta-secondary" href="#contact">CONTACT_PROTOCOL</a>
       </div>
-      <ul class="grid gap-2 text-sm text-neon-cream/90 sm:grid-cols-3">
-        <li class="rounded-lg border border-neon-cyan/50 bg-neon-ink/80 px-3 py-2">
-          React + Astro
-        </li>
-        <li class="rounded-lg border border-neon-cyan/50 bg-neon-ink/80 px-3 py-2">
-          Performance Focused
-        </li>
-        <li class="rounded-lg border border-neon-cyan/50 bg-neon-ink/80 px-3 py-2">
-          Design + Engineering
-        </li>
-      </ul>
+
+      <div class="hero-stats">
+        {
+          telemetry.map((item) => (
+            <div class="stat-card">
+              <span class="stat-card__value">{item.value}</span>
+              <span class="stat-card__label">{item.label}</span>
+            </div>
+          ))
+        }
+      </div>
     </div>
-    <div class="relative">
-      <div class="absolute -left-3 -top-3 h-full w-full rounded-2xl border-2 border-neon-cyan">
+
+    <div class="terminal-panel hero-panel">
+      <div class="panel-header">
+        <span>SCAN_ID // ARCHIVE.001</span>
+        <span>ONLINE</span>
       </div>
-      <img
-        src={assetPath("hero/MyPhoto.png")}
-        alt="Portrait of Tharun"
-        class="retro-image relative z-10 aspect-square w-full rounded-2xl border-2 border-neon-yellow object-cover"
-        loading="eager"
-        decoding="async"
-      />
+      <div class="hero-panel__portrait">
+        <img
+          src={assetPath("hero/MyPhoto.png")}
+          alt="Portrait of Tharun Balaji"
+          class="hero-panel__image"
+          loading="eager"
+          decoding="async"
+        />
+        <div class="hero-panel__scanline"></div>
+        <div class="hero-panel__dossier">
+          <div>
+            <span>BASE_NODE</span>
+            <strong>COIMBATORE_IN</strong>
+          </div>
+          <div>
+            <span>CURRENT_ARC</span>
+            <strong>FULL_STACK_GROWTH</strong>
+          </div>
+          <div>
+            <span>FOCUS</span>
+            <strong>UI_SYSTEMS // WEB_APPS</strong>
+          </div>
+        </div>
+      </div>
+      <div class="hero-panel__footer">
+        <span class="chip">REACT</span>
+        <span class="chip">ASTRO</span>
+        <span class="chip">NODE</span>
+        <span class="chip">MERN</span>
+      </div>
     </div>
   </div>
 </section>

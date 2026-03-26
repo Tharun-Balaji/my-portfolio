@@ -1,9 +1,9 @@
 import { expect, test } from "@playwright/test";
 
 test("SEO and document semantics are present", async ({ page }) => {
-  await page.goto("/my-portfolio/");
+  await page.goto("/my-portfolio/", { waitUntil: "domcontentloaded" });
 
-  await expect(page).toHaveTitle(/Portfolio/i);
+  await expect(page).toHaveTitle(/Tharun Balaji|Kinetic Engineer/i);
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
   await expect(page.locator("meta[name='description']")).toHaveAttribute("content", /portfolio/i);
   await expect(page.locator("link[rel='canonical']")).toHaveCount(1);
@@ -19,7 +19,7 @@ test("no broken requests and external links are safe", async ({ page }) => {
     }
   });
 
-  await page.goto("/my-portfolio/");
+  await page.goto("/my-portfolio/", { waitUntil: "domcontentloaded" });
   await page.waitForLoadState("networkidle");
 
   expect(failedRequests, failedRequests.join("\n")).toEqual([]);
@@ -33,12 +33,15 @@ test("no broken requests and external links are safe", async ({ page }) => {
 });
 
 test("scroll effects respond and top button works", async ({ page }) => {
-  await page.goto("/my-portfolio/");
+  await page.goto("/my-portfolio/", { waitUntil: "domcontentloaded" });
 
   const topButton = page.locator("#scroll-top");
   await expect(topButton).toBeHidden();
 
   await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  await expect
+    .poll(async () => page.evaluate(() => Math.round(window.scrollY)))
+    .toBeGreaterThan(160);
   await expect(topButton).toBeVisible();
 
   await topButton.click();

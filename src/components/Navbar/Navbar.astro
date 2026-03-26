@@ -1,34 +1,28 @@
 ---
 const links = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Chatbot", href: "#chatbot" },
-  { label: "Contact", href: "#contact" },
+  { label: "Projects", href: "#projects", serial: "001" },
+  { label: "Stack", href: "#stack", serial: "002" },
+  { label: "History", href: "#experience", serial: "003" },
+  { label: "Writing", href: "#writing", serial: "004" },
+  { label: "Contact", href: "#contact", serial: "005" },
 ];
 const homePath = import.meta.env.BASE_URL || "/";
 ---
 
-<nav class="sticky top-0 z-40 px-4 pt-4 sm:px-6 lg:px-10" aria-label="Main navigation" data-reveal="down">
-  <div
-    class="mx-auto flex w-full max-w-6xl items-center justify-between rounded-xl border-2 border-neon-orange bg-neon-ink/95 p-3 shadow-retro backdrop-blur"
-  >
-    <a
-      class="font-display text-sm uppercase tracking-wider text-neon-orange sm:text-base"
-      href={homePath}
-    >
-      Tharun.dev
+<nav class="site-nav" aria-label="Main navigation" data-reveal="down">
+  <div class="nav-shell">
+    <a class="nav-brand" href={homePath}>
+      <span class="nav-brand__mark">TB</span>
+      <span>
+        THARUN<span class="nav-brand__accent">.</span>BALAJI
+      </span>
     </a>
 
-    <ul class="hidden items-center gap-2 md:flex">
+    <ul class="nav-links">
       {
         links.map((item) => (
           <li>
-            <a
-              href={item.href}
-              class="retro-btn retro-btn-alt px-3 py-2 text-xs"
-            >
+            <a class="nav-link" data-nav-link href={item.href}>
               {item.label}
             </a>
           </li>
@@ -36,28 +30,101 @@ const homePath = import.meta.env.BASE_URL || "/";
       }
     </ul>
 
-    <details class="relative md:hidden">
-      <summary
-        class="retro-btn list-none px-3 py-2 text-xs"
+    <div class="nav-actions">
+      <a
+        class="nav-action"
+        href="https://www.linkedin.com/in/tharun-balaji-j-a65402260/"
+        rel="noopener noreferrer"
+        target="_blank"
       >
-        Menu
-      </summary>
-      <ul
-        class="absolute right-0 mt-3 flex w-48 flex-col gap-2 rounded-xl border-2 border-neon-lime bg-neon-ink p-3 shadow-retro"
+        PROFILE_LINK
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Open navigation menu"
       >
+        <span class="menu-toggle__bar"></span>
+        <span class="menu-toggle__bar"></span>
+        <span class="menu-toggle__bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu__panel terminal-panel terminal-panel--strong">
+      <div class="panel-header">
+        <span>SYSTEM_INDEX</span>
+        <span>ACTIVE</span>
+      </div>
+      <div class="mobile-menu__body">
         {
           links.map((item) => (
-            <li>
-              <a
-                href={item.href}
-                class="retro-btn retro-btn-alt block px-3 py-2 text-xs"
-              >
-                {item.label}
-              </a>
-            </li>
+            <a class="mobile-menu__link" data-nav-link href={item.href}>
+              <span>{item.label}</span>
+              <span>{item.serial}</span>
+            </a>
           ))
         }
-      </ul>
-    </details>
+      </div>
+    </div>
   </div>
 </nav>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const navLinks = Array.from(document.querySelectorAll("[data-nav-link]"));
+    const sections = Array.from(
+      document.querySelectorAll<HTMLElement>("main section[id], main footer[id]"),
+    );
+
+    const setMenuState = (isOpen: boolean) => {
+      menuToggle?.classList.toggle("is-open", isOpen);
+      menuToggle?.setAttribute("aria-expanded", String(isOpen));
+      mobileMenu?.classList.toggle("is-open", isOpen);
+      mobileMenu?.setAttribute("aria-hidden", String(!isOpen));
+      document.body.classList.toggle("nav-open", isOpen);
+    };
+
+    menuToggle?.addEventListener("click", () => {
+      const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+      setMenuState(!isOpen);
+    });
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => setMenuState(false));
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        setMenuState(false);
+      }
+    });
+
+    const updateActiveLink = () => {
+      let currentSection = "";
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        if (window.scrollY >= sectionTop - 180) {
+          currentSection = section.getAttribute("id") || currentSection;
+        }
+      });
+
+      navLinks.forEach((link) => {
+        const isActive = currentSection !== "" && link.getAttribute("href") === `#${currentSection}`;
+        link.classList.toggle("is-active", isActive);
+      });
+    };
+
+    window.addEventListener("scroll", updateActiveLink, { passive: true });
+    window.addEventListener("resize", updateActiveLink);
+    updateActiveLink();
+  });
+</script>

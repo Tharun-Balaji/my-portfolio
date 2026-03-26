@@ -1,91 +1,119 @@
-<section aria-hidden="true" class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-  <div
-    id="scroll-progress"
-    class="fixed left-0 top-0 z-50 h-1 w-0 bg-neon-orange transition-[width] duration-100"
-  >
-  </div>
-  <div
-    id="scroll-halo"
-    class="absolute left-1/2 top-1/2 h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-neon-violet/20 blur-3xl"
-  >
-  </div>
-  <div
-    id="orb-one"
-    class="absolute left-[-68px] top-[20%] h-40 w-40 rounded-3xl border-2 border-neon-cyan/70 bg-neon-cyan/20 shadow-card"
-  >
-  </div>
-  <div
-    id="orb-two"
-    class="absolute right-[-52px] top-[56%] h-32 w-32 rounded-full border-2 border-neon-pink/70 bg-neon-pink/20 shadow-card"
-  >
-  </div>
+<section aria-hidden="true" class="shell-effects">
+  <div class="scroll-progress" id="scroll-progress"></div>
+  <div class="shell-effects__grid"></div>
+  <div class="shell-effects__vignette"></div>
+  <div class="shell-effects__orb shell-effects__orb--primary"></div>
+  <div class="shell-effects__orb shell-effects__orb--secondary"></div>
+  <div class="shell-effects__ring shell-effects__ring--one"></div>
+  <div class="shell-effects__ring shell-effects__ring--two"></div>
 </section>
 
+<div class="boot-loader" id="boot-loader">
+  <div class="boot-loader__panel terminal-panel terminal-panel--strong">
+    <div class="panel-header">
+      <span>BOOT_LOG // KINETIC_INIT</span>
+      <span>RUNTIME 2.6</span>
+    </div>
+    <div class="boot-loader__body">
+      <div class="boot-loader__output" id="boot-output"></div>
+      <div class="boot-loader__progress">
+        <div class="boot-loader__progress-bar" id="boot-progress"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <button
+  class="scroll-top"
   id="scroll-top"
   type="button"
-  class="retro-btn fixed bottom-5 right-5 z-40 hidden rounded-full px-3 py-2 text-xs"
   aria-label="Scroll to top"
 >
-  Top
+  TOP
 </button>
 
 <script>
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const progressBar = document.getElementById("scroll-progress");
-  const halo = document.getElementById("scroll-halo");
-  const orbOne = document.getElementById("orb-one");
-  const orbTwo = document.getElementById("orb-two");
-  const topButton = document.getElementById("scroll-top");
-  const reveals = document.querySelectorAll("[data-reveal]");
+  window.addEventListener("DOMContentLoaded", () => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const progressBar = document.getElementById("scroll-progress");
+    const loader = document.getElementById("boot-loader");
+    const output = document.getElementById("boot-output");
+    const bootProgress = document.getElementById("boot-progress");
+    const topButton = document.getElementById("scroll-top");
+    const revealTargets = document.querySelectorAll("[data-reveal]");
+    const bootLines = [
+      "SYNCING_PORTFOLIO_SIGNAL...",
+      "INDEXING_PROJECT_LOGS...",
+      "LOADING_STACK_TELEMETRY...",
+      "VERIFYING_CONTACT_CHANNELS...",
+      "TERMINAL_SURFACE_READY.",
+    ];
 
-  if (reveals.length > 0) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
+    const markReady = () => {
+      document.body.classList.remove("is-loading");
+      loader?.classList.add("is-hidden");
+      window.setTimeout(() => loader?.remove(), 650);
+    };
 
-    reveals.forEach((element) => observer.observe(element));
-  }
+    const runLoader = async () => {
+      const alreadyBooted = window.sessionStorage.getItem("portfolio-booted") === "true";
+      if (!output || !bootProgress || reduceMotion || alreadyBooted) {
+        markReady();
+        window.sessionStorage.setItem("portfolio-booted", "true");
+        return;
+      }
 
-  const onScroll = () => {
-    const scrollTop = window.scrollY;
-    const maxScroll = Math.max(document.body.scrollHeight - window.innerHeight, 1);
-    const ratio = Math.min(scrollTop / maxScroll, 1);
+      for (const [index, line] of bootLines.entries()) {
+        const row = document.createElement("div");
+        row.className = "boot-loader__line";
+        row.innerHTML = `<span>${String(index + 1).padStart(2, "0")}</span><span>${line}</span>`;
+        output.appendChild(row);
+        window.requestAnimationFrame(() => row.classList.add("is-visible"));
+        bootProgress.style.width = `${((index + 1) / bootLines.length) * 100}%`;
+        await new Promise((resolve) => window.setTimeout(resolve, 170));
+      }
 
-    if (progressBar) {
-      progressBar.style.width = `${ratio * 100}%`;
+      window.sessionStorage.setItem("portfolio-booted", "true");
+      window.setTimeout(markReady, 360);
+    };
+
+    if (revealTargets.length > 0) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.18 },
+      );
+
+      revealTargets.forEach((target) => observer.observe(target));
     }
 
-    if (!reduceMotion && orbOne) {
-      orbOne.style.transform = `translateY(${ratio * 180}px) rotate(${ratio * 18}deg)`;
-    }
+    const onScroll = () => {
+      const scrollTop = window.scrollY;
+      const maxScroll = Math.max(document.body.scrollHeight - window.innerHeight, 1);
+      const ratio = Math.min(scrollTop / maxScroll, 1);
 
-    if (!reduceMotion && orbTwo) {
-      orbTwo.style.transform = `translateY(${-ratio * 140}px) rotate(${-ratio * 22}deg)`;
-    }
+      if (progressBar) {
+        progressBar.style.width = `${ratio * 100}%`;
+      }
 
-    if (!reduceMotion && halo) {
-      halo.style.opacity = `${0.12 + ratio * 0.22}`;
-      halo.style.transform = `translate(-50%, -50%) scale(${1 + ratio * 0.35})`;
-    }
+      if (topButton) {
+        topButton.classList.toggle("is-visible", scrollTop > 160);
+      }
+    };
 
-    if (topButton) {
-      topButton.classList.toggle("hidden", ratio <= 0.12);
-    }
-  };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    topButton?.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+    });
 
-  window.addEventListener("scroll", onScroll, { passive: true });
-  topButton?.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    onScroll();
+    runLoader();
   });
-
-  onScroll();
 </script>

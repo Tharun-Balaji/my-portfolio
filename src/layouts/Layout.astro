@@ -1,18 +1,25 @@
 ---
 import "../index.css";
+import "@fontsource/chakra-petch/400.css";
+import "@fontsource/chakra-petch/500.css";
+import "@fontsource/chakra-petch/600.css";
+import "@fontsource/chakra-petch/700.css";
+import "@fontsource/outfit/300.css";
+import "@fontsource/outfit/400.css";
+import "@fontsource/outfit/500.css";
+import "@fontsource/outfit/600.css";
 import "@fontsource/rubik-mono-one";
-import "@fontsource/chakra-petch";
 
 interface Props {
   title?: string;
 }
 
-const { title = "Portfolio" } = Astro.props as Props;
+const { title = "Tharun Balaji | Kinetic Engineer" } = Astro.props as Props;
 const baseUrl = import.meta.env.BASE_URL;
 const assetBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 const description =
-  "Tharun Balaji portfolio: frontend-focused projects, full-stack builds, skills, experience, and contact details.";
+  "Tharun Balaji portfolio: full-stack projects, UI systems, engineering history, and a terminal-inspired presentation of shipped work.";
 ---
 
 <!doctype html>
@@ -20,7 +27,8 @@ const description =
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#ff9f45" />
+    <meta name="theme-color" content="#070b14" />
+    <meta name="color-scheme" content="dark" />
     <meta name="description" content={description} />
     <meta name="robots" content="index,follow" />
     <meta property="og:title" content={title} />
@@ -36,10 +44,10 @@ const description =
     <link rel="apple-touch-icon" href={`${assetBase}logo192.png`} />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="is-loading">
     <a
       href="#main-content"
-      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-neon-yellow focus:px-3 focus:py-2 focus:font-semibold focus:text-neon-ink"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:font-semibold focus:text-slate-950"
     >
       Skip to content
     </a>

@@ -9,18 +9,20 @@ import Projects from "../components/Projects/Projects.astro";
 import ChatbotTeaser from "../components/Chatbot/ChatbotTeaser.astro";
 import ScrollEffects from "../components/Motion/ScrollEffects.astro";
 import Contact from "../components/Contact/Contact.astro";
+import Writing from "../components/Writing/Writing.astro";
 ---
 
-<Layout>
+<Layout title="Tharun Balaji | Kinetic Engineer">
   <ScrollEffects />
   <Navbar />
   <main id="main-content">
     <Hero />
     <About />
-    <Experience />
-    <Skills />
     <Projects />
-    <ChatbotTeaser />
+    <Skills />
+    <Experience />
+    <Writing />
     <Contact />
   </main>
+  <ChatbotTeaser />
 </Layout>

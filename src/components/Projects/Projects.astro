@@ -1,19 +1,52 @@
 ---
 import projects from "../../data/projects.json";
 import ProjectCard from "./ProjectCard.astro";
+
+const featuredTitles = [
+  "Book My Show Clone",
+  "Social media App",
+  "Mern-chat-app",
+  "Car Showcase App",
+  "redux-post-app",
+  "Multiplayer Tic Tac Toe",
+];
+
+const curatedProjects = featuredTitles
+  .map((title) => projects.find((project) => project.title === title))
+  .filter((project): project is (typeof projects)[number] => Boolean(project));
+
+const featuredProjects = curatedProjects.length > 0 ? curatedProjects : projects.slice(0, 6);
 ---
 
-<section class="px-4 py-10 sm:px-6 lg:px-10" id="projects" data-reveal="right">
-  <div
-    class="mx-auto w-full max-w-6xl rounded-2xl border-2 border-neon-yellow bg-neon-ink/90 p-6 shadow-card lg:p-10"
-  >
-    <h2 class="font-display text-2xl uppercase text-neon-yellow sm:text-3xl">Projects</h2>
-    <p class="mt-2 max-w-3xl text-sm text-neon-cream/90 sm:text-base">
-      Selected work across frontend apps, full-stack products, and experiments in interaction-heavy
-      experiences.
-    </p>
-    <div class="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-      {projects.map((project) => <ProjectCard project={project} />)}
+<section class="section-shell" id="projects">
+  <div class="section-header" data-reveal="up">
+    <div>
+      <span class="eyebrow">PROJECT LOGS // {String(projects.length).padStart(2, "0")}</span>
+      <h2 class="section-heading">Selected builds that show how I think in UI, data, and flow.</h2>
+      <p class="section-copy">
+        A curated slice of the broader project archive, leaning into products where the interaction
+        model or the application wiring mattered as much as the final screen.
+      </p>
     </div>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="projects-grid">
+    {
+      featuredProjects.map((project, index) => (
+        <ProjectCard project={project} index={index} featured={index === 0} />
+      ))
+    }
+  </div>
+
+  <div class="section-footer" data-reveal="up">
+    <a
+      class="cta-secondary"
+      href="https://github.com/Tharun-Balaji"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      OPEN_FULL_ARCHIVE
+    </a>
   </div>
 </section>
