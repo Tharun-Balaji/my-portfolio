@@ -1,130 +1,75 @@
-<div class="console-dock">
+<div class="ai-chat-launch">
   <button
-    class="console-toggle"
-    id="console-toggle"
+    class="ai-chat-toggle"
+    id="ai-chat-toggle"
     type="button"
     aria-expanded="false"
-    aria-controls="console-panel"
-    aria-label="Open portfolio console"
+    aria-controls="ai-chat-panel"
+    aria-label="Open AI portfolio panel"
   >
-    AI
+    <span class="material-symbols-outlined">neurology</span>
   </button>
 </div>
 
-<aside class="console-panel terminal-panel terminal-panel--strong" id="console-panel" aria-hidden="true">
-  <div class="panel-header">
-    <span>NEURAL_AGENT // LOCAL</span>
-    <button class="console-close" id="console-close" type="button" aria-label="Close portfolio console">
-      CLOSE
+<div class="ai-chat-panel" id="ai-chat-panel" aria-hidden="true">
+  <div class="terminal-header ai-chat-panel__header">
+    <span>NEURAL_AGENT // V5.1</span>
+    <button id="close-chat" type="button">
+      <span class="material-symbols-outlined">close</span>
     </button>
   </div>
 
-  <div class="console-messages" id="console-messages">
-    <div class="console-message console-message--system">[SYSTEM] Portfolio console online.</div>
-    <div class="console-message console-message--agent">
-      Ask about projects, stack, experience, or how to get in touch.
+  <div class="ai-chat-panel__body" id="ai-chat-messages">
+    <div class="ai-chat-system">[SYSTEM] STANDING BY.</div>
+    <div class="ai-chat-agent">
+      GREETINGS. I AM THE SYNTHETIC REPRESENTATION OF THARUN'S ENGINEERING PHILOSOPHY.
     </div>
   </div>
 
-  <div class="console-suggestions">
-    <button class="console-chip" data-console-prompt="projects" type="button">projects</button>
-    <button class="console-chip" data-console-prompt="stack" type="button">stack</button>
-    <button class="console-chip" data-console-prompt="experience" type="button">experience</button>
-    <button class="console-chip" data-console-prompt="contact" type="button">contact</button>
-  </div>
-
-  <form class="console-form" id="console-form">
-    <label class="sr-only" for="console-input">Ask the portfolio console</label>
-    <input
-      class="console-input"
-      id="console-input"
-      name="console-input"
-      placeholder="TYPE A COMMAND..."
-      type="text"
-    />
+  <form class="ai-chat-panel__input" id="ai-chat-form">
+    <div>
+      <span>_</span>
+      <input id="ai-chat-input" type="text" placeholder="COMMAND..." />
+    </div>
   </form>
-</aside>
+</div>
 
 <script>
   window.addEventListener("DOMContentLoaded", () => {
-    const toggle = document.getElementById("console-toggle");
-    const panel = document.getElementById("console-panel");
-    const close = document.getElementById("console-close");
-    const form = document.getElementById("console-form");
-    const input = document.getElementById("console-input");
-    const messages = document.getElementById("console-messages");
-    const promptButtons = Array.from(document.querySelectorAll("[data-console-prompt]"));
+    const toggle = document.getElementById("ai-chat-toggle");
+    const panel = document.getElementById("ai-chat-panel");
+    const close = document.getElementById("close-chat");
+    const form = document.getElementById("ai-chat-form");
+    const input = document.getElementById("ai-chat-input");
+    const messages = document.getElementById("ai-chat-messages");
 
-    const responses = [
-      {
-        keywords: ["project", "projects", "work", "build"],
-        reply:
-          "Start in PROJECT_LOGS. The strongest signals are the MERN builds, realtime apps, and UI-focused React work.",
-      },
-      {
-        keywords: ["stack", "skill", "skills", "tech"],
-        reply:
-          "Core tools: React, Astro, Node.js, MongoDB, TypeScript, Redux Toolkit, Tailwind CSS, and realtime patterns with Socket.io.",
-      },
-      {
-        keywords: ["experience", "background", "history"],
-        reply:
-          "The background starts in Cognizant operations work, then shifts into project-heavy full-stack development with a systems mindset.",
-      },
-      {
-        keywords: ["contact", "hire", "email", "reach"],
-        reply:
-          "Use CONTACT_PROTOCOL or email tharunbalaji110@gmail.com for the fastest response.",
-      },
-    ];
-
-    const setPanelState = (isOpen: boolean) => {
+    const setOpen = (isOpen: boolean) => {
       toggle?.setAttribute("aria-expanded", String(isOpen));
       panel?.classList.toggle("is-open", isOpen);
       panel?.setAttribute("aria-hidden", String(!isOpen));
     };
 
-    const addMessage = (text: string, kind: "system" | "agent" | "user") => {
-      if (!messages) {
+    const addMessage = (text: string) => {
+      if (!(messages instanceof HTMLElement)) {
         return;
       }
 
       const node = document.createElement("div");
-      node.className = `console-message console-message--${kind}`;
+      node.className = "ai-chat-agent";
       node.textContent = text;
       messages.appendChild(node);
       messages.scrollTop = messages.scrollHeight;
     };
 
-    const answerPrompt = (rawPrompt: string) => {
-      const prompt = rawPrompt.trim();
-      if (!prompt) {
-        return;
-      }
-
-      addMessage(prompt, "user");
-
-      const lowered = prompt.toLowerCase();
-      const match = responses.find((entry) =>
-        entry.keywords.some((keyword) => lowered.includes(keyword)),
-      );
-
-      const reply =
-        match?.reply ||
-        "I can help with projects, stack, experience, or contact. Try one of those to get a quick signal.";
-
-      window.setTimeout(() => addMessage(reply, "agent"), 180);
-    };
-
     toggle?.addEventListener("click", () => {
       const isOpen = toggle.getAttribute("aria-expanded") === "true";
-      setPanelState(!isOpen);
+      setOpen(!isOpen);
       if (!isOpen) {
         input?.focus();
       }
     });
 
-    close?.addEventListener("click", () => setPanelState(false));
+    close?.addEventListener("click", () => setOpen(false));
 
     form?.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -132,21 +77,22 @@
         return;
       }
 
-      answerPrompt(input.value);
-      input.value = "";
-    });
-
-    promptButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const prompt = button.getAttribute("data-console-prompt") || "";
-        answerPrompt(prompt);
-      });
-    });
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        setPanelState(false);
+      const value = input.value.trim().toLowerCase();
+      if (!value) {
+        return;
       }
+
+      if (value.includes("project")) {
+        addMessage("ACCESS PROJECT_LOGS FOR THE STRONGEST SIGNAL ON PRODUCT RANGE.");
+      } else if (value.includes("contact") || value.includes("mail")) {
+        addMessage("MAIL_SYS ROUTES TO THARUNBALAJI110@GMAIL.COM.");
+      } else if (value.includes("skill") || value.includes("stack")) {
+        addMessage("PRIMARY SPECIALIZATION: REACT, ASTRO, NODE.JS, MERN, AND UI SYSTEM EXECUTION.");
+      } else {
+        addMessage("QUERY ACCEPTED. TRY PROJECTS, STACK, OR CONTACT FOR DIRECT ROUTES.");
+      }
+
+      input.value = "";
     });
   });
 </script>

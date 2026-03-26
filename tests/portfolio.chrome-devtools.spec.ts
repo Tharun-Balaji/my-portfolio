@@ -8,12 +8,15 @@ test("validates key sections using Chrome DevTools protocol", async ({ context, 
   await cdpSession.send("Performance.enable");
 
   await page.goto(appBasePath, { waitUntil: "domcontentloaded" });
+  await expect
+    .poll(async () => page.locator("body").evaluate((body) => body.className), { timeout: 15000 })
+    .not.toContain("is-loading");
   await expect(page.getByRole("heading", { name: /tharun.*balaji/i })).toBeVisible();
 
-  await page.locator(".nav-link[href='#contact']").evaluate((link) => {
+  await page.locator(".resume-button").evaluate((link) => {
     (link as HTMLAnchorElement).click();
   });
-  await expect(page.locator("#contact h2")).toContainText("Reach out");
+  await expect(page.locator("#contact h2")).toContainText("Contact");
 
   const locationHash = await cdpSession.send("Runtime.evaluate", {
     expression: "window.location.hash",

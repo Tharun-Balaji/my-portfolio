@@ -5,11 +5,15 @@
   "private": true,
   "dependencies": {
     "@fontsource/chakra-petch": "^5.2.7",
+    "@fontsource/ibm-plex-sans": "^5.2.8",
+    "@fontsource/jetbrains-mono": "^5.2.8",
     "@fontsource/outfit": "^5.0.12",
     "@fontsource/roboto": "^5.0.12",
     "@fontsource/rubik-mono-one": "^5.2.8",
+    "@fontsource/space-grotesk": "^5.2.10",
     "astro": "^4.16.0",
-    "gh-pages": "^6.2.0"
+    "gh-pages": "^6.2.0",
+    "three": "^0.183.2"
   },
   "scripts": {
     "start": "astro dev",
@@ -37,6 +41,8 @@
     "@eslint/js": "^9.39.2",
     "@playwright/test": "^1.58.2",
     "@tailwindcss/vite": "^4.2.0",
+    "@types/node": "^25.5.0",
+    "@types/three": "^0.183.1",
     "@vite-pwa/astro": "^1.2.0",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",

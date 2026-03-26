@@ -4,65 +4,69 @@ import type { Project } from "../../types/content";
 
 interface Props {
   project: Project;
-  index: number;
-  featured?: boolean;
+  record: string;
+  variant: "primary" | "secondary";
 }
 
-const { project, index, featured = false } = Astro.props as Props;
-
-const formatTitle = (value: string) =>
-  value
-    .replace(/([a-z])([A-Z])/g, "$1 $2")
-    .replace(/[-_]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
+const { project, record, variant } = Astro.props as Props;
 ---
 
-<article class={`terminal-panel project-card ${featured ? "project-card--wide" : ""}`} data-reveal="up">
-  <div class="panel-header">
-    <span>RECORD // {String(index + 1).padStart(3, "0")}</span>
-    <span>LIVE_ARCHIVE</span>
-  </div>
-
-  <div class="project-card__media">
-    <img
-      src={assetPath(project.imageSrc)}
-      alt={`Preview of ${formatTitle(project.title)}`}
-      loading="lazy"
-      decoding="async"
-    />
-    <div class="project-card__overlay"></div>
-  </div>
-
-  <div class="project-card__body">
-    <div class="chip-row">
-      {
-        project.skills.slice(0, 3).map((skill) => (
-          <span class="chip chip--secondary">{skill}</span>
-        ))
-      }
-    </div>
-
-    <h3>{formatTitle(project.title)}</h3>
-    <p>{project.description}</p>
-
-    <div class="project-card__footer">
-      <a
-        class="inline-link"
-        href={project.demo}
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        OPEN_DEMO
-      </a>
-      <a
-        class="inline-link"
-        href={project.source}
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        SOURCE_MAP
-      </a>
-    </div>
-  </div>
-</article>
+{
+  variant === "primary" ? (
+    <article class="terminal-panel reveal-item">
+      <div class="terminal-header">
+        <span>{`RECORD // ${record}`}</span>
+      </div>
+      <div class="project-hero-media">
+        <img
+          src={assetPath(project.imageSrc)}
+          alt={`Preview of ${project.title}`}
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="project-hero-overlay"></div>
+      </div>
+      <div class="project-card-body">
+        <div class="project-meta">
+          {project.skills.slice(0, 2).map((skill) => <span class="meta-chip">{skill}</span>)}
+        </div>
+        <h3>{project.title.toUpperCase()}</h3>
+        <p>{project.description}</p>
+        <a
+          class="panel-link"
+          href={project.demo}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          ACCESS_SPECS
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+    </article>
+  ) : (
+    <article class="terminal-panel project-mini-card reveal-item">
+      <div class="terminal-header project-mini-card__header">
+        <span>{`RECORD // ${record}`}</span>
+      </div>
+      <div class="project-mini-card__body">
+        <div class="mini-panel">
+          <span class="material-symbols-outlined">analytics</span>
+        </div>
+        <h3>{project.title.toUpperCase()}</h3>
+        <p>{project.description}</p>
+      </div>
+      <div class="project-mini-card__footer">
+        <span>BUILD_STABLE.24</span>
+        <a
+          class="project-mini-card__link"
+          href={project.source}
+          rel="noopener noreferrer"
+          target="_blank"
+          aria-label={`Open source for ${project.title}`}
+        >
+          <span class="material-symbols-outlined">north_east</span>
+        </a>
+      </div>
+    </article>
+  )
+}

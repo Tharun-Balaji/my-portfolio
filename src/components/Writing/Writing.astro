@@ -1,75 +1,29 @@
----
-const archive = [
-  {
-    label: "DISPATCH // 001",
-    date: "LIVE",
-    title: "Medium Dispatches",
-    description:
-      "Writing and learning logs around frontend systems, JavaScript patterns, and practical product implementation.",
-    href: "https://medium.com/@tharunbalaji110",
-    action: "OPEN_MEDIUM",
-    external: true,
-  },
-  {
-    label: "ARCHIVE // 002",
-    date: "ACTIVE",
-    title: "GitHub Build Archive",
-    description:
-      "Source code, shipped experiments, and project history across full-stack applications and interface work.",
-    href: "https://github.com/Tharun-Balaji",
-    action: "VIEW_REPOS",
-    external: true,
-  },
-  {
-    label: "THREAD // 003",
-    date: "CURRENT",
-    title: "Current Research Thread",
-    description:
-      "Collecting stronger case studies around realtime UX, maintainable state flow, and systems-minded interface design.",
-    href: "mailto:tharunbalaji110@gmail.com",
-    action: "SWAP_NOTES",
-    external: false,
-  },
-];
----
-
-<section class="section-shell" id="writing">
-  <div class="section-header" data-reveal="up">
-    <div>
-      <span class="eyebrow">RESEARCH // NOTES_ARCHIVE</span>
-      <h2 class="section-heading">Long-form thinking, code trails, and the questions I keep returning to.</h2>
-      <p class="section-copy">
-        This part of the portfolio is lighter than the project archive today, but it is where I
-        want more of the deeper engineering story to keep accumulating.
-      </p>
-    </div>
-    <div class="section-rule"></div>
+<section class="section-shell section-gap" id="writing">
+  <div class="section-head section-head--secondary">
+    <h2>RESEARCH</h2>
+    <div class="section-line"></div>
   </div>
 
-  <div class="writing-grid">
-    {
-      archive.map((entry, index) => (
-        <article class="terminal-panel writing-card" data-reveal={index % 2 === 0 ? "up" : "right"}>
-          <div class="panel-header">
-            <span>{entry.label}</span>
-            <span>{entry.date}</span>
-          </div>
-
-          <div class="writing-card__body">
-            <h3>{entry.title}</h3>
-            <p>{entry.description}</p>
-
-            <a
-              class="inline-link"
-              href={entry.href}
-              rel={entry.external ? "noopener noreferrer" : undefined}
-              target={entry.external ? "_blank" : undefined}
-            >
-              {entry.action}
-            </a>
-          </div>
-        </article>
-      ))
-    }
+  <div class="research-list">
+    <article class="terminal-panel research-card reveal-item">
+      <div class="research-card__meta">
+        <span>PUB_ID.011</span>
+        <span>LIVE_ARCHIVE</span>
+      </div>
+      <h3>MEDIUM NOTES & BUILD WRITING</h3>
+      <p>
+        Ongoing writing around frontend systems, implementation details, and the product choices
+        behind the work I am shipping.
+      </p>
+      <a
+        class="panel-link"
+        href="https://medium.com/@tharunbalaji110"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        READ_TRANSCRIPT
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </a>
+    </article>
   </div>
 </section>

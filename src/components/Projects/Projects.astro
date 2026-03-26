@@ -2,51 +2,20 @@
 import projects from "../../data/projects.json";
 import ProjectCard from "./ProjectCard.astro";
 
-const featuredTitles = [
-  "Book My Show Clone",
-  "Social media App",
-  "Mern-chat-app",
-  "Car Showcase App",
-  "redux-post-app",
-  "Multiplayer Tic Tac Toe",
-];
-
-const curatedProjects = featuredTitles
-  .map((title) => projects.find((project) => project.title === title))
-  .filter((project): project is (typeof projects)[number] => Boolean(project));
-
-const featuredProjects = curatedProjects.length > 0 ? curatedProjects : projects.slice(0, 6);
+const primaryProject =
+  projects.find((project) => project.title === "Book My Show Clone") ?? projects[0];
+const secondaryProject =
+  projects.find((project) => project.title === "Mern-chat-app") ?? projects[1];
 ---
 
-<section class="section-shell" id="projects">
-  <div class="section-header" data-reveal="up">
-    <div>
-      <span class="eyebrow">PROJECT LOGS // {String(projects.length).padStart(2, "0")}</span>
-      <h2 class="section-heading">Selected builds that show how I think in UI, data, and flow.</h2>
-      <p class="section-copy">
-        A curated slice of the broader project archive, leaning into products where the interaction
-        model or the application wiring mattered as much as the final screen.
-      </p>
-    </div>
-    <div class="section-rule"></div>
+<section class="section-shell section-gap" id="projects">
+  <div class="section-head">
+    <h2>PROJECT_LOGS</h2>
+    <div class="section-line"></div>
   </div>
 
-  <div class="projects-grid">
-    {
-      featuredProjects.map((project, index) => (
-        <ProjectCard project={project} index={index} featured={index === 0} />
-      ))
-    }
-  </div>
-
-  <div class="section-footer" data-reveal="up">
-    <a
-      class="cta-secondary"
-      href="https://github.com/Tharun-Balaji"
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      OPEN_FULL_ARCHIVE
-    </a>
+  <div class="project-grid">
+    <ProjectCard project={primaryProject} variant="primary" record="001_BMS" />
+    <ProjectCard project={secondaryProject} variant="secondary" record="002_CHAT" />
   </div>
 </section>

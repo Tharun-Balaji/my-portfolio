@@ -1,130 +1,118 @@
 ---
 const links = [
-  { label: "Projects", href: "#projects", serial: "001" },
-  { label: "Stack", href: "#stack", serial: "002" },
-  { label: "History", href: "#experience", serial: "003" },
-  { label: "Writing", href: "#writing", serial: "004" },
-  { label: "Contact", href: "#contact", serial: "005" },
+  { label: "PROJECTS", href: "#projects", serial: "001" },
+  { label: "SKILLS", href: "#stack", serial: "002" },
+  { label: "HISTORY", href: "#experience", serial: "003" },
+  { label: "RESEARCH", href: "#writing", serial: "004" },
+  { label: "CONTACT", href: "#contact", serial: "005" },
 ];
-const homePath = import.meta.env.BASE_URL || "/";
 ---
 
-<nav class="site-nav" aria-label="Main navigation" data-reveal="down">
+<nav class="glass-nav" aria-label="Main navigation" data-reveal="down">
   <div class="nav-shell">
-    <a class="nav-brand" href={homePath}>
-      <span class="nav-brand__mark">TB</span>
-      <span>
-        THARUN<span class="nav-brand__accent">.</span>BALAJI
+    <a class="nav-brand" href="#hero">
+      <span class="nav-brand__icon">
+        <span class="material-symbols-outlined">hexagon</span>
       </span>
+      <span>KINETIC<span class="nav-brand__dot">.</span>ENG</span>
     </a>
 
-    <ul class="nav-links">
-      {
-        links.map((item) => (
-          <li>
-            <a class="nav-link" data-nav-link href={item.href}>
-              {item.label}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-
     <div class="nav-actions">
-      <a
-        class="nav-action"
-        href="https://www.linkedin.com/in/tharun-balaji-j-a65402260/"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        PROFILE_LINK
-      </a>
+      <a class="resume-button touch-target" href="#contact">RESUME</a>
 
       <button
-        class="menu-toggle"
+        class="menu-toggle touch-target"
         id="menu-toggle"
         type="button"
         aria-expanded="false"
-        aria-controls="mobile-menu"
+        aria-controls="mobile-menu-overlay"
         aria-label="Open navigation menu"
       >
-        <span class="menu-toggle__bar"></span>
-        <span class="menu-toggle__bar"></span>
-        <span class="menu-toggle__bar"></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
-    </div>
-  </div>
-
-  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-    <div class="mobile-menu__panel terminal-panel terminal-panel--strong">
-      <div class="panel-header">
-        <span>SYSTEM_INDEX</span>
-        <span>ACTIVE</span>
-      </div>
-      <div class="mobile-menu__body">
-        {
-          links.map((item) => (
-            <a class="mobile-menu__link" data-nav-link href={item.href}>
-              <span>{item.label}</span>
-              <span>{item.serial}</span>
-            </a>
-          ))
-        }
-      </div>
     </div>
   </div>
 </nav>
 
+<div class="mobile-menu-overlay" id="mobile-menu-overlay" aria-hidden="true">
+  <div class="mobile-menu-overlay__inner">
+    <div class="mobile-menu-overlay__intro">
+      <span>SYSTEM_INDEX</span>
+      <div></div>
+    </div>
+
+    <nav class="mobile-menu-links">
+      {
+        links.map((link) => (
+          <a class="nav-link-item mobile-link" data-nav-link href={link.href}>
+            <span>{link.label}</span>
+            <span class="label-mono">{link.serial}</span>
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="mobile-menu-overlay__meta">
+      <div class="mobile-meta-card">
+        <span>GEO_HUB</span>
+        <strong>COIMBATORE</strong>
+      </div>
+      <div class="mobile-meta-card">
+        <span>STATUS</span>
+        <strong>ACTIVE</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   window.addEventListener("DOMContentLoaded", () => {
     const menuToggle = document.getElementById("menu-toggle");
-    const mobileMenu = document.getElementById("mobile-menu");
-    const navLinks = Array.from(document.querySelectorAll("[data-nav-link]"));
-    const sections = Array.from(
-      document.querySelectorAll<HTMLElement>("main section[id], main footer[id]"),
-    );
+    const menuOverlay = document.getElementById("mobile-menu-overlay");
+    const mobileLinks = Array.from(document.querySelectorAll<HTMLElement>(".mobile-link"));
+    const sections = Array.from(document.querySelectorAll<HTMLElement>("section[id], footer[id]"));
 
-    const setMenuState = (isOpen: boolean) => {
-      menuToggle?.classList.toggle("is-open", isOpen);
-      menuToggle?.setAttribute("aria-expanded", String(isOpen));
-      mobileMenu?.classList.toggle("is-open", isOpen);
-      mobileMenu?.setAttribute("aria-hidden", String(!isOpen));
-      document.body.classList.toggle("nav-open", isOpen);
+    const toggleMenu = (forceState?: boolean) => {
+      const nextState =
+        typeof forceState === "boolean"
+          ? forceState
+          : menuToggle?.getAttribute("aria-expanded") !== "true";
+
+      menuToggle?.setAttribute("aria-expanded", String(nextState));
+      menuToggle?.classList.toggle("is-open", nextState);
+      menuOverlay?.classList.toggle("is-open", nextState);
+      menuOverlay?.setAttribute("aria-hidden", String(!nextState));
+      document.body.classList.toggle("nav-open", nextState);
     };
 
-    menuToggle?.addEventListener("click", () => {
-      const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
-      setMenuState(!isOpen);
-    });
-
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => setMenuState(false));
-    });
+    menuToggle?.addEventListener("click", () => toggleMenu());
+    mobileLinks.forEach((link) => link.addEventListener("click", () => toggleMenu(false)));
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
-        setMenuState(false);
+        toggleMenu(false);
       }
     });
 
-    const updateActiveLink = () => {
-      let currentSection = "";
+    const updateActiveSection = () => {
+      let current = "";
 
       sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        if (window.scrollY >= sectionTop - 180) {
-          currentSection = section.getAttribute("id") || currentSection;
+        if (window.scrollY >= section.offsetTop - 150) {
+          current = section.getAttribute("id") || current;
         }
       });
 
-      navLinks.forEach((link) => {
-        const isActive = currentSection !== "" && link.getAttribute("href") === `#${currentSection}`;
-        link.classList.toggle("is-active", isActive);
+      mobileLinks.forEach((link) => {
+        const isActive = link.getAttribute("href") === `#${current}`;
+        link.classList.toggle("active", isActive);
       });
     };
 
-    window.addEventListener("scroll", updateActiveLink, { passive: true });
-    window.addEventListener("resize", updateActiveLink);
-    updateActiveLink();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+    updateActiveSection();
   });
 </script>

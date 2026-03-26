@@ -1,57 +1,39 @@
 ---
 import skills from "../../data/skills.json";
-import { assetPath } from "../../utils/assets";
 ---
 
-<section class="section-shell" id="stack">
-  <div class="section-header" data-reveal="up">
-    <div>
-      <span class="eyebrow">CORE_STACK // DNA_SEQ</span>
-      <h2 class="section-heading">Capabilities grouped by how I actually build.</h2>
-      <p class="section-copy">
-        Instead of listing tools in a wall of icons, this section maps the stack into the working
-        modes that show up repeatedly across my portfolio projects.
-      </p>
+<section class="section-shell section-gap" id="stack">
+  <div class="skills-heading">
+    <div class="section-pill section-pill--purple">
+      <span></span>
+      CORE_STACK
     </div>
-    <div class="section-rule"></div>
+    <h2>
+      ARCHITECTURAL
+      <br />
+      <span>DNA_SEQ_01</span>
+    </h2>
   </div>
 
-  <div class="skill-stack">
+  <div class="skills-stack">
     {
       skills.map((skill, index) => (
-        <details
-          class="skill-accordion"
-          data-reveal="up"
-          data-skill-accordion
-          open={index === 0}
-        >
-          <summary class="skill-accordion__summary">
-            <div class="skill-accordion__meta">
-              <div class="skill-accordion__icon">
-                <img
-                  src={assetPath(skill.imageSrc)}
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-
-              <div>
-                <span class="skill-accordion__serial">TAG_{String(index + 1).padStart(2, "0")}</span>
-                <h3>{skill.title}</h3>
-              </div>
+        <div class={`skill-item reveal-item ${index === 0 ? "active" : ""}`} data-skill-item>
+          <button class="skill-content-header" type="button">
+            <div>
+              <span class="skill-serial">{`TAG_0${index + 1}`}</span>
+              <h3 class="skill-title">{skill.title}</h3>
             </div>
+            <span class="skill-expansion">expand_more</span>
+          </button>
 
-            <span class="skill-accordion__chevron">+</span>
-          </summary>
-
-          <div class="skill-accordion__content">
-            <p>{skill.summary}</p>
-            <div class="chip-row">
-              {skill.tags.map((tag) => <span class="chip">{tag}</span>)}
+          <div class="skill-details">
+            <div class="skill-details__rule"></div>
+            <div class="sub-tags">
+              {skill.tags.map((tag) => <span class="sub-tag">{tag}</span>)}
             </div>
           </div>
-        </details>
+        </div>
       ))
     }
   </div>
@@ -59,21 +41,25 @@ import { assetPath } from "../../utils/assets";
 
 <script>
   window.addEventListener("DOMContentLoaded", () => {
-    const accordions = Array.from(
-      document.querySelectorAll<HTMLDetailsElement>("[data-skill-accordion]"),
-    );
-    accordions.forEach((accordion) => {
-      accordion.addEventListener("toggle", () => {
-        if (!accordion.open) {
-          return;
-        }
+    const items = Array.from(document.querySelectorAll<HTMLElement>("[data-skill-item]"));
 
-        accordions.forEach((otherAccordion) => {
-          if (otherAccordion !== accordion) {
-            otherAccordion.open = false;
-          }
+    items.forEach((item) => {
+      item.querySelector("button")?.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const isActive = item.classList.contains("active");
+
+        items.forEach((otherItem) => {
+          otherItem.classList.remove("active");
         });
+
+        if (!isActive) {
+          item.classList.add("active");
+        }
       });
+    });
+
+    window.addEventListener("click", () => {
+      items.forEach((item) => item.classList.remove("active"));
     });
   });
 </script>

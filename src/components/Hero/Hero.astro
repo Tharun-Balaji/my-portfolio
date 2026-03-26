@@ -1,89 +1,69 @@
 ---
-import history from "../../data/history.json";
-import projects from "../../data/projects.json";
 import { assetPath } from "../../utils/assets";
-
-const telemetry = [
-  { value: `${projects.length}+`, label: "Project logs" },
-  { value: `${history.length}`, label: "Career chapters" },
-  { value: "React / Node", label: "Primary stack" },
-];
 ---
 
-<section class="section-shell hero-section" id="hero" data-reveal="up">
-  <div class="hero-grid">
-    <div class="hero-copy">
-      <span class="eyebrow">
-        <span class="eyebrow__dot"></span>
-        SYSTEM STATUS // OPEN TO BUILD
-      </span>
-      <h1 class="hero-title">
-        THARUN
-        <br />
-        <span>BALAJI</span>
-      </h1>
-      <p class="hero-copy__lede">
-        Full-stack developer shaping interfaces, app logic, and portfolio experiences that feel
-        engineered instead of templated.
-      </p>
-      <p class="hero-copy__support">
-        With a mathematics background, Cognizant operations experience, and a growing build log
-        across React, Astro, Node.js, and MERN applications, I like turning structured thinking
-        into product surfaces that stay clear under real use.
-      </p>
-
-      <div class="button-row">
-        <a class="cta-primary" href="#projects">OPEN_PROJECT_LOGS</a>
-        <a class="cta-secondary" href="#contact">CONTACT_PROTOCOL</a>
-      </div>
-
-      <div class="hero-stats">
-        {
-          telemetry.map((item) => (
-            <div class="stat-card">
-              <span class="stat-card__value">{item.value}</span>
-              <span class="stat-card__label">{item.label}</span>
-            </div>
-          ))
-        }
-      </div>
+<section class="hero-layout" id="hero">
+  <div class="hero-copy">
+    <div class="system-pill">
+      <span></span>
+      SYSTEM: ACTIVE
     </div>
 
-    <div class="terminal-panel hero-panel">
-      <div class="panel-header">
+    <h1 class="hero-title">
+      THARUN
+      <br />
+      <span>BALAJI</span>
+    </h1>
+
+    <p class="hero-description">
+      Building expressive web interfaces and resilient full-stack applications with a systems-first
+      mindset.
+    </p>
+
+    <div class="hero-actions">
+      <a class="action-button" href="#projects">
+        INITIALIZE_PHASE_01
+        <span class="material-symbols-outlined">rocket_launch</span>
+      </a>
+
+      <a class="ghost-button" href="#writing">STATUS_LOG</a>
+    </div>
+  </div>
+
+  <div class="hero-portrait-wrap">
+    <div class="terminal-panel portrait-panel">
+      <div class="terminal-header">
         <span>SCAN_ID // ARCHIVE.001</span>
-        <span>ONLINE</span>
+        <span class="material-symbols-outlined portrait-header-icon">filter_center_focus</span>
       </div>
-      <div class="hero-panel__portrait">
+
+      <div class="portrait-frame">
         <img
           src={assetPath("hero/MyPhoto.png")}
           alt="Portrait of Tharun Balaji"
-          class="hero-panel__image"
+          class="portrait-mask"
           loading="eager"
           decoding="async"
         />
-        <div class="hero-panel__scanline"></div>
-        <div class="hero-panel__dossier">
+        <div class="scanline"></div>
+
+        <div class="portrait-dossier">
           <div>
-            <span>BASE_NODE</span>
+            <span>SERIAL:</span>
+            <strong>0xTB-1102</strong>
+          </div>
+          <div>
+            <span>GEO_HUB:</span>
             <strong>COIMBATORE_IN</strong>
           </div>
           <div>
-            <span>CURRENT_ARC</span>
-            <strong>FULL_STACK_GROWTH</strong>
-          </div>
-          <div>
-            <span>FOCUS</span>
-            <strong>UI_SYSTEMS // WEB_APPS</strong>
+            <span>DESIGNATION:</span>
+            <strong>KINETIC_ENG</strong>
           </div>
         </div>
       </div>
-      <div class="hero-panel__footer">
-        <span class="chip">REACT</span>
-        <span class="chip">ASTRO</span>
-        <span class="chip">NODE</span>
-        <span class="chip">MERN</span>
-      </div>
     </div>
+
+    <div class="portrait-glow"></div>
   </div>
 </section>
