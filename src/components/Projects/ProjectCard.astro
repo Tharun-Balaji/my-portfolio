@@ -15,7 +15,7 @@ const { project, record, variant } = Astro.props as Props;
   variant === "primary" ? (
     <article class="terminal-panel reveal-item">
       <div class="terminal-header">
-        <span>{`RECORD // ${record}`}</span>
+        <span>{`Project // ${record}`}</span>
       </div>
       <div class="project-hero-media">
         <img
@@ -38,7 +38,7 @@ const { project, record, variant } = Astro.props as Props;
           rel="noopener noreferrer"
           target="_blank"
         >
-          ACCESS_SPECS
+          View Project
           <span class="material-symbols-outlined">arrow_forward</span>
         </a>
       </div>
@@ -46,7 +46,7 @@ const { project, record, variant } = Astro.props as Props;
   ) : (
     <article class="terminal-panel project-mini-card reveal-item">
       <div class="terminal-header project-mini-card__header">
-        <span>{`RECORD // ${record}`}</span>
+        <span>{`Project // ${record}`}</span>
       </div>
       <div class="project-mini-card__body">
         <div class="mini-panel">
@@ -56,7 +56,7 @@ const { project, record, variant } = Astro.props as Props;
         <p>{project.description}</p>
       </div>
       <div class="project-mini-card__footer">
-        <span>BUILD_STABLE.24</span>
+        <span>Source Available</span>
         <a
           class="project-mini-card__link"
           href={project.source}

@@ -13,23 +13,23 @@
 
 <div class="ai-chat-panel" id="ai-chat-panel" aria-hidden="true">
   <div class="terminal-header ai-chat-panel__header">
-    <span>NEURAL_AGENT // V5.1</span>
+    <span>Portfolio Assistant</span>
     <button id="close-chat" type="button">
       <span class="material-symbols-outlined">close</span>
     </button>
   </div>
 
   <div class="ai-chat-panel__body" id="ai-chat-messages">
-    <div class="ai-chat-system">[SYSTEM] STANDING BY.</div>
+    <div class="ai-chat-system">Ready when you are.</div>
     <div class="ai-chat-agent">
-      GREETINGS. I AM THE SYNTHETIC REPRESENTATION OF THARUN'S ENGINEERING PHILOSOPHY.
+      Ask about projects, stack, or the fastest way to contact Tharun.
     </div>
   </div>
 
   <form class="ai-chat-panel__input" id="ai-chat-form">
     <div>
       <span>_</span>
-      <input id="ai-chat-input" type="text" placeholder="COMMAND..." />
+      <input id="ai-chat-input" type="text" placeholder="Ask a question..." />
     </div>
   </form>
 </div>
@@ -83,13 +83,13 @@
       }
 
       if (value.includes("project")) {
-        addMessage("ACCESS PROJECT_LOGS FOR THE STRONGEST SIGNAL ON PRODUCT RANGE.");
+        addMessage("Start with selected work for the clearest view of Tharun's product range.");
       } else if (value.includes("contact") || value.includes("mail")) {
-        addMessage("MAIL_SYS ROUTES TO THARUNBALAJI110@GMAIL.COM.");
+        addMessage("Email routes to tharunbalaji110@gmail.com.");
       } else if (value.includes("skill") || value.includes("stack")) {
-        addMessage("PRIMARY SPECIALIZATION: REACT, ASTRO, NODE.JS, MERN, AND UI SYSTEM EXECUTION.");
+        addMessage("Primary focus: React, Astro, Node.js, MERN, and UI system execution.");
       } else {
-        addMessage("QUERY ACCEPTED. TRY PROJECTS, STACK, OR CONTACT FOR DIRECT ROUTES.");
+        addMessage("Try projects, stack, or contact for the most direct routes.");
       }
 
       input.value = "";

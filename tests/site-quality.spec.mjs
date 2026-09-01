@@ -10,7 +10,7 @@ test("SEO and document semantics are present", async ({ page }) => {
   await page.goto("/my-portfolio/", { waitUntil: "domcontentloaded" });
   await waitForBoot(page);
 
-  await expect(page).toHaveTitle(/KINETIC_ENG|NEON_SLATE_TERMINAL/i);
+  await expect(page).toHaveTitle(/THARUN BALAJI|AURORA PORTFOLIO/i);
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
   await expect(page.locator("meta[name='description']")).toHaveAttribute("content", /portfolio/i);
   await expect(page.locator("link[rel='canonical']")).toHaveCount(1);
