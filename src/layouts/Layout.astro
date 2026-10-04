@@ -1,36 +1,24 @@
 ---
 import "../index.css";
-import "@fontsource/space-grotesk/300.css";
-import "@fontsource/space-grotesk/400.css";
-import "@fontsource/space-grotesk/500.css";
-import "@fontsource/space-grotesk/600.css";
-import "@fontsource/space-grotesk/700.css";
-import "@fontsource/ibm-plex-sans/300.css";
-import "@fontsource/ibm-plex-sans/400.css";
-import "@fontsource/ibm-plex-sans/500.css";
-import "@fontsource/ibm-plex-sans/600.css";
-import "@fontsource/jetbrains-mono/400.css";
-import "@fontsource/jetbrains-mono/700.css";
 
 interface Props {
   title?: string;
 }
 
-const { title = "THARUN BALAJI // AURORA PORTFOLIO" } = Astro.props as Props;
+const { title = "Tharun Balaji — Frontend Engineer" } = Astro.props as Props;
 const baseUrl = import.meta.env.BASE_URL;
 const assetBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 const description =
-  "Tharun Balaji portfolio: an ambient mesh-gradient showcase for selected projects, engineering history, stack depth, and contact channels.";
+  "Frontend engineer portfolio for Tharun Balaji featuring shipped projects, engineering perspective, experience, writing, and contact details.";
 ---
 
 <!doctype html>
-<html class="dark" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#070b14" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#08090e" />
     <meta name="description" content={description} />
     <meta name="robots" content="index,follow" />
     <meta property="og:title" content={title} />
@@ -41,24 +29,19 @@ const description =
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-    />
     <link rel="canonical" href={canonicalUrl.href} />
     <link rel="manifest" href={`${assetBase}manifest.webmanifest`} />
     <link rel="apple-touch-icon" href={`${assetBase}logo192.png`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <title>{title}</title>
   </head>
-  <body class="is-loading">
-    <a
-      href="#main-content"
-      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:font-semibold focus:text-slate-950"
-    >
-      Skip to content
-    </a>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
     <slot />
     <script>
       import { registerSW } from "virtual:pwa-register";

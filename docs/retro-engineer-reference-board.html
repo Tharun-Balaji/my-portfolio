@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Engineered Dark Visual Reference</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:#08090e;
+      --bg1:#0e1118;
+      --bg2:#131723;
+      --bg3:#1a2030;
+      --line:rgba(255,255,255,.08);
+      --line2:rgba(255,255,255,.14);
+      --text:#dde3f2;
+      --muted:#8a93ae;
+      --soft:#5c647d;
+      --cyan:#39c7ff;
+      --lime:#87efac;
+      --orange:#ff9a4d;
+      --display:"Syne",sans-serif;
+      --body:"IBM Plex Sans",sans-serif;
+      --mono:"JetBrains Mono",monospace;
+      --shadow:0 24px 80px rgba(0,0,0,.45);
+      --r:28px;
+      --r2:20px;
+      --r3:14px;
+    }
+
+    * { box-sizing:border-box; }
+    html, body {
+      margin:0;
+      padding:0;
+      background:
+        radial-gradient(circle at top right, rgba(57,199,255,.11), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(135,239,172,.08), transparent 24%),
+        var(--bg);
+      color:var(--text);
+      font-family:var(--body);
+    }
+
+    body { padding:40px 24px 72px; }
+    .board { max-width:1360px; margin:0 auto; }
+    .hero-shell, .panel, .contact {
+      border:1px solid var(--line);
+      border-radius:34px;
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)), rgba(10,13,20,.9);
+      box-shadow:var(--shadow);
+    }
+
+    .hero-shell { position:relative; overflow:hidden; padding:32px; margin-bottom:28px; }
+    .glow-a, .glow-b { position:absolute; border-radius:999px; filter:blur(28px); pointer-events:none; }
+    .glow-a { width:340px; height:340px; top:-120px; right:-40px; background:rgba(57,199,255,.12); }
+    .glow-b { width:260px; height:260px; bottom:-80px; left:-40px; background:rgba(135,239,172,.08); }
+
+    .topbar {
+      position:relative;
+      z-index:2;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      padding:10px 10px 10px 22px;
+      border:1px solid var(--line2);
+      border-radius:999px;
+      background:rgba(14,17,24,.86);
+      width:min(100%,1120px);
+      margin:0 auto 38px;
+    }
+
+    .logo, .pill, .meta, .eyebrow, .chip, .small {
+      font-family:var(--mono);
+    }
+
+    .logo { font-size:13px; letter-spacing:.08em; text-transform:uppercase; }
+    .logo span { color:var(--cyan); }
+    .nav { display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
+    .pill {
+      font-size:11px;
+      color:var(--muted);
+      border-radius:999px;
+      padding:9px 14px;
+      border:1px solid transparent;
+    }
+
+    .pill.active {
+      color:var(--text);
+      background:rgba(255,255,255,.05);
+      border-color:var(--line);
+    }
+
+    .pill.cta { color:#081119; background:var(--cyan); font-weight:600; }
+    .hero-grid { position:relative; z-index:2; display:grid; grid-template-columns:1.08fr .92fr; gap:32px; align-items:center; min-height:620px; }
+
+    .eyebrow {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:26px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .eyebrow::before {
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:var(--lime);
+      box-shadow:0 0 14px var(--lime);
+    }
+
+    h1, h2, h3 { margin:0; font-family:var(--display); font-weight:800; letter-spacing:-.04em; }
+    h1 { font-size:clamp(52px, 7vw, 92px); line-height:.92; max-width:10ch; margin-bottom:24px; }
+    .accent { color:var(--cyan); }
+    .lede { max-width:42ch; color:var(--muted); font-size:17px; line-height:1.78; margin-bottom:34px; }
+    .actions, .stats, .chips, .links { display:flex; flex-wrap:wrap; }
+    .actions { gap:12px; margin-bottom:38px; }
+    .button { padding:14px 24px; border-radius:999px; border:1px solid var(--line2); font-size:13px; font-weight:600; color:var(--text); text-decoration:none; }
+    .button.primary { border-color:transparent; color:#081119; background:linear-gradient(135deg, var(--cyan), #79daff); }
+    .stats { gap:28px; }
+    .stat-num { font-family:var(--display); font-size:34px; line-height:1; letter-spacing:-.04em; }
+    .stat-label { margin-top:6px; color:var(--soft); font-size:12px; text-transform:lowercase; }
+
+    .visual {
+      position:relative;
+      min-height:560px;
+      border-radius:30px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.05);
+      background:
+        radial-gradient(circle at 40% 20%, rgba(57,199,255,.18), transparent 30%),
+        radial-gradient(circle at 60% 82%, rgba(135,239,172,.12), transparent 26%),
+        linear-gradient(160deg, rgba(255,255,255,.04), rgba(255,255,255,0)),
+        #0b0f17;
+    }
+
+    .mesh {
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at center, rgba(57,199,255,.08), transparent 46%),
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size:auto, 44px 44px, 44px 44px;
+      transform:perspective(900px) rotateX(68deg) translateY(38%);
+      transform-origin:center bottom;
+      opacity:.48;
+    }
+
+    .portrait {
+      position:absolute;
+      inset:24px 76px 0 76px;
+      border-radius:24px 24px 0 0;
+      background:
+        linear-gradient(180deg, rgba(57,199,255,.14), rgba(57,199,255,0) 32%),
+        linear-gradient(0deg, rgba(8,9,14,0), rgba(8,9,14,.94) 92%),
+        linear-gradient(135deg, #1b202b, #0e121a);
+      overflow:hidden;
+      -webkit-mask-image:linear-gradient(to bottom, black 36%, transparent 100%);
+      mask-image:linear-gradient(to bottom, black 36%, transparent 100%);
+    }
+
+    .portrait::before {
+      content:"Portrait / cyan-lit photo treatment";
+      position:absolute;
+      inset:auto 18px 24px;
+      font-family:var(--mono);
+      font-size:12px;
+      color:rgba(221,227,242,.65);
+      z-index:2;
+    }
+
+    .card {
+      position:absolute;
+      width:154px;
+      padding:14px 15px;
+      border-radius:16px;
+      background:rgba(15,19,28,.88);
+      border:1px solid var(--line2);
+      box-shadow:0 16px 36px rgba(0,0,0,.28);
+      backdrop-filter:blur(18px);
+    }
+
+    .card.a { top:28px; right:18px; }
+    .card.b { top:220px; right:24px; }
+    .card.c { bottom:96px; right:18px; }
+    .card.d { top:54px; left:18px; }
+    .card.e { bottom:124px; left:18px; }
+    .label { color:var(--soft); font-size:10px; text-transform:uppercase; letter-spacing:.11em; margin-bottom:7px; }
+    .value { font-family:var(--display); font-size:26px; line-height:1; letter-spacing:-.04em; color:var(--cyan); }
+    .value.lime { color:var(--lime); }
+    .small { margin-top:6px; font-size:10px; color:var(--muted); line-height:1.5; }
+
+    .grid { display:grid; grid-template-columns:1.1fr .9fr; gap:28px; margin-bottom:28px; }
+    .panel, .contact { padding:28px; }
+    .kicker { color:var(--soft); font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; margin-bottom:12px; }
+    .title { font-size:34px; line-height:1.02; margin-bottom:10px; }
+    .copy { color:var(--muted); font-size:14px; line-height:1.75; margin-bottom:24px; max-width:56ch; }
+
+    .bento { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .project, .take, .row, .article, .skill-card, .tool, .mini, .chat-box {
+      border-radius:22px;
+      border:1px solid var(--line);
+      background:rgba(19,23,35,.82);
+    }
+
+    .project {
+      min-height:240px;
+      padding:20px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .project.feat { grid-column:1 / 3; min-height:300px; }
+    .project.tall { grid-column:3; grid-row:1 / 3; min-height:554px; }
+    .thumb {
+      height:118px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:linear-gradient(135deg, rgba(57,199,255,.08), rgba(135,239,172,.04)), var(--bg3);
+      margin-bottom:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--soft);
+      font-family:var(--mono);
+      font-size:11px;
+    }
+
+    .project.feat .thumb { height:150px; }
+    .metric { position:absolute; top:18px; right:18px; font-family:var(--display); font-size:26px; color:var(--cyan); letter-spacing:-.04em; }
+    .problem { color:var(--orange); font-size:12px; margin-bottom:8px; }
+    .ptitle { font-family:var(--display); font-size:21px; line-height:1.08; margin-bottom:10px; letter-spacing:-.03em; }
+    .project.feat .ptitle { font-size:26px; }
+    .text { color:var(--muted); font-size:13px; line-height:1.7; margin-bottom:14px; }
+    .chips { gap:7px; }
+    .chip { font-size:10px; color:var(--muted); border-radius:999px; border:1px solid var(--line); padding:5px 10px; background:rgba(255,255,255,.03); }
+    .link { display:inline-flex; margin-top:14px; color:var(--cyan); font-size:13px; font-weight:600; text-decoration:none; }
+
+    .stack { display:flex; flex-direction:column; gap:14px; }
+    .take, .row, .article, .skill-card, .chat-box { padding:18px; }
+    .take p, .row p, .article p, .skill-card p, .chat-box p { margin:0; color:var(--muted); font-size:13px; line-height:1.72; }
+    .take strong, .row strong, .article strong, .skill-card strong { color:var(--text); }
+    .row { display:grid; grid-template-columns:86px 1fr; gap:16px; }
+    .year { font-family:var(--display); font-size:28px; color:var(--bg3); letter-spacing:-.04em; }
+    .role { font-family:var(--display); font-size:19px; margin-bottom:5px; letter-spacing:-.03em; }
+    .meta { color:var(--cyan); font-size:11px; margin-bottom:10px; }
+    .outcome { display:inline-flex; margin-top:10px; padding:6px 10px; border-radius:999px; font-size:11px; color:var(--lime); border:1px solid rgba(135,239,172,.16); background:rgba(135,239,172,.08); }
+
+    .split { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .skill-card { display:flex; justify-content:space-between; align-items:center; gap:18px; }
+    .badge { font-family:var(--mono); font-size:10px; border-radius:999px; padding:5px 10px; border:1px solid var(--line); white-space:nowrap; }
+    .badge.expert { color:var(--cyan); border-color:rgba(57,199,255,.22); background:rgba(57,199,255,.08); }
+    .badge.pro { color:var(--lime); border-color:rgba(135,239,172,.22); background:rgba(135,239,172,.08); }
+
+    .tool-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+    .tool { padding:12px; color:var(--muted); font-size:12px; display:flex; align-items:center; gap:8px; border-radius:14px; }
+    .dot { width:7px; height:7px; border-radius:999px; flex-shrink:0; }
+
+    .writing { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .article.hero { grid-column:1 / 3; display:grid; grid-template-columns:1.05fr .95fr; gap:20px; align-items:center; }
+    .cover {
+      min-height:180px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:linear-gradient(135deg, rgba(57,199,255,.12), rgba(135,239,172,.06)), var(--bg3);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--soft);
+      font-family:var(--mono);
+      font-size:11px;
+    }
+
+    .contact {
+      text-align:center;
+      background:radial-gradient(circle at top center, rgba(57,199,255,.08), transparent 30%), rgba(14,17,24,.92);
+    }
+
+    .headline { font-size:clamp(36px,5vw,64px); line-height:.98; margin-bottom:16px; letter-spacing:-.05em; }
+    .headline em {
+      font-style:normal;
+      background:linear-gradient(90deg, var(--cyan), var(--lime));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .email {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:18px 30px;
+      border-radius:20px;
+      border:1px solid var(--line2);
+      background:rgba(19,23,35,.86);
+      font-family:var(--display);
+      font-size:28px;
+      letter-spacing:-.03em;
+      margin-bottom:18px;
+    }
+
+    .links { justify-content:center; gap:10px; }
+    .link-pill { border:1px solid var(--line); border-radius:999px; padding:10px 16px; color:var(--muted); font-size:12px; }
+
+    .mobile {
+      max-width:420px;
+      border-radius:34px;
+      border:1px solid var(--line);
+      background:rgba(14,17,24,.92);
+      box-shadow:var(--shadow);
+      padding:22px 18px;
+    }
+
+    .notch { width:88px; height:6px; border-radius:999px; background:rgba(255,255,255,.09); margin:0 auto 20px; }
+    .mobile-photo {
+      height:300px;
+      border-radius:24px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(57,199,255,.12), rgba(57,199,255,0) 26%), linear-gradient(135deg, #1b202b, #0e121a);
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      padding-bottom:18px;
+      color:rgba(221,227,242,.62);
+      font-family:var(--mono);
+      font-size:11px;
+    }
+
+    .mini-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:12px; }
+    .mini { padding:12px; border-radius:16px; }
+
+    .fab {
+      position:fixed;
+      right:24px;
+      bottom:24px;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:12px;
+    }
+
+    .chat { width:320px; border-radius:24px; border:1px solid var(--line2); background:rgba(14,17,24,.94); box-shadow:var(--shadow); padding:16px; }
+    .fab-btn {
+      width:58px;
+      height:58px;
+      border-radius:999px;
+      background:linear-gradient(135deg, var(--cyan), #76dbff);
+      color:#081119;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:22px;
+      box-shadow:0 14px 34px rgba(57,199,255,.3);
+    }
+
+    @media (max-width:1100px) {
+      .hero-grid, .grid, .split, .writing, .article.hero { grid-template-columns:1fr; }
+      .bento, .tool-grid { grid-template-columns:1fr; }
+      .project.feat, .project.tall, .article.hero { grid-column:auto; grid-row:auto; }
+      .fab { position:static; margin-top:24px; align-items:stretch; }
+      .chat { width:100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="board">
+    <section class="hero-shell">
+      <div class="glow-a"></div>
+      <div class="glow-b"></div>
+      <div class="topbar">
+        <div class="logo">Tharun Balaji<span>.</span></div>
+        <div class="nav">
+          <div class="pill active">Work</div>
+          <div class="pill">About</div>
+          <div class="pill">Experience</div>
+          <div class="pill">Skills</div>
+          <div class="pill">Writing</div>
+          <div class="pill cta">Let's Talk -&gt;</div>
+        </div>
+      </div>
+
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Open to select opportunities - Chennai, IN</div>
+          <h1>Engineer the <span class="accent">interface.</span> Shape the product.</h1>
+          <div class="lede">Dark, refined, and engineered with intent. The page should feel premium before it feels clever, and fast before it feels animated.</div>
+          <div class="actions">
+            <a class="button primary" href="#">View Work -&gt;</a>
+            <a class="button" href="#">Read Writing</a>
+          </div>
+          <div class="stats">
+            <div><div class="stat-num">12<span class="accent">+</span></div><div class="stat-label">systems shipped</div></div>
+            <div><div class="stat-num">40<span class="accent">%</span></div><div class="stat-label">avg render gain</div></div>
+            <div><div class="stat-num">100</div><div class="stat-label">lighthouse score</div></div>
+          </div>
+        </div>
+
+        <div class="visual">
+          <div class="mesh"></div>
+          <div class="portrait"></div>
+          <div class="card a"><div class="label">Current Stack</div><div class="value">React</div><div class="small">TypeScript · Next.js · GSAP</div></div>
+          <div class="card b"><div class="label">This Week</div><div class="value lime">47</div><div class="small">commits pushed</div></div>
+          <div class="card c"><div class="label">Status</div><div class="value lime">Open</div><div class="small">to full-time roles</div></div>
+          <div class="card d"><div class="label">Avg Response</div><div class="value">&lt;24h</div><div class="small">to every email</div></div>
+          <div class="card e"><div class="label">Lighthouse</div><div class="value lime">100</div><div class="small">perf · a11y · seo</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <div class="kicker">Projects / Bento Layout</div>
+        <h2 class="title">Ranked proof, not equal cards.</h2>
+        <div class="copy">The flagship case study should dominate. Supporting projects still matter, but the hierarchy must tell the viewer where to start.</div>
+        <div class="bento">
+          <article class="project feat">
+            <div class="metric">34%</div>
+            <div class="thumb">flagship screenshot / live demo</div>
+            <div class="problem">Problem -&gt; Checkout flow losing users at payment</div>
+            <div class="ptitle">Redesigned Checkout System</div>
+            <div class="text">Rebuilt the flow with progressive disclosure and measurable business impact. Cleaner UX, faster decisions, fewer drop-offs.</div>
+            <div class="chips"><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Stripe</span><span class="chip">GSAP</span></div>
+            <a class="link" href="#">Read Case Study -&gt;</a>
+          </article>
+
+          <article class="project tall">
+            <div class="metric" style="color:var(--lime);">60%</div>
+            <div class="thumb">supporting proof</div>
+            <div class="problem">Problem -&gt; CI pipeline dragging deploys</div>
+            <div class="ptitle">Build Infrastructure Overhaul</div>
+            <div class="text">Parallelised workflows and reduced friction across teams. Quiet work, obvious impact.</div>
+            <div class="chips"><span class="chip">Node.js</span><span class="chip">Docker</span><span class="chip">GitHub Actions</span></div>
+            <a class="link" href="#">View Details -&gt;</a>
+          </article>
+
+          <article class="project">
+            <div class="thumb">library preview</div>
+            <div class="problem">Problem -&gt; Design system fragmentation</div>
+            <div class="ptitle">Component Library v2</div>
+            <div class="text">Token-driven design system across multiple teams.</div>
+            <div class="chips"><span class="chip">Storybook</span><span class="chip">Tokens</span></div>
+          </article>
+
+          <article class="project">
+            <div class="thumb" style="background:linear-gradient(135deg, rgba(135,239,172,.08), rgba(255,154,77,.05));">side project preview</div>
+            <div class="problem">Problem -&gt; No good RSS reader UI</div>
+            <div class="ptitle">FeedOS</div>
+            <div class="text">Desktop RSS app built with a native feel.</div>
+            <div class="chips"><span class="chip">Tauri</span><span class="chip">Rust</span><span class="chip">React</span></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="kicker">System Notes</div>
+        <h2 class="title">Bright accents on a disciplined dark base.</h2>
+        <div class="copy">Cyan does the heavy lifting. Lime rewards performance and availability moments. Orange appears only where the eye needs help.</div>
+        <div class="chips">
+          <span class="chip" style="color:var(--text);background:#08090e;border-color:#202634;">#08090E</span>
+          <span class="chip" style="color:#09111b;background:var(--cyan);border-color:transparent;">#39C7FF</span>
+          <span class="chip" style="color:#0d1911;background:var(--lime);border-color:transparent;">#87EFAC</span>
+          <span class="chip" style="color:#221406;background:var(--orange);border-color:transparent;">#FF9A4D</span>
+        </div>
+        <div class="stack" style="margin-top:18px;">
+          <div class="take"><p><strong>Syne</strong> for high-conviction statements.</p></div>
+          <div class="take"><p><strong>IBM Plex Sans</strong> for readable body copy.</p></div>
+          <div class="take"><p><strong>JetBrains Mono</strong> for labels, metadata, and system cues.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <div class="kicker">About / Point Of View</div>
+        <h2 class="title">Opinionated, readable, and authored.</h2>
+        <div class="stack">
+          <div class="take"><p><strong>Premature abstraction is the real enemy</strong>, not duplication.</p></div>
+          <div class="take"><p><strong>Performance is UX.</strong> If it feels better, it matters.</p></div>
+          <div class="take"><p><strong>Pragmatism beats purity.</strong> Use the tool that makes the product better.</p></div>
+          <div class="take"><p><strong>Types are documentation that compiles.</strong></p></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="kicker">Experience / Skills / Writing</div>
+        <div class="stack">
+          <div class="row">
+            <div class="year">2024</div>
+            <div><div class="role">Senior Frontend Engineer</div><div class="meta">Company · Full-time · Chennai</div><p>Migrated a monolithic dashboard into a faster product surface without downtime.</p><span class="outcome">40% reduction in time-on-task</span></div>
+          </div>
+          <div class="split">
+            <div class="stack">
+              <div class="skill-card"><div><strong>React + TypeScript</strong><p>production systems</p></div><div class="badge expert">Expert</div></div>
+              <div class="skill-card"><div><strong>Next.js / Astro</strong><p>content and app tradeoffs</p></div><div class="badge expert">Expert</div></div>
+              <div class="skill-card"><div><strong>WebGL / Three.js</strong><p>only when justified</p></div><div class="badge">Careful</div></div>
+            </div>
+            <div class="stack">
+              <div class="tool-grid">
+                <div class="tool"><span class="dot" style="background:#f7df1e;"></span>Bun</div>
+                <div class="tool"><span class="dot" style="background:#ce422b;"></span>Rust</div>
+                <div class="tool"><span class="dot" style="background:#efc050;"></span>Tauri</div>
+                <div class="tool"><span class="dot" style="background:#61dafb;"></span>Expo</div>
+                <div class="tool"><span class="dot" style="background:#a78bfa;"></span>Drizzle</div>
+                <div class="tool"><span class="dot" style="background:#38bdf8;"></span>SQLite</div>
+              </div>
+              <div class="article">
+                <div class="meta">Writing / Medium RSS</div>
+                <h3 style="font-size:20px;line-height:1.1;margin:0 0 8px;">Why I stopped using useEffect for everything</h3>
+                <p>Short TLDR summary. Keep it sharp, useful, and readable in one breath.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="contact">
+        <div class="eyebrow" style="margin-bottom:20px;">Open to full-time roles</div>
+        <h2 class="headline">Let's build something <em>worth building.</em></h2>
+        <div class="copy" style="max-width:50ch;margin:0 auto 30px;">I respond within 24 hours. No agency detours. Come with a real problem and a real role.</div>
+        <div class="email">hi@tharunbalaji.dev</div>
+        <div class="links"><div class="link-pill">LinkedIn</div><div class="link-pill">GitHub</div><div class="link-pill">Resume PDF</div><div class="link-pill">Medium</div></div>
+      </div>
+
+      <div class="panel">
+        <div class="kicker">Mobile + AI Assistant</div>
+        <div class="mobile">
+          <div class="notch"></div>
+          <div class="eyebrow" style="margin-bottom:12px;">Open to select opportunities</div>
+          <h3 style="font-size:42px;line-height:.94;">Engineer the <span class="accent">interface.</span> Shape the product.</h3>
+          <div class="copy" style="margin:14px 0 14px;">Same tone, lighter density, lower motion load.</div>
+          <div class="mobile-photo">portrait / lighter treatment on mobile</div>
+          <div class="mini-stats">
+            <div class="mini"><div class="label">systems</div><div class="value" style="font-size:20px;">12+</div></div>
+            <div class="mini"><div class="label">gain</div><div class="value" style="font-size:20px;">40%</div></div>
+            <div class="mini"><div class="label">lh</div><div class="value lime" style="font-size:20px;">100</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="fab">
+      <div class="chat">
+        <div class="meta" style="margin-bottom:12px;">Floating AI Assistant</div>
+        <div class="chat-box" style="margin-bottom:10px;"><p>Ask about work, technical challenges, availability, or which projects are most representative.</p></div>
+        <div class="stack">
+          <div class="chat-box"><p>What makes Tharun stand out?</p></div>
+          <div class="chat-box"><p>Most complex technical challenge?</p></div>
+          <div class="chat-box"><p>Is he available right now?</p></div>
+          <div class="chat-box"><p>Best projects to look at?</p></div>
+        </div>
+      </div>
+      <div class="fab-btn">+</div>
+    </div>
+  </div>
+</body>
+</html>

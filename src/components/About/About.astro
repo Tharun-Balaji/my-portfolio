@@ -1,54 +1,61 @@
-<section class="section-shell section-gap" id="about">
-  <div class="section-intro">
-    <div>
-      <span class="section-pill">PROFILE</span>
-      <h2 class="section-title">
-        Trajectory, taste, and the kind of work I want to keep doing.
+---
+const takes = [
+  "Premature abstraction is the real enemy, not code duplication.",
+  "Performance is UX, even when the gain is subtle.",
+  "Pragmatism beats purity when the product is on the line.",
+  "Type systems are documentation that compiles.",
+];
+
+const obsessions = [
+  "React architecture and where state actually belongs",
+  "Tauri apps that feel native across operating systems",
+  "Motion that earns its frame budget",
+  "Writing that is honest instead of impressive",
+];
+---
+
+<section class="section" id="about">
+  <div class="section__inner about-grid">
+    <div data-reveal="left">
+      <p class="section-head__kicker">About</p>
+      <h2 class="about__title">
+        I think in <span>systems</span>, sweat the final 10%, and treat every interaction like a
+        contract.
       </h2>
+      <p class="about__copy">
+        I graduated in Mathematics, spent 17 months in asset management at Cognizant, and moved
+        deeper into software through deliberate project work and focused upskilling. What pulls me
+        in now is the seam between product thinking and implementation: the interface details,
+        performance decisions, and structural choices that make something feel complete.
+      </p>
+      <div class="take-list">
+        {takes.map((take) => <article class="take-card"><p>{take}</p></article>)}
+      </div>
     </div>
-  </div>
 
-  <div class="about-grid">
-    <article class="terminal-panel about-card reveal-item">
-      <div class="terminal-header">
-        <span>Profile // 001</span>
-        <span>BACKGROUND</span>
-      </div>
-      <div class="about-card__body">
-        <h3>Mathematics to product engineering</h3>
-        <p>
-          I graduated with a B.Sc. in Mathematics in 2022, then moved through enterprise operations
-          work at Cognizant before shifting into full-stack product development.
-        </p>
-      </div>
-    </article>
+    <div class="about-side" data-reveal="right">
+      <article class="info-card">
+        <p class="info-card__kicker">Currently obsessing over</p>
+        <div class="info-stack">
+          {obsessions.map((item) => <p class="info-card__item">{item}</p>)}
+        </div>
+      </article>
 
-    <article class="terminal-panel about-card reveal-item">
-      <div class="terminal-header">
-        <span>Profile // 002</span>
-        <span>WORK MODE</span>
-      </div>
-      <div class="about-card__body">
-        <h3>Editorial UI with technical discipline</h3>
-        <p>
-          I care about layouts that feel intentional, interaction states that stay clear, and code
-          that supports iteration instead of fighting it.
+      <article class="info-card">
+        <p class="info-card__kicker">How I work</p>
+        <p class="info-card__body">
+          I like interfaces that feel considered, systems that scale without drama, and code that
+          stays readable after the excitement of shipping is gone.
         </p>
-      </div>
-    </article>
+      </article>
 
-    <article class="terminal-panel about-card reveal-item">
-      <div class="terminal-header">
-        <span>Profile // 003</span>
-        <span>CURRENT ARC</span>
-      </div>
-      <div class="about-card__body">
-        <h3>Frontend depth, full-stack range</h3>
-        <p>
-          My current focus is sharpening React, Astro, Node.js, and MERN execution while building a
-          stronger case-study-driven portfolio around shipped work.
+      <article class="info-card info-card--soft">
+        <p class="info-card__kicker">Built with intention</p>
+        <p class="info-card__body">
+          Astro for delivery, a dark editorial layout for clarity, and motion used carefully so the
+          experience still holds up when the effects are gone.
         </p>
-      </div>
-    </article>
+      </article>
+    </div>
   </div>
 </section>

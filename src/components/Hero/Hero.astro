@@ -1,69 +1,72 @@
 ---
 import { assetPath } from "../../utils/assets";
+
+const stats = [
+  { value: "17 months", label: "professional experience" },
+  { value: "30%", label: "manual effort reduced" },
+  { value: "$25K", label: "saved in license renewal" },
+];
+
+const cards = [
+  { label: "Current stack", value: "React", detail: "TypeScript · Astro · Next.js" },
+  { label: "Focus", value: "UI systems", detail: "performance · interaction · polish" },
+  { label: "Availability", value: "Open", detail: "full-time frontend roles" },
+  { label: "Writes on", value: "Medium", detail: "engineering and product craft" },
+  { label: "Location", value: "Chennai", detail: "India" },
+];
 ---
 
-<section class="hero-layout" id="hero">
-  <div class="hero-copy">
-    <div class="system-pill">
-      <span></span>
-      AVAILABLE FOR UI SYSTEMS
-    </div>
-
-    <h1 class="hero-title">
-      THARUN
-      <br />
-      <span>BALAJI</span>
-    </h1>
-
-    <p class="hero-description">
-      Building expressive web interfaces and resilient full-stack applications with a systems-first
-      mindset.
-    </p>
-
-    <div class="hero-actions">
-      <a class="action-button" href="#projects">
-        View Projects
-        <span class="material-symbols-outlined">rocket_launch</span>
-      </a>
-
-      <a class="ghost-button" href="#writing">Read Notes</a>
-    </div>
-  </div>
-
-  <div class="hero-portrait-wrap">
-    <div class="terminal-panel portrait-panel">
-      <div class="terminal-header">
-        <span>Profile // Ambient Systems</span>
-        <span class="material-symbols-outlined portrait-header-icon">filter_center_focus</span>
+<section class="hero section section--hero" id="home">
+  <div class="hero__glow hero__glow--a"></div>
+  <div class="hero__glow hero__glow--b"></div>
+  <div class="section__inner hero__inner">
+    <div class="hero__copy" data-reveal="up">
+      <p class="eyebrow eyebrow--status">Open to full-time frontend roles · Chennai, IN</p>
+      <h1 class="hero__title">
+        Engineer the <span>interface.</span>
+        <br />
+        Shape the product.
+      </h1>
+      <p class="hero__lede">
+        I build frontend systems that are fast by design, product-aware, and polished enough to
+        survive real use.
+      </p>
+      <div class="hero__actions">
+        <a class="button button--primary" href="#projects">View Work -&gt;</a>
+        <a class="button button--ghost" href="#writing">Read Writing</a>
       </div>
+      <div class="hero__stats">
+        {
+          stats.map((stat) => (
+            <div class="hero__stat">
+              <div class="hero__stat-value">{stat.value}</div>
+              <div class="hero__stat-label">{stat.label}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
 
-      <div class="portrait-frame">
+    <div class="hero__visual" data-reveal="left">
+      <div class="hero__mesh"></div>
+      <div class="hero__portrait">
         <img
           src={assetPath("hero/MyPhoto.png")}
           alt="Portrait of Tharun Balaji"
-          class="portrait-mask"
           loading="eager"
           decoding="async"
         />
-        <div class="scanline"></div>
-
-        <div class="portrait-dossier">
-          <div>
-            <span>Signal:</span>
-            <strong>0xTB-1102</strong>
-          </div>
-          <div>
-            <span>Base:</span>
-            <strong>COIMBATORE_IN</strong>
-          </div>
-          <div>
-            <span>Focus:</span>
-            <strong>INTERFACE_ENG</strong>
-          </div>
-        </div>
       </div>
-    </div>
 
-    <div class="portrait-glow"></div>
+      {
+        cards.map((card, index) => (
+          <article class={`hero__card hero__card--${index + 1}`}>
+            <p class="hero__card-label">{card.label}</p>
+            <p class="hero__card-value">{card.value}</p>
+            <p class="hero__card-detail">{card.detail}</p>
+          </article>
+        ))
+      }
+    </div>
   </div>
 </section>

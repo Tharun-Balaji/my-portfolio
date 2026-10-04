@@ -1,65 +1,70 @@
 ---
-import skills from "../../data/skills.json";
+const workSkills = [
+  {
+    title: "React + TypeScript",
+    note: "Daily driver for component systems, state, and interface polish.",
+    level: "Expert",
+  },
+  {
+    title: "React Native",
+    note: "Cross-platform product work with a frontend-first mindset.",
+    level: "Expert",
+  },
+  {
+    title: "Next.js / Astro",
+    note: "Rendering tradeoffs, content delivery, and app structure.",
+    level: "Expert",
+  },
+  {
+    title: "Node.js + APIs",
+    note: "Enough backend fluency to ship product work end to end.",
+    level: "Proficient",
+  },
+  {
+    title: "WebGL / Three.js",
+    note: "Used carefully and only when the experience earns the cost.",
+    level: "Careful",
+  },
+];
+
+const labTools = ["Bun", "Rust", "Tauri", "Expo", "Drizzle", "SQLite", "Supabase", "tRPC", "Zod"];
 ---
 
-<section class="section-shell section-gap" id="stack">
-  <div class="skills-heading">
-    <div class="section-pill section-pill--purple">
-      <span></span>
-      Core Stack
+<section class="section" id="skills">
+  <div class="section__inner">
+    <div class="section-head" data-reveal="up">
+      <p class="section-head__kicker">Skills & Lab</p>
+      <h2 class="section-head__title">Production confidence with room for curiosity.</h2>
+      <p class="section-head__copy">
+        Left is what I trust in production. Right is what I reach for when I'm building for myself.
+      </p>
     </div>
-    <h2>
-      Interface
-      <br />
-      <span>& Full-Stack Range</span>
-    </h2>
-  </div>
 
-  <div class="skills-stack">
-    {
-      skills.map((skill, index) => (
-        <div class={`skill-item reveal-item ${index === 0 ? "active" : ""}`} data-skill-item>
-          <button class="skill-content-header" type="button">
-            <div>
-              <span class="skill-serial">{`Layer 0${index + 1}`}</span>
-              <h3 class="skill-title">{skill.title}</h3>
-            </div>
-            <span class="skill-expansion">expand_more</span>
-          </button>
-
-          <div class="skill-details">
-            <div class="skill-details__rule"></div>
-            <div class="sub-tags">
-              {skill.tags.map((tag) => <span class="sub-tag">{tag}</span>)}
-            </div>
-          </div>
+    <div class="skill-layout" data-reveal="up">
+      <article class="skill-panel">
+        <p class="skill-panel__kicker">Work Skills</p>
+        <div class="skill-list">
+          {
+            workSkills.map((skill) => (
+              <div class="skill-list__item">
+                <div>
+                  <h3>{skill.title}</h3>
+                  <p>{skill.note}</p>
+                </div>
+                <span class={`skill-badge skill-badge--${skill.level.toLowerCase()}`}>{skill.level}</span>
+              </div>
+            ))
+          }
         </div>
-      ))
-    }
+      </article>
+
+      <article class="skill-panel">
+        <p class="skill-panel__kicker">Tools Lab</p>
+        <div class="tool-grid">
+          {labTools.map((tool) => <div class="tool-chip">{tool}</div>)}
+        </div>
+        <div class="tool-note">Last shipped with Tauri + Rust + React while building desktop experiments and utility apps.</div>
+      </article>
+    </div>
   </div>
 </section>
-
-<script>
-  window.addEventListener("DOMContentLoaded", () => {
-    const items = Array.from(document.querySelectorAll<HTMLElement>("[data-skill-item]"));
-
-    items.forEach((item) => {
-      item.querySelector("button")?.addEventListener("click", (event) => {
-        event.stopPropagation();
-        const isActive = item.classList.contains("active");
-
-        items.forEach((otherItem) => {
-          otherItem.classList.remove("active");
-        });
-
-        if (!isActive) {
-          item.classList.add("active");
-        }
-      });
-    });
-
-    window.addEventListener("click", () => {
-      items.forEach((item) => item.classList.remove("active"));
-    });
-  });
-</script>

@@ -1,98 +1,79 @@
-<div class="ai-chat-launch">
-  <button
-    class="ai-chat-toggle"
-    id="ai-chat-toggle"
-    type="button"
-    aria-expanded="false"
-    aria-controls="ai-chat-panel"
-    aria-label="Open AI portfolio panel"
-  >
-    <span class="material-symbols-outlined">neurology</span>
+<aside class="assistant" aria-label="Portfolio assistant">
+  <div class="assistant__panel" id="assistant-panel">
+    <div class="assistant__header">
+      <div class="assistant__avatar">TB</div>
+      <div>
+        <p class="assistant__name">Tharun's AI</p>
+        <p class="assistant__status">Usually responds instantly</p>
+      </div>
+      <button class="assistant__close" id="assistant-close" type="button" aria-label="Close assistant">×</button>
+    </div>
+    <div class="assistant__messages" id="assistant-messages">
+      <div class="assistant__message">
+        Ask about my work, availability, or which projects best show how I think.
+      </div>
+    </div>
+    <div class="assistant__prompts">
+      <button class="assistant__prompt" type="button">What makes Tharun stand out?</button>
+      <button class="assistant__prompt" type="button">Most complex technical challenge?</button>
+      <button class="assistant__prompt" type="button">Is he available right now?</button>
+      <button class="assistant__prompt" type="button">Best projects to look at?</button>
+    </div>
+  </div>
+
+  <button class="assistant__toggle" id="assistant-toggle" type="button" aria-expanded="false">
+    <span class="assistant__ping"></span>
+    <span>+</span>
   </button>
-</div>
-
-<div class="ai-chat-panel" id="ai-chat-panel" aria-hidden="true">
-  <div class="terminal-header ai-chat-panel__header">
-    <span>Portfolio Assistant</span>
-    <button id="close-chat" type="button">
-      <span class="material-symbols-outlined">close</span>
-    </button>
-  </div>
-
-  <div class="ai-chat-panel__body" id="ai-chat-messages">
-    <div class="ai-chat-system">Ready when you are.</div>
-    <div class="ai-chat-agent">
-      Ask about projects, stack, or the fastest way to contact Tharun.
-    </div>
-  </div>
-
-  <form class="ai-chat-panel__input" id="ai-chat-form">
-    <div>
-      <span>_</span>
-      <input id="ai-chat-input" type="text" placeholder="Ask a question..." />
-    </div>
-  </form>
-</div>
+</aside>
 
 <script>
-  window.addEventListener("DOMContentLoaded", () => {
-    const toggle = document.getElementById("ai-chat-toggle");
-    const panel = document.getElementById("ai-chat-panel");
-    const close = document.getElementById("close-chat");
-    const form = document.getElementById("ai-chat-form");
-    const input = document.getElementById("ai-chat-input");
-    const messages = document.getElementById("ai-chat-messages");
+  const panel = document.getElementById("assistant-panel");
+  const toggle = document.getElementById("assistant-toggle");
+  const closeButton = document.getElementById("assistant-close");
+  const messages = document.getElementById("assistant-messages");
+  const prompts = document.querySelectorAll(".assistant__prompt");
 
-    const setOpen = (isOpen: boolean) => {
-      toggle?.setAttribute("aria-expanded", String(isOpen));
-      panel?.classList.toggle("is-open", isOpen);
-      panel?.setAttribute("aria-hidden", String(!isOpen));
-    };
+  const replies: Record<string, string> = {
+    "What makes Tharun stand out?":
+      "I work at the intersection of interface polish, product thinking, and implementation detail. I care about the last 10 percent that makes software feel considered, not just complete.",
+    "Most complex technical challenge?":
+      "The hardest work has been building across the stack while keeping the frontend experience coherent. I enjoy projects where state, performance, and clarity all have to stay aligned at the same time.",
+    "Is he available right now?":
+      "Yes, I'm open to full-time frontend roles and happy to talk through product-facing engineering work. The fastest path is still email: tharunbalaji110@gmail.com.",
+    "Best projects to look at?":
+      "Start with the Book My Show clone for end-to-end product flow, then the chat app for real-time interaction, and the car showcase for a cleaner presentation-first build.",
+  };
 
-    const addMessage = (text: string) => {
-      if (!(messages instanceof HTMLElement)) {
-        return;
-      }
+  const setOpen = (open: boolean) => {
+    panel?.classList.toggle("is-open", open);
+    toggle?.setAttribute("aria-expanded", String(open));
+  };
 
-      const node = document.createElement("div");
-      node.className = "ai-chat-agent";
-      node.textContent = text;
-      messages.appendChild(node);
-      messages.scrollTop = messages.scrollHeight;
-    };
+  const appendMessage = (text: string, isUser = false) => {
+    if (!messages) return;
 
-    toggle?.addEventListener("click", () => {
-      const isOpen = toggle.getAttribute("aria-expanded") === "true";
-      setOpen(!isOpen);
-      if (!isOpen) {
-        input?.focus();
-      }
-    });
+    const item = document.createElement("div");
+    item.className = `assistant__message${isUser ? " assistant__message--user" : ""}`;
+    item.textContent = text;
+    messages.appendChild(item);
+    messages.scrollTop = messages.scrollHeight;
+  };
 
-    close?.addEventListener("click", () => setOpen(false));
+  toggle?.addEventListener("click", () => {
+    const open = !panel?.classList.contains("is-open");
+    setOpen(open);
+  });
 
-    form?.addEventListener("submit", (event) => {
-      event.preventDefault();
-      if (!(input instanceof HTMLInputElement)) {
-        return;
-      }
+  closeButton?.addEventListener("click", () => setOpen(false));
 
-      const value = input.value.trim().toLowerCase();
-      if (!value) {
-        return;
-      }
+  prompts.forEach((prompt) => {
+    prompt.addEventListener("click", () => {
+      const question = prompt.textContent?.trim() ?? "";
+      if (!question) return;
 
-      if (value.includes("project")) {
-        addMessage("Start with selected work for the clearest view of Tharun's product range.");
-      } else if (value.includes("contact") || value.includes("mail")) {
-        addMessage("Email routes to tharunbalaji110@gmail.com.");
-      } else if (value.includes("skill") || value.includes("stack")) {
-        addMessage("Primary focus: React, Astro, Node.js, MERN, and UI system execution.");
-      } else {
-        addMessage("Try projects, stack, or contact for the most direct routes.");
-      }
-
-      input.value = "";
+      appendMessage(question, true);
+      window.setTimeout(() => appendMessage(replies[question] ?? "Email me at tharunbalaji110@gmail.com and I'll reply directly."), 220);
     });
   });
 </script>

@@ -1,24 +1,46 @@
-<footer class="section-shell footer-shell" id="contact">
-  <h2 class="sr-only">Contact</h2>
-
-  <div class="footer-brand">
-    <div class="footer-brand__icon">
-      <span class="material-symbols-outlined">data_object</span>
+<footer class="section section--contact" id="contact">
+  <div class="section__inner">
+    <div class="contact-shell" data-reveal="up">
+      <p class="eyebrow eyebrow--status">Open to full-time frontend roles</p>
+      <h2 class="contact-shell__title">
+        Let's build something <span>worth building.</span>
+      </h2>
+      <p class="contact-shell__copy">
+        I respond within 24 hours. No intro calls for intro calls. Come with a real problem, a real
+        role, or a product that needs a sharper interface.
+      </p>
+      <button class="contact-shell__email" id="email-copy" type="button" data-email="tharunbalaji110@gmail.com">
+        tharunbalaji110@gmail.com
+      </button>
+      <p class="contact-shell__toast" id="email-toast">Copied to clipboard</p>
+      <div class="contact-shell__links">
+        <a href="https://www.linkedin.com/in/tharun-balaji-j-a65402260/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/Tharun-Balaji" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://medium.com/@tharunbalaji110" target="_blank" rel="noopener noreferrer">Medium</a>
+        <a href="mailto:tharunbalaji110@gmail.com">Email</a>
+      </div>
     </div>
-    <span>THARUN<span>.</span>BALAJI</span>
   </div>
-
-  <div class="footer-links">
-    <a href="https://github.com/Tharun-Balaji" rel="noopener noreferrer" target="_blank">GitHub</a>
-    <a
-      href="https://www.linkedin.com/in/tharun-balaji-j-a65402260/"
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      LinkedIn
-    </a>
-    <a class="footer-links__active" href="mailto:tharunbalaji110@gmail.com">Email</a>
-  </div>
-
-  <p>(c) 2026 Tharun Balaji</p>
 </footer>
+
+<script>
+  const emailButton = document.getElementById("email-copy");
+  const emailToast = document.getElementById("email-toast");
+
+  emailButton?.addEventListener("click", async () => {
+    const email = emailButton.getAttribute("data-email");
+
+    if (!email) return;
+
+    try {
+      await navigator.clipboard.writeText(email);
+
+      if (emailToast) {
+        emailToast.classList.add("is-visible");
+        window.setTimeout(() => emailToast.classList.remove("is-visible"), 2200);
+      }
+    } catch {
+      window.location.href = `mailto:${email}`;
+    }
+  });
+</script>
