@@ -1,6 +1,8 @@
 export interface Skill {
   title: string;
   imageSrc: string;
+  summary: string;
+  tags: string[];
 }
 
 export interface Project {

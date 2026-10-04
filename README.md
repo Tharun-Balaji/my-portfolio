@@ -99,3 +99,27 @@ Cloudflare Pages free tier is enough for a personal portfolio (global CDN, SSL, 
 ## Workflow
 
 Workflow rules are documented in `AGENTS.md`.
+
+## Feature Workflow
+
+This repo now includes an agent-agnostic workflow in `feature-workflow/` for taking a feature or fix from idea to PR-ready output.
+
+Start with:
+
+```bash
+npm run workflow:init -- feature ai-case-studies
+```
+
+Then follow the workflow contract:
+
+1. Read `feature-workflow/WORKFLOW.md`
+2. Read `feature-workflow/CONTEXT.md`
+3. Run the active stage and write only to that stage's `output/`
+
+Useful commands:
+
+```bash
+npm run workflow:status
+npm run workflow:advance -- 02_design
+npm run workflow:finish -- --draft
+```

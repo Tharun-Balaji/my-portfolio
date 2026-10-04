@@ -16,7 +16,7 @@
 
 #### Feature B: "The POV Narrative (About 2.0)"
 - **The Idea:** Replace the generic "About Me" with a "System Architecture of a Developer" section.
-- **Why:** Establishes stack judgment and point of view. 
+- **Why:** Establishes stack judgment and point of view.
 - **Components:** "Current Obsessions" (Live Feed) + "Engineering Takes" (Short, punchy opinions).
 
 #### Feature C: "Adaptive Motion Tiers"

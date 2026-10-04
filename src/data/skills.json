@@ -1,50 +1,50 @@
 [
   {
-    "title": "HTML",
-    "imageSrc": "skills/html.png"
+    "title": "Frontend Systems",
+    "imageSrc": "skills/react.png",
+    "summary": "Build responsive interfaces that balance motion, clarity, and component reuse across Astro and React surfaces.",
+    "tags": ["React", "Astro", "Responsive UI", "Component Design"]
   },
   {
-    "title": "CSS",
-    "imageSrc": "skills/css.png"
+    "title": "Design Translation",
+    "imageSrc": "skills/figma.png",
+    "summary": "Translate product ideas and wireframes into intentional layouts with strong hierarchy, accessible interaction, and polished details.",
+    "tags": ["UI Direction", "Figma", "Tailwind CSS", "Accessibility"]
   },
   {
-    "title": "React",
-    "imageSrc": "skills/react.png"
+    "title": "Typed Workflows",
+    "imageSrc": "skills/Ts.png",
+    "summary": "Use type-safe contracts to make forms, data flow, and refactors more reliable as projects grow in scope.",
+    "tags": ["TypeScript", "Zod", "Form Handling", "Maintainability"]
   },
   {
-    "title": "Node",
-    "imageSrc": "skills/node.png"
+    "title": "API + Server Logic",
+    "imageSrc": "skills/node.png",
+    "summary": "Build backend routes and application logic for MERN products, integrations, and real-world auth or data flows.",
+    "tags": ["Node.js", "Express", "REST APIs", "Authentication"]
   },
   {
-    "title": "Java",
-    "imageSrc": "/skills/java.png"
+    "title": "Data + State",
+    "imageSrc": "skills/mongodb.png",
+    "summary": "Model persistent data and predictable client state for content-heavy and interaction-heavy applications.",
+    "tags": ["MongoDB", "SQL", "Redux Toolkit", "RTK Query"]
   },
   {
-    "title": "MongoDB",
-    "imageSrc": "skills/mongodb.png"
+    "title": "Realtime UX",
+    "imageSrc": "skills/js.png",
+    "summary": "Shape multiplayer and chat experiences where updates need to feel immediate and resilient under user activity.",
+    "tags": ["Socket.io", "WebSockets", "Events", "Presence"]
   },
   {
-    "title": "Redux",
-    "imageSrc": "skills/redux.png"
+    "title": "Product Delivery",
+    "imageSrc": "skills/tailwind.png",
+    "summary": "Ship portfolio and product surfaces quickly while keeping deployment, responsiveness, and performance in view.",
+    "tags": ["GitHub Pages", "Netlify", "Performance", "Responsive QA"]
   },
   {
-    "title": "Express",
-    "imageSrc": "skills/express.png"
-  },
-  {
-    "title": "JavaScript",
-    "imageSrc": "skills/js.png"
-  },
-  {
-    "title": "SQL",
-    "imageSrc": "skills/sql.webp"
-  },
-  {
-    "title": "React-form-hook",
-    "imageSrc": "skills/form.png"
-  },
-  {
-    "title": "Typescript",
-    "imageSrc": "skills/Ts.png"
+    "title": "Continuous Learning",
+    "imageSrc": "skills/java.png",
+    "summary": "Apply a mathematics background and structured training mindset to backend concepts, system design, and new tooling.",
+    "tags": ["Java", "Problem Solving", "Scaler", "Architecture Thinking"]
   }
 ]

@@ -24,8 +24,7 @@
 - **Performance:** Use IntersectionObserver to pause Three.js rendering when not in view.
 
 ### 4. Implementation Steps
-1. **Install dependencies: 
-pm install three gsap @types/three.**
+1. **Install dependencies:** `npm install three gsap @types/three`.
 2. Setup src/components/Motion/gsap-config.ts for unified animation defaults.
 3. Create src/components/Hero/HeroScene.tsx (Three.js).
 4. Integrate GSAP reveals into NewHero.astro and BentoGrid.astro.
